@@ -3,14 +3,14 @@ import { FaArrowRight } from "react-icons/fa";
 const Blog = () => {
 
     return (
-        <div className="bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl py-10 px-16">
-          <img src="https://i.ibb.co/D9szksx/output-onlinegiftools.gif" alt="" /> 
+        <div className="bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl md:py-10 md:px-16 p-10">
+          <img src="https://www.mweb.im/asset/img/logo.png" className='h-[80px] w-[80px] ml-5' alt="" /> 
         <div className="flex items-end justify-between">
-           <div className="pt-7">
-           <p className="text-[#818181]">MORE ABOUT ME</p>
-           <h6 className="text-white text-xl">Credentials</h6>
+           <div className="pt-11">
+           <p className="text-[#818181]">Learn from me</p>
+           <h6 className="text-white text-xl">Blog</h6>
            </div>
-           <FaArrowRight className='text-white'></FaArrowRight>  
+           <button><FaArrowRight className='text-[#2d2d2d] hover:text-white'></FaArrowRight> </button>  
         </div> 
     </div>
     );
