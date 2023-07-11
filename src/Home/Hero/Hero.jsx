@@ -2,7 +2,7 @@ import { FaArrowRight } from 'react-icons/fa';
 
 const Hero = () => {
     return (
-        <div className="bg-gradient-to-r from-[#212121] to-[#111111] md:py-10 md:px-16 md:flex items-end justify-between gap-5 rounded-3xl mb-5 p-10 md:mb-0">
+        <div className="bg-gradient-to-r from-[#212121] to-[#111111] md:py-10 md:px-16 md:flex items-end justify-between gap-5 rounded-3xl mb-5 p-10 md:mb-0" style={{ animation: 'borderAnimation 2s infinite' }}>
        <img src="https://i.ibb.co/R4qnm4G/20220902-193517.png" className="h-[150px] w-[150px]" alt="" />  
     <div className='flex items-end gap-5'>
     <div>

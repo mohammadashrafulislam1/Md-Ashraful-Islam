@@ -3,10 +3,10 @@ import { FaArrowRight, FaFacebookF, FaGithub, FaLinkedinIn } from 'react-icons/f
 
 const Socials = () => {
     return (
-        <div className="bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl md:py-10 md:px-16 p-10">
-        <div className='bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl flex p-4 gap-5 text-white'>
+        <div className="bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl md:py-10 md:px-16 p-10" style={{ animation: 'borderAnimation 2s infinite' }}>
+        <div className='bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl flex p-4 gap-5 text-white border-animation'>
 
-      <div className='bg-[#292929] p-5 rounded-full'>
+      <div className='bg-[#292929] p-5 rounded-full '>
         <FaGithub className='w-[30px] h-[30px]'></FaGithub>
       </div>
 

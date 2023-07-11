@@ -1,0 +1,27 @@
+@keyframes borderAnimation {
+    0% {
+      border: 2px solid pink;
+    }
+    50% {
+      border: 2px solid blue;
+    }
+    100% {
+      border: 2px solid pink;
+    }
+  }
+  @keyframes pulsate {
+    0% {
+      border: 2px solid greenyellow;
+    }
+    50% {
+      border: 2px solid orange;
+    }
+    100% {
+      border: 2px solid greenyellow;
+    }
+  }
+  
+  .border-animation {
+    animation: pulsate 2s infinite;
+  }
+      

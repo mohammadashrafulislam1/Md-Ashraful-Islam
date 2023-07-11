@@ -2,7 +2,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 const Projects = () => {
     return (
-        <div className="bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl md:py-10 md:px-16 p-10">
+        <div className="bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl md:py-10 md:px-16 p-10" style={{ animation: 'borderAnimation 2s infinite' }}>
           <img src="https://i.ibb.co/G35QFz1/fadc7785-a45d-4b15-abcc-d723705264c6.gif" alt=""/> 
         <div className="flex items-end justify-between">
            <div className="pt-7">
