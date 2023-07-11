@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root{
+  background-color: #0f0f0f;
+  background-size: cover;
+  height:fit-content;
+  font-family: 'poppins';
+}
