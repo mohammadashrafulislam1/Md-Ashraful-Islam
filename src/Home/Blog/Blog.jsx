@@ -1,8 +1,9 @@
 import { FaArrowRight } from "react-icons/fa";
 
-const About = () => {
+const Blog = () => {
+
     return (
-    <div className="bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl py-10 px-16">
+        <div className="bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl py-10 px-16">
           <img src="https://i.ibb.co/D9szksx/output-onlinegiftools.gif" alt="" /> 
         <div className="flex items-end justify-between">
            <div className="pt-7">
@@ -15,4 +16,4 @@ const About = () => {
     );
 };
 
-export default About;
+export default Blog;
