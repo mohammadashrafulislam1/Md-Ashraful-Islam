@@ -1,0 +1,35 @@
+.card-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .cards {
+    display: flex;
+    transition: transform 0.5s;
+  }
+  
+  .card {
+    padding: 15px 10px;
+    display: flex;
+    align-items: center;
+    background-color: #252525;
+    color: #333;
+    margin-right: 10px;
+  }
+  
+  .prev-button,
+  .next-button {
+    border: none;
+    background-color: #ccc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  .prev-button:hover,
+  .next-button:hover {
+    background-color: #999;
+  }
+  

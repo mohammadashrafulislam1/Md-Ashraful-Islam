@@ -10,8 +10,7 @@ import Socials from "../Socials/Socials";
 
 const Home = () => {
     return (
-    <div className="max-w-7xl md:mx-auto pb-10 mx-5">
-      <Navigation></Navigation>
+    <div className="my-10">
     {/* Secion 1 */}
     <div className="md:flex gap-5 justify-center">
         <Hero></Hero>

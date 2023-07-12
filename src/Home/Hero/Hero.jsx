@@ -1,4 +1,5 @@
 import { FaArrowRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     return (
@@ -10,7 +11,9 @@ const Hero = () => {
         <h1 className="text-white text-4xl font-semibold">MD ASHRAFUL <br /> ISLAM</h1>
         <p className="text-[#818181]">I am a full stack web developer. [MERN]</p>
       </div>  
-      <button><FaArrowRight className='text-[#2d2d2d] hover:text-white'></FaArrowRight> </button> 
+    <Link to='landing-page'>
+    <button><FaArrowRight className='text-[#2d2d2d] hover:text-white'></FaArrowRight> </button> 
+    </Link>
     </div>
         </div>
     );
