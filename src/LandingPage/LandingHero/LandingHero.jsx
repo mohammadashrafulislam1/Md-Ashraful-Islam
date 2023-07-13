@@ -1,8 +1,18 @@
 import { FaCircle } from "react-icons/fa";
 import '../../Home/ShareCss/ShareCss.css'
 import { TypeAnimation } from "react-type-animation";
+import { useEffect } from "react";
 
 const LandingHero = () => {
+    const handleDownloadClick = () => {
+      // Replace the Google Drive link with your own CV link
+      const cvLink = 'https://drive.google.com/file/d/1Vg-rBg3YDWzXS9xHnMSqGQU67uBC1SHh/view?usp=sharing';
+      window.location.href = cvLink;
+    };
+  
+    useEffect(() => {
+      handleDownloadClick(); // Call the download function immediately after the component mounts
+    }, []);
   return (
     <div className="md:flex items-center justify-center relative md:mt-0 mt-6">
       {/* left side */}
@@ -58,7 +68,9 @@ const LandingHero = () => {
   style={{ fontSize: '16px', color: "wheat" }}
   repeat={Infinity}
   />
- <p className="text-gray-300">Want to see my CV?<button className="btn btn-link text-blue-500">Download CV</button></p>
+ <p className="text-gray-300">Want to see my CV? <button className="btn btn-link text-blue-500" onClick={handleDownloadClick}>
+        Download CV
+      </button></p>
         </div>
       {/* Right side */}
       <div>
