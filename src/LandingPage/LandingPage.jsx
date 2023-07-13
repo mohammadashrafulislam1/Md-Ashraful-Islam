@@ -12,7 +12,6 @@ const LandingPage = () => {
         <Services></Services>
         <TimeLine></TimeLine>
         <Contact></Contact>
-        <ProjectSubmissionForm></ProjectSubmissionForm>
         </div>
     );
 };

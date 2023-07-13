@@ -5,8 +5,8 @@ const Contact = () => {
   return (
     <div className="my-16">
       <h6 className="text-white text-2xl mb-5">Contact --</h6>
-      <div className="flex">
-        <div className="w-1/2 bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl p-8">
+      <div className="md:flex">
+        <div className="w-full bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl p-8">
           <form action="https://formspree.io/f/mgejeqoy" method="POST">
             <div className="mb-4">
               <label className="block text-white text-sm font-medium mb-2" htmlFor="name">
@@ -67,7 +67,7 @@ const Contact = () => {
           </form>
         </div>
 
-        <div className="w-1/2 bg-gray-800 rounded-3xl p-8 ml-4">
+        <div className="w-full bg-gray-800 rounded-3xl p-8 mt-5 md:mt-0 md:ml-10">
           <div className="text-white">
             <h3 className="text-2xl mb-4">Contact Info</h3>
             <motion.div
