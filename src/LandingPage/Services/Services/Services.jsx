@@ -27,7 +27,9 @@ const Services = () => {
   };
 
   return (
-    <div className="md:grid grid-cols-2 md:gap-20 items-center my-16">
+    <div className='my-16'>
+    <h6 className="text-white text-2xl mb-5">Services --</h6>
+    <div className="md:grid grid-cols-2 md:gap-20 items-center">
       <div>
         <div
           className={`flex justify-center items-center bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl gap-5 p-5 mb-5 cursor-pointer ${showDevelopment ? 'border border-blue-500' : ''}`}
@@ -63,11 +65,12 @@ const Services = () => {
         </div>
       </div>
 
-      <div>
+      <div className='mt-10 md:mt-0'>
         {showDevelopment && <Development />}
         {showSEO && <SEO />}
         {showDesign && <Design />}
       </div>
+    </div>
     </div>
   );
 };
