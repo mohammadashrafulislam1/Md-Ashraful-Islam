@@ -41,8 +41,8 @@ const ProjectSubmissionForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Project Submission Form</h2>
+    <div>
+      <h2 className="text-3xl font-bold my-6 text-center text-white">Project Submission Form</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="mb-4">
           <label htmlFor="title" className="block text-gray-700 text-sm font-bold mb-2">
@@ -54,7 +54,7 @@ const ProjectSubmissionForm = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
-            className="w-full bg-white border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
@@ -66,7 +66,8 @@ const ProjectSubmissionForm = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
-            className="w-full bg-white border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
+            rows="14" cols="50"
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
@@ -79,7 +80,7 @@ const ProjectSubmissionForm = () => {
             value={projectUrl}
             onChange={(e) => setProjectUrl(e.target.value)}
             required
-            className="w-full bg-white border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
@@ -92,7 +93,7 @@ const ProjectSubmissionForm = () => {
             value={technologies}
             onChange={handleTechnologyChange}
             required
-            className="w-full bg-white border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           >
             <option value="HTML">HTML</option>
             <option value="CSS">CSS</option>
@@ -100,6 +101,15 @@ const ProjectSubmissionForm = () => {
             <option value="React">React</option>
             <option value="Node.js">Node.js</option>
             <option value="Python">Python</option>
+            <option value="Next.JS">Next.JS</option>
+            <option value="Express.JS">Express.JS</option>
+            <option value="Redux">Redux</option>
+            <option value="MongoDB">MongoDB</option>
+            <option value="Tailwind.CSS">Tailwind.CSS</option>
+            <option value="Bootstrap">Bootstrap</option>
+            <option value="WordPress">WordPress</option>
+            <option value="Elementor">Elementor</option>
+            <option value="Divi">Divi</option>
           </select>
         </div>
         <div className="mb-4">
@@ -112,7 +122,7 @@ const ProjectSubmissionForm = () => {
             value={duration}
             onChange={(e) => setDuration(e.target.value)}
             required
-            className="w-full bg-white border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
@@ -124,7 +134,7 @@ const ProjectSubmissionForm = () => {
             value={challenges}
             onChange={(e) => setChallenges(e.target.value)}
             required
-            className="w-full bg-white border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
@@ -137,7 +147,7 @@ const ProjectSubmissionForm = () => {
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
             required
-            className="w-full bg-white border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
@@ -150,10 +160,10 @@ const ProjectSubmissionForm = () => {
             value={userEmail}
             onChange={(e) => setUserEmail(e.target.value)}
             required
-            className="w-full bg-white border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
-        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+        <button type="submit" className="number-slide1 text-white py-3 px-4 hover:bg-blue-600 w-full my-4">
           Submit
         </button>
       </form>

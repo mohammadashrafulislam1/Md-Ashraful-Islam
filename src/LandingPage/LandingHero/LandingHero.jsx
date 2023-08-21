@@ -9,10 +9,7 @@ const LandingHero = () => {
       const cvLink = 'https://drive.google.com/file/d/1Vg-rBg3YDWzXS9xHnMSqGQU67uBC1SHh/view?usp=sharing';
       window.location.href = cvLink;
     };
-  
-    useEffect(() => {
-      handleDownloadClick(); // Call the download function immediately after the component mounts
-    }, []);
+
   return (
     <div className="md:flex items-center justify-center relative md:mt-0 mt-6">
       {/* left side */}

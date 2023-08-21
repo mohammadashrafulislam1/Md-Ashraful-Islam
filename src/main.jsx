@@ -8,6 +8,8 @@ import {
 import Home from './Home/Home/Home.jsx';
 import Main from './Main/Main';
 import LandingPage from './LandingPage/LandingPage';
+import ProjectSubmissionForm from './AdminDashboard/ProjectSubmissionForm/ProjectSubmissionForm ';
+import Dashboard from './AdminDashboard/Dashboard/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -17,11 +19,21 @@ const router = createBrowserRouter([
     children:[
       {
         path:"/",
-        element:<Home></Home>
+        element:<LandingPage></LandingPage>
       },
       {
-        path:'landing-page',
-        element:<LandingPage></LandingPage>
+        path:'home',
+        element:<Home></Home>
+      }
+    ]
+  },
+  {
+    path:'/dashboad',
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path:'projectsubmit',
+        element:<ProjectSubmissionForm></ProjectSubmissionForm>
       }
     ]
   }
