@@ -3,10 +3,10 @@ import { Outlet } from "react-router-dom";
 
 const Dashboard = () => {
     return (
-    <div className="flex gap-10">
-         <div className="lg:drawer-open w-1/4">
+    <div className="md:flex gap-10">
+         <div className="lg:drawer-open w-full md:w-1/4">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content flex flex-col items-center justify-center pt-5">
           {/* Page content here */}
           <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
         
@@ -28,7 +28,7 @@ const Dashboard = () => {
         
         </div>
       </div>
-      <div className="w-3/4 mr-10"><Outlet></Outlet>
+      <div className="md:w-3/4 mr-10 w-full"><Outlet></Outlet>
       </div>
     </div>
     );
