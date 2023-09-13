@@ -2,6 +2,7 @@ import ProjectSubmissionForm from "../AdminDashboard/ProjectSubmissionForm/Proje
 import Contact from "./Contact/Contact";
 import LandingHero from "./LandingHero/LandingHero";
 import Languages from "./Languages/Languages";
+import ProjectSection from "./ProjectSection/ProjectSection";
 import Services from "./Services/Services/Services";
 import TimeLine from "./TimeLine/TimeLine";
 const LandingPage = () => {
@@ -11,6 +12,7 @@ const LandingPage = () => {
         <Languages></Languages>
         <Services></Services>
         <TimeLine></TimeLine>
+        <ProjectSection></ProjectSection>
         <Contact></Contact>
         </div>
     );

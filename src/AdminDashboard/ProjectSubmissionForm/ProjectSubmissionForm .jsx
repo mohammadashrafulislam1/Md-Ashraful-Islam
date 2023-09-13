@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { TagsInput } from 'react-tag-input-component';
 
 const img_hosting_token = import.meta.env.VITE_img_upload_token;
-console.log(img_hosting_token)
+
 const ProjectSubmissionForm = () => {
-  const img_hosting_url = `https://api.imgbb.com/RGbVMQ/upload?key=${img_hosting_token}`;
-  console.log(img_hosting_url)
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [projectUrl, setProjectUrl] = useState('');
@@ -14,23 +15,59 @@ const ProjectSubmissionForm = () => {
   const [challenges, setChallenges] = useState('');
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
+  const [projectImage, setProjectImage] = useState(null); // State for project image
+  const [galleryImages, setGalleryImages] = useState([]); // State for gallery images
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // for Image hosting
-    const formData = new FormData();
-    formData.append('image', data?.image[0])
-    
-    fetch(img_hosting_url, {
-      method:'POST',
-      body: formData
-    })
-    .then(res => res.json())
-    .then(imgResponse =>{
-      console.log(imgResponse)
-    })
-    // Perform form submission logic here
-    // For example, send the form data to a server or display a success message
+    let projectImgURL = ''; // Define projectImgURL within the scope
+    let galleryImgURLs = []; // Define galleryImgURLs within the scope
+
+    // Upload the project image if one is selected
+    if (projectImage) {
+      const formData = new FormData();
+      formData.append('image', projectImage);
+
+      try {
+        const response = await fetch(img_hosting_url, {
+          method: 'POST',
+          body: formData,
+        });
+        const imgResponse = await response.json();
+        console.log('Project Image Upload Response:', imgResponse);
+        if (imgResponse.success) {
+          projectImgURL = imgResponse.data.display_url; // Set projectImgURL if the upload is successful
+        }
+      } catch (error) {
+        console.error('Error uploading project image:', error);
+      }
+    }
+
+    // Upload multiple gallery images if they are selected
+    if (galleryImages.length > 0) {
+      try {
+        for (const imageFile of galleryImages) {
+          const formData = new FormData();
+          formData.append('image', imageFile);
+
+          const response = await fetch(img_hosting_url, {
+            method: 'POST',
+            body: formData,
+          });
+
+          const imgResponse = await response.json();
+          console.log('Gallery Image Upload Response:', imgResponse);
+
+          if (imgResponse.success) {
+            galleryImgURLs.push(imgResponse.data.display_url);
+          }
+        }
+      } catch (error) {
+        console.error('Error uploading gallery images:', error);
+      }
+    }
+
+    // Perform the rest of the form submission logic here
     console.log('Form submitted:', {
       title,
       description,
@@ -40,24 +77,34 @@ const ProjectSubmissionForm = () => {
       duration,
       challenges,
       userName,
-      userEmail
+      userEmail,
+      projectImage: projectImgURL, // Now projectImgURL is defined and contains the project image URL
+      galleryImages: galleryImgURLs, // Gallery image URLs
     });
+
     // Reset form fields after submission
     setTitle('');
     setDescription('');
     setProjectUrl('');
+    setGithubUrl('');
     setTechnologies([]);
     setDuration('');
     setChallenges('');
     setUserName('');
     setUserEmail('');
+    setProjectImage(null); // Reset the selected project image
+    setGalleryImages([]); // Reset the selected gallery images
   };
 
-  const handleTechnologyChange = (e) => {
-    const selectedTechnologies = Array.from(e.target.selectedOptions, (option) => option.value);
-    setTechnologies(selectedTechnologies);
+  const handleProjectImageChange = (e) => {
+    const selectedImage = e.target.files[0];
+    setProjectImage(selectedImage);
   };
 
+  const handleGalleryImagesChange = (e) => {
+    const selectedImages = e.target.files;
+    setGalleryImages(Array.from(selectedImages));
+  };
   return (
     <div className='w-full md:w-3/4 mx-auto p-10'>
       <h2 className="md:text-3xl font-bold my-6 text-center text-white text-2xl">Project Submission Form</h2>
@@ -75,6 +122,33 @@ const ProjectSubmissionForm = () => {
             className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
+        <hr />
+        <div className="mb-4">
+          <label htmlFor="projectImage" className="block text-gray-200 text-sm font-bold mb-2">
+            Project Image:
+          </label>
+          <input
+            type="file"
+            id="projectImage"
+            accept="image/*"
+            onChange={handleProjectImageChange}
+            className="bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="galleryImages" className="block text-gray-200 text-sm font-bold mb-2">
+            Add images for gallery (Multiple):
+          </label>
+          <input
+            type="file"
+            id="galleryImages"
+            accept="image/*"
+            onChange={handleGalleryImagesChange}
+            multiple // Allow multiple image selection
+            className="bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <hr />
         <div className="mb-4">
           <label htmlFor="description" className="block text-gray-200 text-sm font-bold mb-2">
             Project Description:
@@ -118,31 +192,11 @@ const ProjectSubmissionForm = () => {
           <label htmlFor="technologies" className="block text-gray-200 text-sm font-bold mb-2">
             Technologies Used:
           </label>
-          <select
-    id="technologies"
-    multiple
-    size="5" // Set the size to show a list with checkboxes
-    value={technologies}
-    onChange={handleTechnologyChange}
-    required
-    className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
-  >
-            <option value="HTML">HTML</option>
-            <option value="CSS">CSS</option>
-            <option value="JavaScript">JavaScript</option>
-            <option value="React">React</option>
-            <option value="Node.js">Node.js</option>
-            <option value="Python">Python</option>
-            <option value="Next.JS">Next.JS</option>
-            <option value="Express.JS">Express.JS</option>
-            <option value="Redux">Redux</option>
-            <option value="MongoDB">MongoDB</option>
-            <option value="Tailwind.CSS">Tailwind.CSS</option>
-            <option value="Bootstrap">Bootstrap</option>
-            <option value="WordPress">WordPress</option>
-            <option value="Elementor">Elementor</option>
-            <option value="Divi">Divi</option>
-          </select>
+          <TagsInput
+            value={technologies}
+            onChange={setTechnologies}
+            placeholder="Add technologies..."
+          />
         </div>
         <div className="mb-4">
           <label htmlFor="duration" className="block text-gray-200 text-sm font-bold mb-2">
