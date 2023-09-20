@@ -6,6 +6,7 @@ const Dashboard = () => {
   <li><Link to="/dashboard">Dashboard</Link></li>
   <li className="mt-2"><Link to="/dashboard/projectsubmit">Project Submit</Link></li>
   <li className="mt-2"><Link to="/dashboard/projectlist">Project List</Link></li>
+  <li className="mt-2"><Link to="/dashboard/clientslist">Clients List</Link></li>
   </>
   const downNavLink =<>
   <li><Link to="/">Home</Link></li>
@@ -38,7 +39,7 @@ const Dashboard = () => {
         
         </div>
       </div>
-      <div className="md:w-3/4 mr-10 w-full"><Outlet></Outlet>
+      <div className="md:w-3/4 w-full mx-auto"><Outlet></Outlet>
       </div>
     </div>
     );

@@ -10,6 +10,9 @@ import Main from './Main/Main';
 import LandingPage from './LandingPage/LandingPage';
 import ProjectSubmissionForm from './AdminDashboard/ProjectSubmissionForm/ProjectSubmissionForm ';
 import Dashboard from './AdminDashboard/Dashboard/Dashboard';
+import Root from './AdminDashboard/Root/Root';
+import ClientsList from './AdminDashboard/ClientsList/ClientsList';
+import ProjectsList from './AdminDashboard/ProjectsList/ProjectsList';
 
 const router = createBrowserRouter([
   {
@@ -32,8 +35,20 @@ const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
+        path:'/dashboard',
+        element:<Root></Root>
+      },
+      {
         path:'projectsubmit',
         element:<ProjectSubmissionForm></ProjectSubmissionForm>
+      },
+      {
+        path:'clientslist',
+        element:<ClientsList></ClientsList>
+      },
+      {
+        path:'projectlist',
+        element:<ProjectsList></ProjectsList>
       }
     ]
   }
