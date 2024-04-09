@@ -32,8 +32,7 @@ const ProjectsList = () => {
 
   return (
     <div className="overflow-x-auto">
-      {projects.map((project, index) => (
-        <table className="table text-white" key={index}>
+       <table className="table text-white">
           <thead className='text-white'>
             <tr>
               <th className='pr-0 w-[2%] text-center'>No</th>
@@ -42,7 +41,8 @@ const ProjectsList = () => {
               <th className='w-[18%] text-center'>Controller</th>
             </tr>
           </thead>
-          <tbody>
+      {projects.map((project, index) => (
+          <tbody  key={index}>
             <tr className='text-white'>
               <td className='pr-0 w-[2%] font-bold text-center'>{index + 1}</td>
               <td className='w-[65%]'>
@@ -72,8 +72,9 @@ const ProjectsList = () => {
               </td>
             </tr>
           </tbody>
-        </table>
+        
       ))}
+      </table>
     </div>
   );
 };

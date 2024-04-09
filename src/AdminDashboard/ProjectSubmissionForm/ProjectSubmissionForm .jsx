@@ -149,66 +149,25 @@ const ProjectSubmissionForm = () => {
 
     try {
       const clientResponse = await fetch(clientApiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(clientData),
-    });
-
-    const clientResult = await clientResponse.json();
-    console.log('Client API response:', clientResult);
-      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(clientData),
       });
-
-      const result = await response.json();
-      if (result.projectExists){
-        Swal.fire({
-          position: "top-end",
-          icon: "error",
-          title: result.message,
-          showConfirmButton: false,
-          timer: 1500
-        });
-      }
-      else{
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Your project has been saved",
-          showConfirmButton: false,
-          timer: 1500
-        });
-      }
-      // Handle the response from the server as needed
-      console.log('Server response:', result);
-
-      // Reset form fields after successful submission
-      if (response.ok) {
-        setTitle('');
-        setDescription('');
-        setProjectCategory('');
-        setProjectUrl('');
-        setGithubUrl('');
-        setTechnologies([]);
-        setDuration('');
-        setChallenges('');
-        setUserName('');
-        setUserEmail('');
-        setProjectImage(null);
-        setGalleryImages([]);
-        setMobileImage(null);
-        setTabletImage(null);
-        
-      }
+  
+      const clientResult = await clientResponse.json();
+      console.log('Client API response:', clientResult);
+  
+      // Extract the ObjectId from the clientResult and store it in state
+      const { _id: clientId } = clientResult; // Assuming the ObjectId field is named '_id'
+      setClientInfo({ ...clientInfo, clientId });
+  
+      // Your existing code...
     } catch (error) {
       console.error('Error submitting project:', error);
     }
+  
   };
   const handleMobileImageChange = (e) => {
     const selectedImage = e.target.files[0];
