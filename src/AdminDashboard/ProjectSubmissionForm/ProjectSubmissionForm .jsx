@@ -3,14 +3,13 @@ import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
 import { TagsInput } from 'react-tag-input-component';
 import Swal from 'sweetalert2';
-import { endPoint } from '../../forAll/forAll';
-
-const img_hosting_token = import.meta.env.VITE_img_upload_token;
+// import { endPoint } from '../../forAll/forAll';
 
 const ProjectSubmissionForm = () => {
-  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
-  const apiUrl = `${endPoint}/projects`; // Replace with your actual API endpoint
-  const clientApiUrl = `${endPoint}/clients`;
+  const apiUrl = `http://localhost:4000/projects`; // Backend API endpoint
+ 
+
+  // State variables for form fields
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [projectCategory, setProjectCategory] = useState('');
@@ -23,152 +22,102 @@ const ProjectSubmissionForm = () => {
   const [userEmail, setUserEmail] = useState('mohammadashrafulislam33@gmail.com');
   const [projectImage, setProjectImage] = useState(null); // State for project image
   const [galleryImages, setGalleryImages] = useState([]); // State for gallery images
-  
+  const [isFeatured, setIsFeatured] = useState(false);
+  const [mobileImage, setMobileImage] = useState(null); 
+  const [tabletImage, setTabletImage] = useState(null);
+
+  // State variables for client info
   const [clientInfo, setClientInfo] = useState({
     userName: '',
     userEmail: '',
     userSocialMedia: ''
   });
-  const [isFeatured, setIsFeatured] = useState(false);
-  const [mobileImage, setMobileImage] = useState(null); 
-  const [tabletImage, setTabletImage] = useState(null);
 
+  // Function to handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    let projectImgURL = '';
-    let mobileImgURL = '';
-    let tabletImgURL = '';
-    let galleryImgURLs = [];
-    const clientData = {
-      userName: clientInfo.userName,
-      userEmail: clientInfo.userEmail,
-      userSocialMedia: clientInfo.userSocialMedia
-    };
-  
 
-    if (projectImage) {
-      const formData = new FormData();
-      formData.append('image', projectImage);
-
-      try {
-        const response = await fetch(img_hosting_url, {
-          method: 'POST',
-          body: formData,
-        });
-        const imgResponse = await response.json();
-        console.log('Project Image Upload Response:', imgResponse);
-        if (imgResponse.success) {
-          projectImgURL = imgResponse.data.display_url;
-        }
-      } catch (error) {
-        console.error('Error uploading project image:', error);
-      }
-    }
-  
-    if (galleryImages.length > 0) {
-      try {
-        for (const imageFile of galleryImages) {
-          const formData = new FormData();
-          formData.append('image', imageFile);
-
-          const response = await fetch(img_hosting_url, {
-            method: 'POST',
-            body: formData,
-          });
-
-          const imgResponse = await response.json();
-          console.log('Gallery Image Upload Response:', imgResponse);
-
-          if (imgResponse.success) {
-            galleryImgURLs.push(imgResponse.data.display_url);
-          }
-        }
-      } catch (error) {
-        console.error('Error uploading gallery images:', error);
-      }
-    }
-    if (mobileImage) {
-      const formData = new FormData();
-      formData.append('image', mobileImage);
-    
-      try {
-        const response = await fetch(img_hosting_url, {
-          method: 'POST',
-          body: formData,
-        });
-        const imgResponse = await response.json();
-        console.log('Mobile Image Upload Response:', imgResponse);
-        if (imgResponse.success) {
-          mobileImgURL = imgResponse.data.display_url;
-        }
-      } catch (error) {
-        console.error('Error uploading mobile image:', error);
-      }
-    }
-    
-    if (tabletImage) {
-      const formData = new FormData();
-      formData.append('image', tabletImage);
-    
-      try {
-        const response = await fetch(img_hosting_url, {
-          method: 'POST',
-          body: formData,
-        });
-        const imgResponse = await response.json();
-        console.log('Tablet Image Upload Response:', imgResponse);
-        if (imgResponse.success) {
-          tabletImgURL = imgResponse.data.display_url;
-        }
-      } catch (error) {
-        console.error('Error uploading tablet image:', error);
-      }
-    }
-    
-    
-
-    const data = {
-      title,
-      description,
-      mobileImage: mobileImgURL,
-      tabletImage: tabletImgURL,
-      projectCategory,
-      projectUrl,
-      githubUrl,
-      technologies,
-      duration,
-      challenges,
-      userName,
-      userEmail,
-      projectImage: projectImgURL,
-      galleryImages: galleryImgURLs,
-      clientInfo,
-      isFeatured
-    };
-    
-
+    // First, submit client info
     try {
-      const clientResponse = await fetch(clientApiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(clientData),
+      // Continue with project submission
+      // Create FormData object to send form data
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('description', description);
+      formData.append('projectCategory', projectCategory);
+      formData.append('projectUrl', projectUrl);
+      formData.append('githubUrl', githubUrl);
+      formData.append('technologies', JSON.stringify(technologies));
+      formData.append('duration', duration);
+      formData.append('challenges', challenges);
+      formData.append('userName', userName);
+      formData.append('userEmail', userEmail);
+      formData.append('isFeatured', isFeatured);
+      formData.append('projectImage', projectImage);
+      formData.append('mobileImage', mobileImage);
+      formData.append('tabletImage', tabletImage);
+      galleryImages.forEach((image) => {
+        formData.append('galleryImages', image);
       });
-  
-      const clientResult = await clientResponse.json();
-      console.log('Client API response:', clientResult);
-  
-      // Extract the ObjectId from the clientResult and store it in state
-      const { _id: clientId } = clientResult; // Assuming the ObjectId field is named '_id'
-      setClientInfo({ ...clientInfo, clientId });
-  
-      // Your existing code...
+      formData.append('clientInfo', clientInfo);
+
+      // Send POST request to backend API
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Project submitted successfully:', data);
+        // Show success message to the user
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Project submitted successfully!',
+        });
+        // Reset form fields after successful submission
+        setTitle('');
+        setDescription('');
+        setProjectCategory('');
+        setProjectUrl('');
+        setGithubUrl('');
+        setTechnologies([]);
+        setDuration('');
+        setChallenges('');
+        setUserName('Md Ashraful Islam');
+        setUserEmail('mohammadashrafulislam33@gmail.com');
+        setProjectImage(null);
+        setGalleryImages([]);
+        setIsFeatured(false);
+        setMobileImage(null);
+        setTabletImage(null);
+        setClientInfo({
+          userName: '',
+          userEmail: '',
+          userSocialMedia: ''
+        });
+      } else {
+        // Handle error response from the backend
+        console.error('Failed to submit project:', response.statusText);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Failed to submit project. Please try again later.',
+        });
+      }
     } catch (error) {
+      // Handle network errors
       console.error('Error submitting project:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to submit project. Please try again later.',
+      });
     }
-  
   };
+
+  // Functions to handle file input changes
   const handleMobileImageChange = (e) => {
     const selectedImage = e.target.files[0];
     setMobileImage(selectedImage);
@@ -178,6 +127,7 @@ const ProjectSubmissionForm = () => {
     const selectedImage = e.target.files[0];
     setTabletImage(selectedImage);
   };
+
   const handleProjectImageChange = (e) => {
     const selectedImage = e.target.files[0];
     setProjectImage(selectedImage);
@@ -187,7 +137,6 @@ const ProjectSubmissionForm = () => {
     const selectedImages = e.target.files;
     setGalleryImages(Array.from(selectedImages));
   };
-  
 
   return (
     <div className='w-full md:w-3/4 mx-auto p-10'>
@@ -415,44 +364,44 @@ const ProjectSubmissionForm = () => {
         <hr />
         <h1 className='text-white text-center font-bold mt-6 text-3xl'>CLIENT INFO</h1>
         <div className="my-4">
-        <label htmlFor="userName" className="block text-gray-200 text-sm font-bold mb-2">
-          Client Name:
-        </label>
-        <input
-          type="text"
-          id="userName"
-          value={clientInfo.userName}
-          onChange={(e) => setClientInfo({ ...clientInfo, userName: e.target.value })}
-          required
-          className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
-        />
-      </div>
-      <div className="my-4">
-        <label htmlFor="userEmail" className="block text-gray-200 text-sm font-bold mb-2">
-          Client Email:
-        </label>
-        <input
-          type="email"
-          id="userEmail"
-          value={clientInfo.userEmail}
-          onChange={(e) => setClientInfo({ ...clientInfo, userEmail: e.target.value })}
-          required
-          className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
-        />
-      </div>
-      <div className="my-4">
-        <label htmlFor="userSocialMedia" className="block text-gray-200 text-sm font-bold mb-2">
-          Client Social:
-        </label>
-        <input
-          type="social"
-          id="userSocialMedia"
-          value={clientInfo.userSocialMedia}
-          onChange={(e) => setClientInfo({ ...clientInfo, userSocialMedia: e.target.value })}
-          required
-          className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
-        />
-      </div>
+          <label htmlFor="userName" className="block text-gray-200 text-sm font-bold mb-2">
+            Client Name:
+          </label>
+          <input
+            type="text"
+            id="userName"
+            value={clientInfo.userName} // Update clientInfo state directly
+            onChange={(e) => setClientInfo(prevState => ({ ...prevState, userName: e.target.value }))} // Update nested property
+            required
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="userEmail" className="block text-gray-200 text-sm font-bold mb-2">
+            Client Email:
+          </label>
+          <input
+            type="email"
+            id="userEmail"
+            value={clientInfo.userEmail} // Update clientInfo state directly
+            onChange={(e) => setClientInfo(prevState => ({ ...prevState, userEmail: e.target.value }))} // Update nested property
+            required
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="userSocialMedia" className="block text-gray-200 text-sm font-bold mb-2">
+            Client Social:
+          </label>
+          <input
+            type="social"
+            id="userSocialMedia"
+            value={clientInfo.userSocialMedia} // Update clientInfo state directly
+            onChange={(e) => setClientInfo(prevState => ({ ...prevState, userSocialMedia: e.target.value }))} // Update nested property
+            required
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
+          />
+        </div>
         <button type="submit" className="number-slide1 text-white py-3 px-4 hover:bg-blue-600 w-full my-4">
           Submit
         </button>
