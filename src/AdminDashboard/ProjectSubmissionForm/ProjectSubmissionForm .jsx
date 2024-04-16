@@ -3,13 +3,15 @@ import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
 import { TagsInput } from 'react-tag-input-component';
 import Swal from 'sweetalert2';
-// import { endPoint } from '../../forAll/forAll';
+
+const imgHostingToken = import.meta.env.VITE_img_upload_token;
+const imgHostingUrl = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`;
 
 const ProjectSubmissionForm = () => {
   const apiUrl = `http://localhost:4000/projects`; // Backend API endpoint
- 
 
   // State variables for form fields
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [projectCategory, setProjectCategory] = useState('');
@@ -28,15 +30,16 @@ const ProjectSubmissionForm = () => {
 
   // State variables for client info
   const [clientInfo, setClientInfo] = useState({
-    userName: '',
-    userEmail: '',
-    userSocialMedia: ''
+    clientName: '',
+    clientEmail: '',
+    clientSocialMedia: ''
   });
 
   // Function to handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
+    
+  console.log(clientInfo)
     // First, submit client info
     try {
       // Continue with project submission
@@ -59,8 +62,11 @@ const ProjectSubmissionForm = () => {
       galleryImages.forEach((image) => {
         formData.append('galleryImages', image);
       });
-      formData.append('clientInfo', clientInfo);
-
+      formData.append('clientInfo', JSON.stringify(clientInfo)); // Serialize clientInfo object
+      
+      setIsSubmitting(true)
+      
+        console.log(formData)
       // Send POST request to backend API
       const response = await fetch(apiUrl, {
         method: 'POST',
@@ -114,33 +120,78 @@ const ProjectSubmissionForm = () => {
         title: 'Error',
         text: 'Failed to submit project. Please try again later.',
       });
+    } finally{
+      setIsSubmitting(false)
     }
   };
 
-  // Functions to handle file input changes
-  const handleMobileImageChange = (e) => {
-    const selectedImage = e.target.files[0];
-    setMobileImage(selectedImage);
+  // Function to handle file input changes and upload images to ImgBB
+  const handleImageUpload = async (imageFile) => {
+    try {
+      const formData = new FormData();
+      formData.append('image', imageFile);
+
+      const response = await fetch(imgHostingUrl, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        return data.data.url; // Return the URL of the uploaded image
+      } else {
+        throw new Error('Failed to upload image');
+      }
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      return null;
+    }
   };
 
-  const handleTabletImageChange = (e) => {
+  const handleProjectImageChange = async (e) => {
     const selectedImage = e.target.files[0];
-    setTabletImage(selectedImage);
+    const imageUrl = await handleImageUpload(selectedImage);
+    if (imageUrl) {
+      setProjectImage(imageUrl);
+    }
   };
 
-  const handleProjectImageChange = (e) => {
+  const handleMobileImageChange = async (e) => {
     const selectedImage = e.target.files[0];
-    setProjectImage(selectedImage);
+    const imageUrl = await handleImageUpload(selectedImage);
+    if (imageUrl) {
+      setMobileImage(imageUrl);
+    }
   };
 
+  const handleTabletImageChange = async (e) => {
+    const selectedImage = e.target.files[0];
+    const imageUrl = await handleImageUpload(selectedImage);
+    if (imageUrl) {
+      setTabletImage(imageUrl);
+    }
+  };
   const handleGalleryImagesChange = (e) => {
     const selectedImages = e.target.files;
-    setGalleryImages(Array.from(selectedImages));
+     const maxSize = 20 * 1024 * 1024; const invalidFiles = Array.from(selectedImages).filter(file => file.size > maxSize);
+
+     if (invalidFiles.length > 0) {
+       // Display error message to the user
+       alert('One or more selected files exceed the maximum allowed size (10 MB). Please choose smaller files.');
+       // Clear the file input field
+       e.target.value = null;
+     } else {
+       // Process valid files
+       setGalleryImages(Array.from(selectedImages));
+     }
   };
 
+
   return (
+    
     <div className='w-full md:w-3/4 mx-auto p-10'>
       <h2 className="md:text-3xl font-bold my-6 text-center text-white text-2xl">Project Submission Form</h2>
+       {/* Conditional rendering of loader */}
       <form onSubmit={handleFormSubmit}>
       <hr />
         <div className="my-4">
@@ -369,9 +420,9 @@ const ProjectSubmissionForm = () => {
           </label>
           <input
             type="text"
-            id="userName"
-            value={clientInfo.userName} // Update clientInfo state directly
-            onChange={(e) => setClientInfo(prevState => ({ ...prevState, userName: e.target.value }))} // Update nested property
+            id="clientName"
+            value={clientInfo.clientName} // Update clientInfo state directly
+            onChange={(e) => setClientInfo(prevState => ({ ...prevState, clientName: e.target.value }))} // Update nested property
             required
             className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
@@ -382,9 +433,9 @@ const ProjectSubmissionForm = () => {
           </label>
           <input
             type="email"
-            id="userEmail"
-            value={clientInfo.userEmail} // Update clientInfo state directly
-            onChange={(e) => setClientInfo(prevState => ({ ...prevState, userEmail: e.target.value }))} // Update nested property
+            id="clientEmail"
+            value={clientInfo.clientEmail} // Update clientInfo state directly
+            onChange={(e) => setClientInfo(prevState => ({ ...prevState, clientEmail: e.target.value }))} // Update nested property
             required
             className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
@@ -395,9 +446,9 @@ const ProjectSubmissionForm = () => {
           </label>
           <input
             type="social"
-            id="userSocialMedia"
-            value={clientInfo.userSocialMedia} // Update clientInfo state directly
-            onChange={(e) => setClientInfo(prevState => ({ ...prevState, userSocialMedia: e.target.value }))} // Update nested property
+            id="clientSocialMedia"
+            value={clientInfo.clientSocialMedia} // Update clientInfo state directly
+            onChange={(e) => setClientInfo(prevState => ({ ...prevState, clientSocialMedia: e.target.value }))} // Update nested property
             required
             className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
@@ -406,8 +457,20 @@ const ProjectSubmissionForm = () => {
           Submit
         </button>
       </form>
+      
+      {isSubmitting && (
+       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle" open>
+       <div className="modal-overlay"></div>
+       <div className="modal-box">
+       <span className="loading loading-ring loading-lg"></span>
+
+         <h3 className="font-bold text-lg">Submitting...</h3>
+         <p className="py-4">Please wait while your project is being submitted.</p>
+         {/* You can add additional content or styling here */}
+       </div>
+     </dialog>
+      )}
     </div>
-  );
-};
+  )};
 
 export default ProjectSubmissionForm;
