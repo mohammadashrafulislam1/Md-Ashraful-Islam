@@ -39,7 +39,6 @@ const ProjectSubmissionForm = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     
-  console.log(clientInfo)
     // First, submit client info
     try {
       // Continue with project submission
@@ -99,9 +98,9 @@ const ProjectSubmissionForm = () => {
         setMobileImage(null);
         setTabletImage(null);
         setClientInfo({
-          userName: '',
-          userEmail: '',
-          userSocialMedia: ''
+          clientName: '',
+          clientEmail: '',
+          clientSocialMedia: ''
         });
       } else {
         // Handle error response from the backend
@@ -415,7 +414,7 @@ const ProjectSubmissionForm = () => {
         <hr />
         <h1 className='text-white text-center font-bold mt-6 text-3xl'>CLIENT INFO</h1>
         <div className="my-4">
-          <label htmlFor="userName" className="block text-gray-200 text-sm font-bold mb-2">
+          <label htmlFor="clientName" className="block text-gray-200 text-sm font-bold mb-2">
             Client Name:
           </label>
           <input
@@ -428,7 +427,7 @@ const ProjectSubmissionForm = () => {
           />
         </div>
         <div className="my-4">
-          <label htmlFor="userEmail" className="block text-gray-200 text-sm font-bold mb-2">
+          <label htmlFor="clientEmail" className="block text-gray-200 text-sm font-bold mb-2">
             Client Email:
           </label>
           <input
@@ -441,7 +440,7 @@ const ProjectSubmissionForm = () => {
           />
         </div>
         <div className="my-4">
-          <label htmlFor="userSocialMedia" className="block text-gray-200 text-sm font-bold mb-2">
+          <label htmlFor="clientSocialMedia" className="block text-gray-200 text-sm font-bold mb-2">
             Client Social:
           </label>
           <input
