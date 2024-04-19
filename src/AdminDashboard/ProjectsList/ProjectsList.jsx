@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { endPoint } from '../../forAll/forAll';
 
 const ProjectsList = () => {
   const [projects, setProjects] = useState([]);
@@ -7,7 +8,7 @@ const ProjectsList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/projects');
+        const response = await fetch(`${endPoint}/projects`);
         const data = await response.json();
         setProjects(data);
         
