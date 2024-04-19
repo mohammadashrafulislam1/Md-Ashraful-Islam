@@ -4,6 +4,7 @@ import { endPoint } from '../../forAll/forAll';
 const ProjectsList = () => {
   const [projects, setProjects] = useState([]);
   const [clientDataMap, setClientDataMap] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,6 +26,8 @@ const ProjectsList = () => {
       } catch (error) {
         console.error('Error fetching data:', error);
       }
+      finally { setLoading(false); // Set loading to false regardless of success or failure 
+    }
     };
 
     fetchData();
@@ -32,6 +35,10 @@ const ProjectsList = () => {
 
   return (
     <div className="overflow-x-auto">
+      {loading ? ( // Render loader if loading state is true
+        <div className="text-white text-center m-60 flex justify-center items-center gap-4"><span>Loading... </span><span className="loading loading-ring loading-lg"></span>
+        </div>
+      ) : (
        <table className="table text-white">
           <thead className='text-white'>
             <tr>
@@ -74,7 +81,7 @@ const ProjectsList = () => {
           </tbody>
         
       ))}
-      </table>
+      </table>)}
     </div>
   );
 };
