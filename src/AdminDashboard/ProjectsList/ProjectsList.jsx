@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { endPoint } from '../../forAll/forAll';
 import Swal from 'sweetalert2';
+import EditProject from '../../Model/EditProject';
 const ProjectsList = () => {
   const [projects, setProjects] = useState([]);
   const [clientDataMap, setClientDataMap] = useState({});
@@ -116,7 +117,10 @@ const ProjectsList = () => {
                       <a href={`${clientDataMap[project?.clientInfo]?.clientSocialMedia}`} target='_blank'><button className='btn-primary btn btn-xs'>Social</button></a>
                     </td>
                     <td className='w-[18%]'>
-                      <button className="btn btn-success text-white btn-xs md:mr-1 mb-2">Update</button>
+                      <button  className="btn" onClick={()=>document.getElementById('my_modal_4').showModal()} className="btn btn-success text-white btn-xs md:mr-1 mb-2">Update</button>
+      <dialog id="my_modal_4" className="modal">
+      <EditProject projectId={project?._id}></EditProject>
+</dialog>
                       <button className="btn btn-error text-white btn-xs" onClick={() => handleDeleteProject(project?._id)}>Delete</button>
                     </td>
                   </tr>
