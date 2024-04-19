@@ -5,7 +5,6 @@ const ProjectsList = () => {
   const [projects, setProjects] = useState([]);
   const [clientDataMap, setClientDataMap] = useState({});
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -71,7 +70,6 @@ const ProjectsList = () => {
       }
     });
   };
-
 
   return (
     <div className="overflow-x-auto">

@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 
 const ClientsList = () => {
   const [clients, setClients] = useState([]);
+  const clientsLength =clients.length;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -63,7 +64,7 @@ const ClientsList = () => {
       }
     });
   };
-
+  
   return (
     <div className="overflow-x-auto">
       {loading ? (
