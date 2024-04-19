@@ -11,11 +11,10 @@ const ProjectsList = () => {
         const response = await fetch(`${endPoint}/projects`);
         const data = await response.json();
         setProjects(data);
-        
         // Fetch client data for each project concurrently
         const clientIds = data.map(project => project.clientInfo);
         const clientDataPromises = clientIds.map(clientId =>
-          fetch(`http://localhost:5000/clients/${clientId}`).then(response => response.json())
+          fetch(`${endPoint}/clients/${clientId}`).then(response => response.json())
         );
         const clientDataArray = await Promise.all(clientDataPromises);
         const clientDataMap = clientIds.reduce((acc, clientId, index) => {
@@ -55,17 +54,17 @@ const ProjectsList = () => {
                   </div>
                   <div className='ml-10'>
                     <div className="font-bold mx-2">{project.title}</div>
-                    {project.technologies?.map((technology, index) => (
+                    {JSON.parse(project.technologies)?.map((technology, index) =>
                       <span className="badge badge-ghost badge-sm mx-1" key={index}>{technology}</span>
-                    ))}
+                    )}
                   </div>
                 </div>
               </td>
               <td className='w-[15%] text-center'>
-                {clientDataMap[project.clientInfo]?.userName}
+                {clientDataMap[project.clientInfo]?.clientName}
                 <br />
-                <div className="text-sm opacity-50 mb-1">{clientDataMap[project.clientInfo]?.userEmail}</div>
-                <a href={`${clientDataMap[project.clientInfo]?.userSocialMedia}`}><button className='btn-primary btn btn-xs'>Social</button></a>
+                <div className="text-sm opacity-50 mb-1">{clientDataMap[project.clientInfo]?.clientEmail}</div>
+                <a href={`${clientDataMap[project.clientInfo]?.clientSocialMedia}`} target='_blank'><button className='btn-primary btn btn-xs'>Social</button></a>
               </td>
               <td className='w-[18%]'>
                 <button className="btn btn-success text-white btn-xs md:mr-1 mb-2">Update</button>
