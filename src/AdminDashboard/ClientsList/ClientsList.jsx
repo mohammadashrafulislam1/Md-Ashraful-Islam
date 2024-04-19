@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { endPoint } from '../../forAll/forAll';
+import Swal from 'sweetalert2';
 
 const ClientsList = () => {
   const [clients, setClients] = useState([]);
@@ -13,9 +14,9 @@ const ClientsList = () => {
         setClients(data); // Assuming the API returns an array of clients
       } catch (error) {
         console.error('Error fetching client data:', error);
+      } finally {
+        setLoading(false); // Set loading to false regardless of success or failure 
       }
-      finally { setLoading(false); // Set loading to false regardless of success or failure 
-    }
     };
 
     fetchClients();
@@ -26,40 +27,80 @@ const ClientsList = () => {
     console.log(`Editing client with ID: ${clientId}`);
   };
 
-  const handleDelete = (clientId) => {
-    // Implement your delete functionality here
-    console.log(`Deleting client with ID: ${clientId}`);
+  const handleDelete = async (clientId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await fetch(`${endPoint}/clients/${clientId}`, {
+            method: 'DELETE'
+          });
+          if (response.ok) {
+            setClients(clients.filter(client => client._id !== clientId));
+            Swal.fire({
+              title: "Deleted!",
+              text: "Client has been deleted.",
+              icon: "success"
+            });
+          } else {
+            throw new Error("Failed to delete client");
+          }
+        } catch (error) {
+          console.error('Error deleting client:', error);
+          Swal.fire({
+            title: "Error!",
+            text: "Failed to delete client.",
+            icon: "error"
+          });
+        }
+      }
+    });
   };
 
   return (
     <div className="overflow-x-auto">
-      {loading ? ( // Render loader if loading state is true
-        <div className="text-white text-center m-60 flex justify-center items-center gap-4"><span>Loading... </span><span className="loading loading-ring loading-lg"></span>
+      {loading ? (
+        <div className="text-white text-center m-60 flex justify-center items-center gap-4">
+          <span>Loading... </span>
+          <span className="loading loading-ring loading-lg"></span>
         </div>
       ) : (
-        <table className="table text-white">
-          <thead>
-            <tr className="text-white">
-              <th>User Name</th>
-              <th>Email</th>
-              <th>Social</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {clients.map((client, index) => (
-              <tr key={index}>
-                <td>{client.clientName}</td>
-                <td>{client.clientEmail}</td>
-                <td><a href={client.clientSocialMedia} target="_blank" rel="noopener noreferrer"><button className="btn btn-primary text-white btn-xs">Visit Social Media</button></a></td>
-                <td>
-                  <button onClick={() => handleEdit(client._id)} className="btn btn-success text-white btn-xs md:mr-1 mb-2">Edit</button>
-                  <button onClick={() => handleDelete(client._id)} className="btn btn-error text-white btn-xs">Delete</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div>
+          {clients && clients.length > 0 ? (
+            <table className="table text-white">
+              <thead>
+                <tr className="text-white">
+                  <th>User Name</th>
+                  <th>Email</th>
+                  <th>Social</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {clients.map((client, index) => (
+                  <tr key={index}>
+                    <td>{client.clientName}</td>
+                    <td>{client.clientEmail}</td>
+                    <td><a href={client.clientSocialMedia} target="_blank" rel="noopener noreferrer"><button className="btn btn-primary text-white btn-xs">Visit Social Media</button></a></td>
+                    <td>
+                      <button onClick={() => handleEdit(client._id)} className="btn btn-success text-white btn-xs md:mr-1 mb-2">Edit</button>
+                      <button onClick={() => handleDelete(client._id)} className="btn btn-error text-white btn-xs">Delete</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <div className="text-white text-center">No clients found.</div>
+          )}
+        </div>
       )}
     </div>
   );
