@@ -3,12 +3,13 @@ import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
 import { TagsInput } from 'react-tag-input-component';
 import Swal from 'sweetalert2';
+import { endPoint } from '../../forAll/forAll';
 
 const imgHostingToken = import.meta.env.VITE_img_upload_token;
 const imgHostingUrl = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`;
 
 const ProjectSubmissionForm = () => {
-  const apiUrl = `http://localhost:4000/projects`; // Backend API endpoint
+  const apiUrl = `${endPoint}/projects`; // Backend API endpoint
 
   // State variables for form fields
   const [isSubmitting, setIsSubmitting] = useState(false);
