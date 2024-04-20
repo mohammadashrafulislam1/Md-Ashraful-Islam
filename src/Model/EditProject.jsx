@@ -183,7 +183,7 @@ setIsSubmitting(false)
     <form onSubmit={handleFormUpdate} method="dialog" className="rounded-lg text-black">
 <hr />
 <div className="my-4">
-<label htmlFor="isFeatured" className="block text-gray-200 text-sm font-bold mb-2">
+<label htmlFor="isFeatured" className="block text-black text-sm font-bold mb-2">
 Featured Project:
 </label>
 <div className='flex'>
@@ -194,12 +194,12 @@ checked={isFeatured}
 onChange={() => setIsFeatured(!isFeatured)}
 className="mr-2 toggle"
 />
-<span className="text-gray-200">Is this project featured?</span>
+<span className="text-black">Is this project featured?</span>
 </div>
 </div>
 <hr />
 <div className="my-4">
-<label htmlFor="title" className="block text-gray-200 text-sm font-bold mb-2">
+<label htmlFor="title" className="block text-black text-sm font-bold mb-2">
 Project Title:
 </label>
 <input
@@ -212,7 +212,7 @@ className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:out
 </div>
 <hr />
 <div className="my-4">
-<label htmlFor="projectImage" className="block text-gray-200 text-sm font-bold mb-2">
+<label htmlFor="projectImage" className="block text-black text-sm font-bold mb-2">
 Project Image:
 </label>
 <input
@@ -224,7 +224,7 @@ className="bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-no
 />
 </div>
 <div className="my-4">
-<label htmlFor="galleryImages" className="block text-gray-200 text-sm font-bold mb-2">
+<label htmlFor="galleryImages" className="block text-black text-sm font-bold mb-2">
 Add images for gallery (Multiple):
 </label>
 <input
@@ -238,7 +238,7 @@ className="bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-no
 </div>
 <hr />
 <div className="my-4">
-<label htmlFor="mobileImage" className="block text-gray-200 text-sm font-bold mb-2">
+<label htmlFor="mobileImage" className="block text-black text-sm font-bold mb-2">
 Mobile Image:
 </label>
 <input
@@ -250,7 +250,7 @@ className="bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-no
 />
 </div>
 <div className="my-4">
-<label htmlFor="tabletImage" className="block text-gray-200 text-sm font-bold mb-2">
+<label htmlFor="tabletImage" className="block text-black text-sm font-bold mb-2">
 Tablet Image:
 </label>
 <input
@@ -263,7 +263,7 @@ className="bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-no
 </div>
 <hr />
 <div className='my-4'>
-<label htmlFor='projectCategory' className='block text-gray-200 text-sm font-bold mb-2'>
+<label htmlFor='projectCategory' className='block text-black text-sm font-bold mb-2'>
 Project Category:
 </label>
 <select
@@ -285,7 +285,7 @@ Select Project Category
 </div>
 <hr />
 <div className="my-4">
-<label htmlFor="description" className="block text-gray-200 text-sm font-bold mb-2">
+<label htmlFor="description" className="block text-black text-sm font-bold mb-2">
 Project Description:
 </label>
 <ReactQuill
@@ -314,7 +314,7 @@ placeholder="Type your text here..."
 />
 </div>
 <div className="my-4">
-<label htmlFor="projectUrl" className="block text-gray-200 text-sm font-bold mb-2">
+<label htmlFor="projectUrl" className="block text-black text-sm font-bold mb-2">
 Project URL:
 </label>
 <input
@@ -326,7 +326,7 @@ className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:out
 />
 </div>
 <div className="my-4">
-<label htmlFor="githubUrl" className="block text-gray-200 text-sm font-bold mb-2">
+<label htmlFor="githubUrl" className="block text-black text-sm font-bold mb-2">
 GitHub URL:
 </label>
 <input
@@ -338,7 +338,7 @@ className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:out
 />
 </div>
 <div className="my-4">
-<label htmlFor="technologies" className="block text-gray-200 text-sm font-bold mb-2">
+<label htmlFor="technologies" className="block text-black text-sm font-bold mb-2">
 Technologies Used:
 </label>
 <TagsInput
@@ -348,7 +348,7 @@ placeholder="Add technologies..."
 />
 </div>
 <div className="my-4">
-<label htmlFor="duration" className="block text-gray-200 text-sm font-bold mb-2">
+<label htmlFor="duration" className="block text-black text-sm font-bold mb-2">
 Project Duration:
 </label>
 <input
@@ -360,7 +360,7 @@ className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:out
 />
 </div>
 <div className="my-4">
-<label htmlFor="challenges" className="block text-gray-200 text-sm font-bold mb-2">
+<label htmlFor="challenges" className="block text-black text-sm font-bold mb-2">
 Challenges Faced:
 </label>
 <textarea
@@ -371,7 +371,7 @@ className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:out
 />
 </div>
 <div className="my-4">
-<label htmlFor="userName" className="block text-gray-200 text-sm font-bold mb-2">
+<label htmlFor="userName" className="block text-black text-sm font-bold mb-2">
 Your Name:
 </label>
 <input
@@ -383,7 +383,7 @@ className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:out
 />
 </div>
 <div className="my-4">
-<label htmlFor="userEmail" className="block text-gray-200 text-sm font-bold mb-2">
+<label htmlFor="userEmail" className="block text-black text-sm font-bold mb-2">
 Your Email:
 </label>
 <input
@@ -398,7 +398,7 @@ className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:out
 </form>
 
       {/* if there is a button in form, it will close the modal */}
-      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-black">✕</button>
     </form>
     <h3 className="font-bold text-lg">Hello!</h3>
     <p className="py-4">Press ESC key or click on ✕ button to close</p>
