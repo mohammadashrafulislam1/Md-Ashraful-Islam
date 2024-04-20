@@ -2,6 +2,7 @@
 import ReactQuill from "react-quill";
 import { TagsInput } from "react-tag-input-component";
 import Swal from "sweetalert2";
+import { endPoint } from "../forAll/forAll";
 
 const imgHostingToken = import.meta.env.VITE_img_upload_token;
 const imgHostingUrl = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`;
@@ -9,7 +10,9 @@ const imgHostingUrl = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`;
 const EditProject = ({ projectId }) => {
 console.log(projectId)
 // State variables for form fields
+const [project, setProject] = useState(null)
 const [isSubmitting, setIsSubmitting] = useState(false);
+const [loading, setLoading] = useState(true);
 const [title, setTitle] = useState('');
 const [description, setDescription] = useState('');
 const [projectCategory, setProjectCategory] = useState('');
@@ -25,8 +28,40 @@ const [galleryImages, setGalleryImages] = useState([]); // State for gallery ima
 const [isFeatured, setIsFeatured] = useState(false);
 const [mobileImage, setMobileImage] = useState(null);
 const [tabletImage, setTabletImage] = useState(null);
-
-
+useEffect(()=>{
+  const fetchData = async() =>{
+   try{
+     const getProjectResponse = await fetch(`${endPoint}/projects/${projectId}`)
+     const getProjectsData = await getProjectResponse.json();
+     setProject(getProjectsData)
+     setLoading(false);
+     if (getProjectsData) {
+      setTitle(getProjectsData.title);
+      setDescription(getProjectsData.description)
+      setProjectImage(getProjectsData.projectImage)
+      setMobileImage(getProjectsData.mobileImage)
+      setTabletImage(getProjectsData.tabletImage)
+      setIsFeatured(getProjectsData.isFeatured)
+      setProjectUrl(getProjectsData.projectUrl)
+      setGithubUrl(getProjectsData.githubUrl)
+      if (getProjectsData?.technologies) {
+        const technologiesArray = JSON.parse(getProjectsData.technologies);
+        setTechnologies(technologiesArray);
+    }
+    // Set gallery images
+    if (getProjectsData?.galleryImages) {
+                    setGalleryImages(getProjectsData.galleryImages);
+                }
+    setDuration(getProjectsData.duration)
+    setChallenges(getProjectsData.challenges)
+  }
+   }
+   catch (error) {
+    console.error('Error fetching data:', error);
+    }
+  };
+  fetchData()
+}, [projectId])
 // Function to handle file input changes and upload images to ImgBB
 const handleImageUpload = async (imageFile) => {
 try {
@@ -147,12 +182,7 @@ setProjectImage(null);
 setGalleryImages([]);
 setIsFeatured(false);
 setMobileImage(null);
-setTabletImage(null);
-setClientInfo({
-clientName: '',
-clientEmail: '',
-clientSocialMedia: ''
-});
+setTabletImage(null)
 } else {
 // Handle error response from the backend
 console.error('Failed to submit project:', response.statusText);
@@ -175,11 +205,10 @@ setIsSubmitting(false)
 }
 };
 
-
-
   return (
     <div className="modal-box rounded-lg">
-    <form method="dialog">
+   {loading ? <>Loading... <span className="loading loading-ring loading-lg"></span>
+</> : <form method="dialog">
     <form onSubmit={handleFormUpdate} method="dialog" className="rounded-lg text-black">
 <hr />
 <div className="my-4">
@@ -215,6 +244,7 @@ className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:out
 <label htmlFor="projectImage" className="block text-black text-sm font-bold mb-2">
 Project Image:
 </label>
+<img src={projectImage} alt="" className="w-[20%] mb-2"/>
 <input
 type="file"
 id="projectImage"
@@ -227,6 +257,10 @@ className="bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-no
 <label htmlFor="galleryImages" className="block text-black text-sm font-bold mb-2">
 Add images for gallery (Multiple):
 </label>
+<div className="image-container flex gap-2">
+     {galleryImages.map((imageUrl, index) => (
+      <img key={index} src={imageUrl} alt={`Gallery Image ${index + 1}`} className="w-[20%] mb-2" /> ))}
+                    </div>
 <input
 type="file"
 id="galleryImages"
@@ -241,6 +275,7 @@ className="bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-no
 <label htmlFor="mobileImage" className="block text-black text-sm font-bold mb-2">
 Mobile Image:
 </label>
+<img src={mobileImage} alt="" className="w-[20%] mb-2"/>
 <input
 type="file"
 id="mobileImage"
@@ -253,6 +288,7 @@ className="bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-no
 <label htmlFor="tabletImage" className="block text-black text-sm font-bold mb-2">
 Tablet Image:
 </label>
+<img src={tabletImage} alt="" className="w-[20%] mb-2"/>
 <input
 type="file"
 id="tabletImage"
@@ -266,15 +302,14 @@ className="bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-no
 <label htmlFor='projectCategory' className='block text-black text-sm font-bold mb-2'>
 Project Category:
 </label>
+<p>Default: {project?.projectCategory}</p>
 <select
 id='projectCategory'
 value={projectCategory}
 onChange={(e) => setProjectCategory(e.target.value)}
-className='w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500'
+className='w-full bg-white border border-gray-300 rounded-lg py-2 mt-2 px-3 focus:outline-none focus:border-blue-500'
 >
-<option value='' disabled>
-Select Project Category
-</option>
+<option value="" disabled>Select A Category</option>
 <option value='Full Stack Web Development'>Full Stack Web Development</option>
 <option value='CMS'>CMS</option>
 <option value='Search Engine Optimization'>Search Engine Optimization</option>
@@ -400,8 +435,7 @@ className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:out
       {/* if there is a button in form, it will close the modal */}
       <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-black">✕</button>
     </form>
-    <h3 className="font-bold text-lg">Hello!</h3>
-    <p className="py-4">Press ESC key or click on ✕ button to close</p>
+}
   </div>
   );
 };

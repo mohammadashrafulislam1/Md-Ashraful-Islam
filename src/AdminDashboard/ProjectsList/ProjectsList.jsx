@@ -6,6 +6,7 @@ const ProjectsList = () => {
   const [projects, setProjects] = useState([]);
   const [clientDataMap, setClientDataMap] = useState({});
   const [loading, setLoading] = useState(true);
+  const [projectId, setProjectId] = useState('')
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -71,6 +72,12 @@ const ProjectsList = () => {
       }
     });
   };
+  const handleUpdateProject = (projectId) => {
+    // When the update button is clicked, show the modal with the EditProject component
+    const modal = document.getElementById('my_modal_4');
+    modal.showModal();
+    setProjectId(projectId);
+  };
 
   return (
     <div className="overflow-x-auto">
@@ -117,15 +124,16 @@ const ProjectsList = () => {
                       <a href={`${clientDataMap[project?.clientInfo]?.clientSocialMedia}`} target='_blank'><button className='btn-primary btn btn-xs'>Social</button></a>
                     </td>
                     <td className='w-[18%]'>
-                      <button  className="btn" onClick={()=>document.getElementById('my_modal_4').showModal()} className="btn btn-success text-white btn-xs md:mr-1 mb-2">Update</button>
-      <dialog id="my_modal_4" className="modal">
-      <EditProject projectId={project?._id}></EditProject>
-</dialog>
+                    <button className="btn btn-success text-white btn-xs md:mr-1 mb-2" onClick={() => handleUpdateProject(project?._id)}>Update</button>
                       <button className="btn btn-error text-white btn-xs" onClick={() => handleDeleteProject(project?._id)}>Delete</button>
                     </td>
                   </tr>
                 </tbody>
               ))}
+              {/* Dialog for displaying the EditProject component */}
+      <dialog id="my_modal_4" className="modal">
+        <EditProject projectId={projectId} />
+      </dialog>
             </table>
           ) : (
             <div className="text-white text-center">No projects found.</div>
