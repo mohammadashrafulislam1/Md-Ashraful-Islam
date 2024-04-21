@@ -78,7 +78,9 @@ const ClientsList = () => {
             <table className="table text-white">
               <thead>
                 <tr className="text-white">
-                  <th>User Name</th>
+                  <th>No</th>
+                  <th>Client Photo</th>
+                  <th>Name</th>
                   <th>Email</th>
                   <th>Social</th>
                   <th>Action</th>
@@ -87,6 +89,13 @@ const ClientsList = () => {
               <tbody>
                 {clients.map((client, index) => (
                   <tr key={index}>
+                    <td>{index+1}</td>
+                    <td>{client.clientPhoto ? <div className="avatar">
+  <div className="w-20 rounded-full">
+    <img src={client.clientPhoto} />
+  </div>
+</div>: <div className="avatar">
+  <div className="w-20 rounded-full"><img  src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png" alt="" /></div></div>}</td>
                     <td>{client.clientName}</td>
                     <td>{client.clientEmail}</td>
                     <td><a href={client.clientSocialMedia} target="_blank" rel="noopener noreferrer"><button className="btn btn-primary text-white btn-xs">Visit Social Media</button></a></td>
