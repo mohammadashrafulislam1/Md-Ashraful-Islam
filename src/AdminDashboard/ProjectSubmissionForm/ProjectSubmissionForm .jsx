@@ -32,6 +32,7 @@ const ProjectSubmissionForm = () => {
   // State variables for client info
   const [clientInfo, setClientInfo] = useState({
     clientName: '',
+    clientPhoto:'',
     clientEmail: '',
     clientSocialMedia: ''
   });
@@ -100,6 +101,7 @@ const ProjectSubmissionForm = () => {
         setTabletImage(null);
         setClientInfo({
           clientName: '',
+          clientPhoto:'',
           clientEmail: '',
           clientSocialMedia: ''
         });
@@ -185,7 +187,13 @@ const ProjectSubmissionForm = () => {
        setGalleryImages(Array.from(selectedImages));
      }
   };
-
+  const handleClientPhotoChange = async (e) => {
+    const selectedImage = e.target.files[0];
+    const imageUrl = await handleImageUpload(selectedImage);
+    if (imageUrl) {
+      setClientInfo(prevState => ({ ...prevState, clientPhoto: imageUrl }));
+    }
+  };
 
   return (
     
@@ -427,6 +435,18 @@ const ProjectSubmissionForm = () => {
             className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
+        <div className="my-4">
+  <label htmlFor="clientPhoto" className="block text-gray-200 text-sm font-bold mb-2">
+    Client Photo:
+  </label>
+  <input
+    type="file"
+    id="clientPhoto"
+    accept="image/*"
+    onChange={handleClientPhotoChange}
+    className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
+  />
+</div>
         <div className="my-4">
           <label htmlFor="clientEmail" className="block text-gray-200 text-sm font-bold mb-2">
             Client Email:
