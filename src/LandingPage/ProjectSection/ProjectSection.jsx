@@ -44,7 +44,7 @@ const ProjectSection = () => {
       <h6 className="text-white text-2xl mb-12">Projects --</h6>
       <div>
         {/* Categories */}
-        <div className="flex gap-2 justify-center mb-10">
+        <div className="md:flex flex flex-wrap gap-2 justify-center mb-10">
           <p className="tag-area" onClick={()=>hanleCategory("All")}>All</p>
           <p className="tag-area" onClick={()=>hanleCategory("Full Stack Web Development")}>Full Stack Web Development</p>
           <p className="tag-area" onClick={()=>hanleCategory("CMS")}>CMS</p>
@@ -54,13 +54,13 @@ const ProjectSection = () => {
         </div>
         
         {/* Projects */}
-      <div>
+      <div className="pb-10">
       {filteredProjects?.map((project, index) => (
           <div className="relative" key={index}>
-            <div className="flex gap-3 mb-5 align-middle items-center justify-center">
+            <div className="project-area gap-3 md:mb-5 align-middle items-center justify-center mb-2">
               <div>
                 <figure>
-                  <img className="w-[400px] h-[400px] rounded-[10px]" src={project.projectImage} alt={project.title} />
+                  <img className="md:w-[400px] md:h-[400px] rounded-[10px] w-full" src={project.projectImage} alt={project.title} />
                 </figure>
               </div>
               <div className="body-area flex flex-col justify-between">
@@ -77,13 +77,13 @@ const ProjectSection = () => {
                     <p className="mt-2">Project Duration: {project.duration} days</p>
                   </div>
                 </div>
-                <div className="flex justify-end">
+                <div className="flex md:justify-end justify-center mt-2 mb-0">
                   <Link><button className="button-rounded"><p>View</p></button></Link>
                 </div>
               </div>
             </div>
-            <div className="flex gap-5 absolute bottom-12 right-28 font-[100]">
-              {JSON.parse(project?.technologies)?.slice(0, 6).map((technology, index) => (
+            <div className="md:flex flex gap-1 md:gap-5 absolute md:bottom-12 md:right-28 font-[100] text-[12px] md:text-[16px] bottom-[1] ml-4">
+              {JSON.parse(project?.technologies)?.slice(0, 5).map((technology, index) => (
                 <div key={index} className="tag-area"><p className="font-light">{technology}</p></div>
               ))}
             </div>

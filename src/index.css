@@ -37,6 +37,9 @@
   width: 100%;
   padding: 50px;
 }
+.project-area{
+  display: flex;
+}
 .body-area {
   border-radius: 8px;
   backdrop-filter: blur(10px);
@@ -74,4 +77,22 @@
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 50px;
+}
+@media only screen and (max-width: 600px) {
+  .project-area{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding-top: 10px;
+  }
+  .body-area{
+    margin: 0;
+    padding: 25px;
+    width: 95%;
+    margin-top: -50px;
+    margin-bottom: 15px;
+  }
+  .button-rounded{
+    display: block;
+  }
 }
