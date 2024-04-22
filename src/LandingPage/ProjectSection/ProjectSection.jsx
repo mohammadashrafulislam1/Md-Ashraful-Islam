@@ -78,7 +78,7 @@ const ProjectSection = () => {
                   </div>
                 </div>
                 <div className="flex justify-end">
-                  <Link><button className="button-rounded">View</button></Link>
+                  <Link><button className="button-rounded"><p>View</p></button></Link>
                 </div>
               </div>
             </div>

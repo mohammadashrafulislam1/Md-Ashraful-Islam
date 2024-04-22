@@ -52,6 +52,9 @@
 .body-area:hover .button-rounded{
   display: block;
 }
+.body-area:hover{
+  margin-bottom: 15px;
+}
 .button-rounded{
   font-weight: 200;
   transition: display 0.3s; 
