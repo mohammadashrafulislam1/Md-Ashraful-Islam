@@ -45,7 +45,7 @@ const ProjectSection = () => {
       <div >
         {/* Categories */}
         <div className="categories-container">
-        <div className="md:flex flex gap-2 justify-center mb-10 ">
+        <div className="md:flex flex gap-2 justify-center mb-10">
           <p className="tag-area" onClick={()=>hanleCategory("All")}>All</p>
           <p className="tag-area" onClick={()=>hanleCategory("Full Stack Web Development")}>Full Stack Web Development</p>
           <p className="tag-area" onClick={()=>hanleCategory("CMS")}>CMS</p>
@@ -85,10 +85,12 @@ const ProjectSection = () => {
                 </div>
               </div>
             </div>
-            <div className="md:flex flex gap-1 md:gap-2 lg:gap-5 absolute lg:bottom-12 lg:right-28 font-[100] text-[12px] md:text-[14px] lg:text-[16px] bottom-[1] ml-4 md:right-0 md:bottom-8">
+            <div className="categories-container">
+            <div className="md:flex flex flex-nowrap gap-1 md:gap-2 lg:gap-5 absolute lg:bottom-12 lg:right-28 font-[100] text-[12px] md:text-[14px] lg:text-[16px] bottom-[1] ml-4 md:right-0 md:bottom-8">
               {JSON.parse(project?.technologies)?.slice(0, 5).map((technology, index) => (
                 <div key={index} className="tag-area"><p className="font-light">{technology}</p></div>
               ))}
+            </div>
             </div>
           </div>
         ))}

@@ -73,12 +73,16 @@
   backdrop-filter: blur(10px);
   background-image: linear-gradient(to left, rgba(255, 255, 255, 0.281), rgba(255, 255, 255, 0.164));
   padding-top:2px;
+  width:max-content;
   padding-bottom: 2px;
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 50px;
 }
 @media only screen and (max-width: 600px) {
+  .project-section{
+    padding: 10px;
+  }
   .project-area{
     display: flex;
     flex-direction: column;
@@ -93,7 +97,7 @@
     margin-bottom: 15px;
   }
   .tag-area{
-    overflow-x: scroll;
+    width:max-content;
   }
   .categories-container {
   display: flex;
@@ -108,7 +112,7 @@
   }
 }
 
-@media only screen and (min-width:1030px) {
+@media only screen and (min-width:600px) {
   .project-area{
 
   }
@@ -122,5 +126,7 @@
     margin-left: -40px;
   }
   .tag-area{
+    width:fit-content;
+    font-size: 15px;
   }
 }
