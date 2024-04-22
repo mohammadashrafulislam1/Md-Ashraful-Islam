@@ -29,3 +29,46 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 1000; /* Ensure it's above the overlay */
 }
+.project-section{
+  background-image: url("https://i.ibb.co/WktKhPL/vecteezy-minimalist-dark-gradient-wave-background-simple-design-for-7718309.jpg");
+  background-blend-mode: hue;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding: 50px;
+}
+.body-area {
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  background-image: linear-gradient(to right, rgba(0, 6, 95, 0.164), rgba(129, 1, 1, 0.055)) ;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height:fit-content;
+  width: 60%;
+  padding: 30px;
+  padding-left: 120px;
+  margin-left: -100px;
+}
+.body-area:hover .button-rounded{
+  display: block;
+}
+.button-rounded{
+  font-weight: 200;
+  transition: display 0.3s; 
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 14px;
+  padding-right: 14px;
+  border-radius: 20px;
+  display: none;
+}
+.tag-area{
+  backdrop-filter: blur(10px);
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0.281), rgba(255, 255, 255, 0.164));
+  padding-top:2px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 50px;
+}
