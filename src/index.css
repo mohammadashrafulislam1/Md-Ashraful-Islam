@@ -83,7 +83,7 @@
     display: flex;
     flex-direction: column;
     margin: 0;
-    padding-top: 10px;
+    padding-top:0 ;
   }
   .body-area{
     margin: 0;
@@ -92,12 +92,23 @@
     margin-top: -50px;
     margin-bottom: 15px;
   }
+  .tag-area{
+    overflow-x: scroll;
+  }
+  .categories-container {
+  display: flex;
+  gap: 2px; /* Adjust as needed */
+  padding-bottom: 10px; /* Add some bottom padding */
+  overflow: scroll;
+  width: 100%; /* Ensure the container takes full width */
+  flex-wrap: nowrap;
+}
   .button-rounded{
     display: block;
   }
 }
 
-@media only screen and (max-width:1030px) {
+@media only screen and (min-width:1030px) {
   .project-area{
 
   }

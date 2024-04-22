@@ -40,11 +40,12 @@ const ProjectSection = () => {
   }
   
   return (
-    <div className="my-16 project-section text-white">
+    <div className="my-16 project-section text-white overflow-hidden">
       <h6 className="text-white text-2xl mb-12">Projects --</h6>
-      <div>
+      <div >
         {/* Categories */}
-        <div className="md:flex flex flex-wrap gap-2 justify-center mb-10">
+        <div className="categories-container">
+        <div className="md:flex flex gap-2 justify-center mb-10 ">
           <p className="tag-area" onClick={()=>hanleCategory("All")}>All</p>
           <p className="tag-area" onClick={()=>hanleCategory("Full Stack Web Development")}>Full Stack Web Development</p>
           <p className="tag-area" onClick={()=>hanleCategory("CMS")}>CMS</p>
@@ -52,6 +53,8 @@ const ProjectSection = () => {
           <p className="tag-area" onClick={()=>hanleCategory("Web Design")}>Web Design</p>
           <p className="tag-area" onClick={()=>hanleCategory("Video Editing")}>Video Editing</p>
         </div>
+          </div>
+
         
         {/* Projects */}
       <div className="pb-10">
@@ -69,9 +72,9 @@ const ProjectSection = () => {
                   <div className="font-[300]" dangerouslySetInnerHTML={{ __html: truncateDescription(project.description, 30) }} />
                   <p className="font-[600] text-blue-400">Project Category: <span className="font-[300]">{project.projectCategory}</span></p>
                   <div className="flex gap-4 mt-2">
-                  <a href={project.githubUrl} target="_blank"><p className="tag-area">GitHub</p></a>
+                  <a href={project.githubUrl} target="_blank"><p className="tag-area md:text-[14px] text-[12px]">GitHub</p></a>
                   <a href={project.projectUrl} target="_blank">
-                  <p className="tag-area">Live Website</p></a>
+                  <p className="tag-area  md:text-[14px] text-[12px]">Live Website</p></a>
                   </div>
                   <div>
                     <p className="mt-2">Project Duration: {project.duration} days</p>
