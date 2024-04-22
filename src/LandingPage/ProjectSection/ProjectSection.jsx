@@ -60,7 +60,7 @@ const ProjectSection = () => {
             <div className="project-area gap-3 md:mb-5 align-middle items-center justify-center mb-2">
               <div>
                 <figure>
-                  <img className="md:w-[400px] md:h-[400px] rounded-[10px] w-full" src={project.projectImage} alt={project.title} />
+                  <img className="md:w-[400px] lg:h-[400px] rounded-[10px] w-full md:h-[350px]" src={project.projectImage} alt={project.title} />
                 </figure>
               </div>
               <div className="body-area flex flex-col justify-between">
@@ -77,12 +77,12 @@ const ProjectSection = () => {
                     <p className="mt-2">Project Duration: {project.duration} days</p>
                   </div>
                 </div>
-                <div className="flex md:justify-end justify-center mt-2 mb-0">
+                <div className="flex md:justify-end justify-center lg:mt-2 mb-[-6px]">
                   <Link><button className="button-rounded"><p>View</p></button></Link>
                 </div>
               </div>
             </div>
-            <div className="md:flex flex gap-1 md:gap-5 absolute md:bottom-12 md:right-28 font-[100] text-[12px] md:text-[16px] bottom-[1] ml-4">
+            <div className="md:flex flex gap-1 md:gap-2 lg:gap-5 absolute lg:bottom-12 lg:right-28 font-[100] text-[12px] md:text-[14px] lg:text-[16px] bottom-[1] ml-4 md:right-0 md:bottom-8">
               {JSON.parse(project?.technologies)?.slice(0, 5).map((technology, index) => (
                 <div key={index} className="tag-area"><p className="font-light">{technology}</p></div>
               ))}

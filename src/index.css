@@ -87,12 +87,29 @@
   }
   .body-area{
     margin: 0;
-    padding: 25px;
+    padding: 30px;
     width: 95%;
     margin-top: -50px;
     margin-bottom: 15px;
   }
   .button-rounded{
     display: block;
+  }
+}
+
+@media only screen and (max-width:1030px) {
+  .project-area{
+
+  }
+  .body-area{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 15px;
+    width: 70%;
+    margin: 0;
+    margin-left: -40px;
+  }
+  .tag-area{
   }
 }
