@@ -27,13 +27,12 @@ const Services = () => {
   };
 
   return (
-    <div className='my-16 relative'>
-      <div className='color-grading'></div>
+    <div className='my-16'>
     <h6 className="text-white text-2xl mb-5">Services --</h6>
-    <div className="md:grid grid-cols-2 md:gap-20 items-center">
+    <div className="md:grid grid-cols-2 md:gap-20 items-center z-20">
       <div>
         <div
-          className={`flex justify-center items-center bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl gap-5 p-5 mb-5 cursor-pointer ${showDevelopment ? 'border border-blue-500' : ''}`}
+          className={`flex justify-center items-center bg-gradient-to-r from-[#212121] to-[#111111] z-10 rounded-3xl gap-5 p-5 mb-5 cursor-pointer ${showDevelopment ? 'border border-blue-500' : ''}`}
           onClick={handleDevelopmentClick}
         >
           <img src="https://cdn3d.iconscout.com/3d/premium/thumb/male-programmer-5743382-4846824.png" alt="" className="w-[100px]" />
