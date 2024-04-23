@@ -39,6 +39,13 @@
 .navbar{
   background-image: linear-gradient(to right, rgba(0, 6, 95, 0.315), rgba(129, 1, 1, 0.192));
 }
+/* Services Section CSS */
+.color-grading{
+  background-image:linear-gradient(to right, rgba(0, 6, 95, 0.315), rgba(129, 1, 1, 0.192)) ;
+  background-size: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+}
 /* Project Section CSS */
 .project-section{
   background-image: url("https://i.ibb.co/WktKhPL/vecteezy-minimalist-dark-gradient-wave-background-simple-design-for-7718309.jpg");

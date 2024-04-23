@@ -11,7 +11,7 @@ const LandingHero = () => {
     };
 
   return (
-    <div className="md:flex items-center justify-center relative md:mt-0 mt-6 hero-section pb-10">
+    <div className="md:flex items-center justify-center relative md:mt-0 mt-6 hero-section pb-20">
 
       {/* left side */}
       <div>

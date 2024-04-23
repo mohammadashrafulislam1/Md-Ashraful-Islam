@@ -27,7 +27,8 @@ const Services = () => {
   };
 
   return (
-    <div className='my-16'>
+    <div className='my-16 relative'>
+      <div className='color-grading'></div>
     <h6 className="text-white text-2xl mb-5">Services --</h6>
     <div className="md:grid grid-cols-2 md:gap-20 items-center">
       <div>
