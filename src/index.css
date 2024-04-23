@@ -57,6 +57,7 @@
 .project-area{
   display: flex;
 }
+
 .body-area {
   border-radius: 8px;
   backdrop-filter: blur(10px);

@@ -4,6 +4,36 @@ import { motion } from 'framer-motion';
 const Contact = () => {
   return (
     <div className="my-16">
+    <div className="text-white">
+    <h3 className="text-2xl mb-4">Contact Info</h3>
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className="flex items-center mb-4 contact-info-area"
+    >
+      <FaMapMarkedAlt className="text-white mr-2" />
+      <p>Sylhet, Bangladesh</p>
+    </motion.div>
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.4 }}
+      className="flex items-center mb-4"
+    >
+      <FaEnvelope className="text-white mr-2" />
+      <p>mohammadashrafulislam33@gmail.com</p>
+    </motion.div>
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.6 }}
+      className="flex items-center"
+    >
+      <FaPhone className="text-white mr-2" />
+      <p>+8801747274852</p>
+    </motion.div>
+  </div>
       <h6 className="text-white text-2xl mb-5">Contact --</h6>
       <div className="md:flex">
         <div className="w-full bg-gradient-to-r from-[#212121] to-[#111111] rounded-3xl p-8">
@@ -147,6 +177,10 @@ const Contact = () => {
               Submit
             </motion.button>
           </form>
+        </div>
+
+        <div className="w-full bg-gray-800 rounded-3xl p-8 mt-5 md:mt-0 md:ml-10">
+          
         </div>
       </div>
     </div>
