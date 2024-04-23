@@ -40,6 +40,88 @@ const Contact = () => {
             </div>
 
             <div className="mb-4">
+              <label className="block text-white text-sm font-medium mb-2" htmlFor="service">
+                Service Needed
+              </label>
+              <select
+                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                id="service"
+                name="service"
+              >
+                <option value="SEO">SEO</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Web Design">Web Design</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-white text-sm font-medium mb-2" htmlFor="website">
+                Website
+              </label>
+              <input
+                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                type="text"
+                id="website"
+                placeholder="Your Website"
+                name="website"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-white text-sm font-medium mb-2" htmlFor="best-time">
+                Best Time & Date to Contact
+              </label>
+              <input
+                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                type="datetime-local"
+                id="best-time"
+                name="best-time"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-white text-sm font-medium mb-2" htmlFor="phone">
+                Phone Number
+              </label>
+              <input
+                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                type="tel"
+                id="phone"
+                placeholder="Your Phone Number"
+                name="phone"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-white text-sm font-medium mb-2" htmlFor="contact-method">
+                Preferred Contact Method
+              </label>
+              <select
+                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                id="contact-method"
+                name="contact-method"
+              >
+                <option value="mail">Email</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="others">Others</option>
+              </select>
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-white text-sm font-medium mb-2" htmlFor="subject">
+                Subject
+              </label>
+              <input
+                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                type="text"
+                id="subject"
+                placeholder="Subject"
+                name="subject"
+              />
+            </div>
+
+            <div className="mb-4">
               <label className="block text-white text-sm font-medium mb-2" htmlFor="message">
                 Message
               </label>
@@ -65,39 +147,6 @@ const Contact = () => {
               Submit
             </motion.button>
           </form>
-        </div>
-
-        <div className="w-full bg-gray-800 rounded-3xl p-8 mt-5 md:mt-0 md:ml-10">
-          <div className="text-white">
-            <h3 className="text-2xl mb-4">Contact Info</h3>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex items-center mb-4"
-            >
-              <FaMapMarkedAlt className="text-white mr-2" />
-              <p>Sylhet, Bangladesh</p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex items-center mb-4"
-            >
-              <FaEnvelope className="text-white mr-2" />
-              <p>mohammadashrafulislam33@gmail.com</p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="flex items-center"
-            >
-              <FaPhone className="text-white mr-2" />
-              <p>+8801747274852</p>
-            </motion.div>
-          </div>
         </div>
       </div>
     </div>
