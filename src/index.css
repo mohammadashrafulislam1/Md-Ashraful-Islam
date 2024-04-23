@@ -29,6 +29,12 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 1000; /* Ensure it's above the overlay */
 }
+/* Landing Hero CSS*/
+.hero-section,.navbar{
+  background-image: linear-gradient(to right, rgba(0, 6, 95, 0.315), rgba(129, 1, 1, 0.192)) ;
+}
+
+/* Project Section CSS */
 .project-section{
   background-image: url("https://i.ibb.co/WktKhPL/vecteezy-minimalist-dark-gradient-wave-background-simple-design-for-7718309.jpg");
   background-blend-mode: hue;

@@ -11,17 +11,18 @@ const LandingHero = () => {
     };
 
   return (
-    <div className="md:flex items-center justify-center relative md:mt-0 mt-6">
+    <div className="md:flex items-center justify-center relative md:mt-0 mt-6 hero-section pb-10">
+
       {/* left side */}
       <div>
-        <div className="bg-gradient-to-r from-[#111111] to-[#212121] rounded-r-full p-4">
+        <div className="bg-gradient-to-r from-[#1111114b] backdrop-blur-md to-[#21212177] rounded-r-full p-4">
           <h6 className="text-blue-700 flex items-center gap-3 text-[18px]">
             <FaCircle className="text-[10px]" />
             Full stack
           </h6>
           <p className="text-[12px] text-[#c4c4c4]">Web developer</p>
         </div>
-        <div className="bg-gradient-to-r from-[#111111] to-[#212121] rounded-r-full p-4 md:mt-10 mt-3">
+        <div className="bg-gradient-to-r from-[#1111114b] backdrop-blur-md to-[#21212177] rounded-r-full p-4 md:mt-10 mt-3">
           <h6 className="text-gray-400 flex items-center gap-3 text-[18px]">
             <FaCircle className="text-[10px]" />
             Say hello to
@@ -76,11 +77,11 @@ const LandingHero = () => {
           <p className="text-[#c4c4c4]">Client Satisfaction</p>
         </div>
         <div className="border-b border-[#c4c4c448] pb-4 md:text-end text-center my-10">
-          <h6 className="text-white text-xl">10+</h6>
+          <h6 className="text-white text-xl">30+</h6>
           <p className="text-[#c4c4c4]">Completed Projects</p>
         </div>
         <div className="pb-4 md:text-end text-center">
-          <h6 className="text-white text-xl">2+</h6>
+          <h6 className="text-white text-xl">4+</h6>
           <p className="text-[#c4c4c4]">Years Experience</p>
         </div>
       </div>
