@@ -31,9 +31,14 @@
 }
 /* Landing Hero CSS*/
 .hero-section,.navbar{
-  background-image: linear-gradient(to right, rgba(0, 6, 95, 0.315), rgba(129, 1, 1, 0.192)) ;
+  background-image: linear-gradient(to right, rgba(0, 6, 95, 0.315), rgba(129, 1, 1, 0.192)), url('https://www.freeiconspng.com/uploads/3d-grid-png-image-20.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
-
+.navbar{
+  background-image: linear-gradient(to right, rgba(0, 6, 95, 0.315), rgba(129, 1, 1, 0.192));
+}
 /* Project Section CSS */
 .project-section{
   background-image: url("https://i.ibb.co/WktKhPL/vecteezy-minimalist-dark-gradient-wave-background-simple-design-for-7718309.jpg");
