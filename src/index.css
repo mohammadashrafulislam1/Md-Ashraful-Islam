@@ -57,7 +57,16 @@
 .project-area{
   display: flex;
 }
-
+.contact-info-area{
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  background-image: linear-gradient(to right, rgba(0, 6, 95, 0.164), rgba(129, 1, 1, 0.055)) ;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: fit-content;
+  width: fit-content;
+  padding: 10px;
+}
 .body-area {
   border-radius: 8px;
   backdrop-filter: blur(10px);
