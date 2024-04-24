@@ -74,7 +74,7 @@ const Contact = () => {
                 Service Needed
               </label>
               <select
-                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4 bg-[rgba(33,33,33,0.34)]"
                 id="service"
                 name="service"
               >
@@ -103,7 +103,7 @@ const Contact = () => {
                 Best Time & Date to Contact
               </label>
               <input
-                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4 bg-[rgb(33,33,33)]"
                 type="datetime-local"
                 id="best-time"
                 name="best-time"
@@ -128,7 +128,7 @@ const Contact = () => {
                 Preferred Contact Method
               </label>
               <select
-                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white bg-[rgb(33,33,33)] text-white py-2 px-4"
                 id="contact-method"
                 name="contact-method"
               >
