@@ -3,7 +3,7 @@ import React from 'react';
 const Development = () => {
   return (
     <div>
-      <h1 className="text-orange-400 text-4xl font-semibold mb-5">As a Web Developer:</h1>
+      <h1 className="text-orange-400 md:text-4xl font-semibold text-2xl mb-5">As a Web Developer:</h1>
       <div className="bg-gray-800 rounded-lg p-6">
         <h2 className="text-white text-2xl font-semibold mb-4">Front-end Technology:</h2>
         <p className="text-white">

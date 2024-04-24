@@ -3,7 +3,7 @@ import React from 'react';
 const Design = () => {
   return (
     <div>
-      <h1 className="text-orange-400 text-4xl font-semibold mb-5">Web Design:</h1>
+      <h1 className="text-orange-400 md:text-4xl font-semibold text-2xl mb-5">Web Design:</h1>
       <div className="bg-gray-800 rounded-lg p-6">
         <h2 className="text-white text-2xl font-semibold mb-4">User-Centered Design:</h2>
         <p className="text-white">
