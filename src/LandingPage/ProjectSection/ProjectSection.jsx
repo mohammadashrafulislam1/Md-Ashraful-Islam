@@ -41,7 +41,7 @@ const ProjectSection = () => {
   
   return (
     <div className="my-16 project-section text-white overflow-hidden">
-      <h6 className="text-white text-2xl mb-12">Projects --</h6>
+      <h6 className="text-white text-2xl mb-5 md:mb-12 pt-10 md:pt-0">Projects --</h6>
       <div >
         {/* Categories */}
         <div className="categories-container">
@@ -57,7 +57,7 @@ const ProjectSection = () => {
 
         
         {/* Projects */}
-      <div className="pb-10">
+      <div className="md:pb-10 pb-20">
       {filteredProjects?.map((project, index) => (
           <div className="relative" key={index}>
             <div className="project-area gap-3 md:mb-5 align-middle items-center justify-center mb-2">
