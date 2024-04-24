@@ -3,17 +3,17 @@ import { motion } from 'framer-motion';
 
 const Contact = () => {
   return (
-    <div className="my-16">
-    <h3 className="text-2xl mb-4 text-white">Contact Info</h3>
-    <div className="text-white md:flex justify-center gap-5 mb-10">
+    <div className="my-28">
+    <h3 className="text-2xl mb-4 text-white">Contact US--</h3>
+    <div className="text-white flex flex-wrap justify-center md:gap-5 gap-1 mb-10">
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
       className="flex items-center mb-4 contact-info-area"
     >
-      <FaMapMarkedAlt className="text-white mr-2" />
-      <p>Sylhet, Bangladesh</p>
+      <FaMapMarkedAlt className="text-white mr-2 " />
+      <p className='text-[12px] md:text-[15px]'>Sylhet, Bangladesh</p>
     </motion.div>
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -22,7 +22,7 @@ const Contact = () => {
       className="flex items-center mb-4 contact-info-area"
     >
       <FaEnvelope className="text-white mr-2" />
-      <p>mohammadashrafulislam33@gmail.com</p>
+      <p className='text-[12px] md:text-[15px]'>mohammadashrafulislam33@gmail.com</p>
     </motion.div>
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -31,12 +31,11 @@ const Contact = () => {
       className="flex items-center contact-info-area"
     >
       <FaPhone className="text-white mr-2" />
-      <p>+8801747274852</p>
+      <p className='text-[12px] md:text-[15px]'>+8801747274852</p>
     </motion.div>
   </div>
-      <h6 className="text-white text-2xl mb-5">Contact --</h6>
-      <div className="md:flex justify-center">
-        <div className="w-[50%] bg-gradient-to-r from-[#2121214b] to-[#111111] rounded-3xl p-8">
+      <div className="md:flex flex flex-1 justify-center">
+        <div className="md:w-[50%] w-full bg-gradient-to-r from-[#2121214b] to-[#111111] rounded-3xl md:p-8 p-6">
           <form action="https://formspree.io/f/mgejeqoy" method="POST">
             <div className="mb-4">
               <label className="block text-white text-sm font-medium mb-2" htmlFor="name">

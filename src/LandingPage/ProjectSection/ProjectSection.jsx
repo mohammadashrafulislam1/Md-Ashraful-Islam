@@ -81,7 +81,7 @@ const ProjectSection = () => {
                   </div>
                 </div>
                 <div className="flex md:justify-end justify-center lg:mt-2 mb-[-6px]">
-                  <Link><button className="button-rounded"><p>View</p></button></Link>
+                  <Link><button className="button-rounded mt-3"><p>View</p></button></Link>
                 </div>
               </div>
             </div>
