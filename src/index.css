@@ -112,6 +112,9 @@
   padding-right: 10px;
   border-radius: 50px;
 }
+.ql-editor {
+  font-size: 18px;
+}
 @media only screen and (max-width: 600px) {
   .project-section{
     padding: 10px;

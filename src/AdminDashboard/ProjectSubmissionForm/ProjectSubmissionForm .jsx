@@ -18,6 +18,7 @@ const ProjectSubmissionForm = () => {
   const [projectCategory, setProjectCategory] = useState('');
   const [projectUrl, setProjectUrl] = useState('');
   const [githubUrl, setGithubUrl] = useState('');
+  const [githubUrlServer, setGithubUrlServer] = useState('');
   const [technologies, setTechnologies] = useState([]);
   const [duration, setDuration] = useState('');
   const [challenges, setChallenges] = useState('');
@@ -51,6 +52,7 @@ const ProjectSubmissionForm = () => {
       formData.append('projectCategory', projectCategory);
       formData.append('projectUrl', projectUrl);
       formData.append('githubUrl', githubUrl);
+      formData.append('githubUrlServer', githubUrlServer);
       formData.append('technologies', JSON.stringify(technologies));
       formData.append('duration', duration);
       formData.append('challenges', challenges);
@@ -89,6 +91,7 @@ const ProjectSubmissionForm = () => {
         setProjectCategory('');
         setProjectUrl('');
         setGithubUrl('');
+        setGithubUrlServer('')
         setTechnologies([]);
         setDuration('');
         setChallenges('');
@@ -311,29 +314,30 @@ const ProjectSubmissionForm = () => {
             Project Description:
           </label>
           <ReactQuill
-            value={description}
-            onChange={(value) => setDescription(value)}
-            modules={{
-              toolbar: [
-                [{ 'header': [1, 2, false] }],
-                ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-                [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-                ['link', 'image'],
-                ['clean'],
-                ['size'], 
-                ['font'] 
-                 
-              ],
-            }}
-            formats={[
-              'header',
-              'bold', 'italic', 'underline', 'strike', 'blockquote',
-              'list', 'bullet', 'indent',
-              'link', 'image'
-            ]}
-            className='bg-white text-2xl rounded-lg border-none font-[poppins]'
-            placeholder="Type your text here..."
-          />
+  value={description}
+  onChange={(value) => setDescription(value)}
+  modules={{
+    toolbar: [
+      [{ 'header': [1, 2, false] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+      ['link', 'image'],
+      ['clean'],
+      ['size'], 
+      ['font'] 
+    ],
+  }}
+  formats={[
+    'header',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image'
+  ]}
+  className='bg-white text-2xl rounded-lg border-none font-[poppins]'
+  placeholder="Type your text here..."
+  style={{ fontSize: '20px' }} // Adjust the font size as per your requirement
+/>
+
         </div>
         <div className="my-4">
           <label htmlFor="projectUrl" className="block text-gray-200 text-sm font-bold mb-2">
@@ -356,6 +360,18 @@ const ProjectSubmissionForm = () => {
             id="githubUrl"
             value={githubUrl}
             onChange={(e) => setGithubUrl(e.target.value)}
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="githubUrlServer" className="block text-gray-200 text-sm font-bold mb-2">
+            GitHub URL Server:
+          </label>
+          <input
+            type="text"
+            id="githubUrlServer"
+            value={githubUrlServer}
+            onChange={(e) => setGithubUrlServer(e.target.value)}
             className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>

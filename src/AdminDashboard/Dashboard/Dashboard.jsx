@@ -3,13 +3,13 @@ import { Link, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   const upNavLink= <>
-  <li><Link to="/dashboard">Dashboard</Link></li>
-  <li className="mt-2"><Link to="/dashboard/projectsubmit">Project Submit</Link></li>
-  <li className="mt-2"><Link to="/dashboard/projectlist">Project List</Link></li>
-  <li className="mt-2"><Link to="/dashboard/clientslist">Clients List</Link></li>
+  <li className="text-xl"><Link to="/dashboard">Dashboard</Link></li>
+  <li className="mt-2 text-xl"><Link to="/dashboard/projectsubmit">Project Submit</Link></li>
+  <li className="mt-2 text-xl"><Link to="/dashboard/projectlist">Project List</Link></li>
+  <li className="mt-2 text-xl"><Link to="/dashboard/clientslist">Clients List</Link></li>
   </>
   const downNavLink =<>
-  <li><Link to="/">Home</Link></li>
+  <li className="text-xl"><Link to="/">Home</Link></li>
   </>
     return (
     <div className="md:flex gap-10">
@@ -22,7 +22,7 @@ const Dashboard = () => {
         </div> 
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
-          <ul className="menu p-4 w-80 h-full bg-[#cbdccb] text-base-content text-xl">
+          <ul className="menu p-4 w-80 h-full bg-[#cbdccb] text-base-content fixed">
             {/* Sidebar content here */}
             {upNavLink}
           <div className="divider"></div>
