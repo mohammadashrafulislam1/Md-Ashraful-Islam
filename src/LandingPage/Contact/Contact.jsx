@@ -45,7 +45,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2 bg-[#05050554] text-white py-2 px-4"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2 bg-[#05050594] text-white py-2 px-4"
                 type="text"
                 id="name"
                 placeholder="Type your name"
@@ -61,7 +61,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050554]"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050594]"
                 type="email"
                 placeholder="Your Email"
                 name="email"
@@ -73,7 +73,7 @@ const Contact = () => {
                 Service Needed
               </label>
               <select
-                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050554]"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050594]"
                 id="service"
                 name="service"
               >
@@ -89,7 +89,7 @@ const Contact = () => {
                 Website
               </label>
               <input
-                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050554]"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050594]"
                 type="text"
                 id="website"
                 placeholder="Your Website"
@@ -102,7 +102,7 @@ const Contact = () => {
                 Best Time & Date to Contact
               </label>
               <input
-                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2 text-white py-2 px-4 bg-[#cccccc54]"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2 text-white py-2 px-4 bg-[#cccccc34]"
                 type="datetime-local"
                 id="best-time"
                 name="best-time"
@@ -114,7 +114,7 @@ const Contact = () => {
                 Phone Number
               </label>
               <input
-                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050554]"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050594]"
                 type="tel"
                 id="phone"
                 placeholder="Your Phone Number"
@@ -127,7 +127,7 @@ const Contact = () => {
                 Preferred Contact Method
               </label>
               <select
-                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2 bg-[#05050554] text-white py-2 px-4"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2 bg-[#05050594] text-white py-2 px-4"
                 id="contact-method"
                 name="contact-method"
               >
@@ -142,7 +142,7 @@ const Contact = () => {
                 Subject
               </label>
               <input
-                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050554]"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050594]"
                 type="text"
                 id="subject"
                 placeholder="Subject"
@@ -158,7 +158,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050554]"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050594]"
                 id="message"
                 rows="4"
                 placeholder="What's on your mind?"
