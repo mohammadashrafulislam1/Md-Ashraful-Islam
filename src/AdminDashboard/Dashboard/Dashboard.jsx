@@ -13,6 +13,7 @@ const Dashboard = () => {
   </>
     return (
     <div className="md:flex gap-10">
+    
          <div className="lg:drawer-open w-full md:w-1/4">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center md:pt-0 pt-5">

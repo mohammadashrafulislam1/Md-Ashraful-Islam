@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Contact = () => {
   return (
-    <div className="my-28">
+    <div className="my-28 contact-section">
     <h3 className="text-2xl mb-4 text-white">Contact US--</h3>
     <div className="text-white flex flex-wrap justify-center md:gap-5 gap-1 mb-10">
     <motion.div
@@ -35,7 +35,7 @@ const Contact = () => {
     </motion.div>
   </div>
       <div className="md:flex flex flex-1 justify-center">
-        <div className="md:w-[50%] w-full bg-gradient-to-r from-[#2121214b] to-[#111111] rounded-3xl md:p-8 p-6">
+        <div className="md:w-[50%] w-full  rounded-3xl md:p-8 p-6">
           <form action="https://formspree.io/f/mgejeqoy" method="POST">
             <div className="mb-4">
               <label className="block text-white text-sm font-medium mb-2" htmlFor="name">
@@ -45,7 +45,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2 bg-[#05050554] text-white py-2 px-4"
                 type="text"
                 id="name"
                 placeholder="Type your name"
@@ -61,7 +61,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050554]"
                 type="email"
                 placeholder="Your Email"
                 name="email"
@@ -73,7 +73,7 @@ const Contact = () => {
                 Service Needed
               </label>
               <select
-                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4 bg-[rgba(33,33,33,0.34)]"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050554]"
                 id="service"
                 name="service"
               >
@@ -89,7 +89,7 @@ const Contact = () => {
                 Website
               </label>
               <input
-                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050554]"
                 type="text"
                 id="website"
                 placeholder="Your Website"
@@ -102,7 +102,7 @@ const Contact = () => {
                 Best Time & Date to Contact
               </label>
               <input
-                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4 bg-[rgb(33,33,33)]"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2 text-white py-2 px-4 bg-[#cccccc54]"
                 type="datetime-local"
                 id="best-time"
                 name="best-time"
@@ -114,7 +114,7 @@ const Contact = () => {
                 Phone Number
               </label>
               <input
-                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050554]"
                 type="tel"
                 id="phone"
                 placeholder="Your Phone Number"
@@ -127,7 +127,7 @@ const Contact = () => {
                 Preferred Contact Method
               </label>
               <select
-                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white bg-[rgb(33,33,33)] text-white py-2 px-4"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2 bg-[#05050554] text-white py-2 px-4"
                 id="contact-method"
                 name="contact-method"
               >
@@ -142,7 +142,7 @@ const Contact = () => {
                 Subject
               </label>
               <input
-                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050554]"
                 type="text"
                 id="subject"
                 placeholder="Subject"
@@ -158,7 +158,7 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="w-full bg-transparent rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-white text-white py-2 px-4"
+                className="w-full bg-transparent rounded-md border border-none focus:outline-none focus:ring-2   text-white py-2 px-4 bg-[#05050554]"
                 id="message"
                 rows="4"
                 placeholder="What's on your mind?"
@@ -170,7 +170,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="bg-white text-gray-800 rounded-md py-2 px-4 font-medium transition-all duration-200 hover:bg-gray-100"
+              className="btn-contact text-gray-800 rounded-md py-2 px-4 font-medium transition-all duration-200 hover:bg-gray-100 "
               type="submit"
             >
               Submit

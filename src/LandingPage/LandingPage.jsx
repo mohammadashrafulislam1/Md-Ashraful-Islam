@@ -19,9 +19,7 @@ const LandingPage = () => {
         <TimeLine></TimeLine>
         </div>
         <ProjectSection></ProjectSection>
-        <div className="max-w-7xl md:mx-auto pb-10 mx-5">
         <Contact></Contact>
-        </div>
         </div>
     );
 };
