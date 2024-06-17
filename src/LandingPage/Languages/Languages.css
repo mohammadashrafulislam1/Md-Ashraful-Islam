@@ -1,5 +1,8 @@
 
-  
+.keen-slider{
+  width: 100% !important;
+  height: fit-content !important;
+}
   [class^="number-slide"],
   [class*=" number-slide"] {
     align-items: center;
