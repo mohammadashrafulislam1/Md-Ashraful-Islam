@@ -85,7 +85,7 @@ const ProjectSubmissionForm = () => {
       });
       // If project submission succeeds, submit testimonial
       const testimonialData = {
-        image:clientInfo.clientPhoto,
+        image:clientInfo..,
         name: clientInfo.clientName,
         email: clientInfo.clientEmail,
         testimonial: testimonial, // Use project description or testimonial specific field

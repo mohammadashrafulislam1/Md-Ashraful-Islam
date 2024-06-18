@@ -1,1 +1,1 @@
-export const endPoint = 'https://md-ashraful-islam-server.vercel.app'
+export const endPoint = 'http://localhost:4000'
