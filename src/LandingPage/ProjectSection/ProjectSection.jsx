@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { endPoint } from "../../forAll/forAll";
 import { Link } from 'react-router-dom';
 import { Container, Grid, Box, Typography, Button } from '@mui/material';
-import {FaArrowRight} from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
 
 const truncateDescription = (description, limit) => {
   const words = description.split(' ');
@@ -16,7 +16,7 @@ const truncateDescription = (description, limit) => {
 const ProjectSection = () => {
   const [projects, setProjects] = useState(null);
   const [filteredProjects, setFilteredProjects] = useState(null);
-  console.log(projects)
+  console.log(projects);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,25 +49,23 @@ const ProjectSection = () => {
         </Typography>
         <Grid container spacing={4}>
           {filteredProjects && filteredProjects.map((project, index) => (
-            <Grid item xs={12} sm={12} md={6} key={index}>
+            <Grid item xs={12} sm={12} md={6} key={index} className="flipping">
               <Box sx={{ boxShadow: 3, borderRadius: 2, p: 2 }}>
                 <Typography variant="h2" className="gradient-text" sx={{ mb: 2 }}>
                   {project.title.split('<br>').map((line, index) => (
                     <React.Fragment key={index}>{line}<br /></React.Fragment>
                   ))}
                 </Typography>
-                <Box className="flip-effect">
+                <Box className="flip-container">
                   <img
+                    className="flip-image"
                     alt={project.title}
-                    src={project.projectImage
-                    }
+                    src={project.projectImage}
                     width="238"
                     height="139"
                     style={{ color: 'transparent', objectFit: 'cover', height: '140px' }}
                   />
-                </Box>
-                <Box>
-                  <FaArrowRight />
+                  <FaArrowRight className="arrow-icon" />
                 </Box>
               </Box>
             </Grid>
