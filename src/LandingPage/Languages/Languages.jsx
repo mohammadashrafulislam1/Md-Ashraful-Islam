@@ -1,6 +1,7 @@
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import "./Languages.css"
+import { Typography } from "@mui/material";
 const Languages = () => {  
    
   const [sliderRef] = useKeenSlider({
@@ -15,7 +16,9 @@ const Languages = () => {
   return (
     
     <div className="my-24">
-      <h6 className="text-white text-2xl mb-5">Languages --</h6>
+      <Typography variant="h1" className="mb-5" sx={{ mb: 4 }}>
+          languages_
+        </Typography>
       <div ref={sliderRef} className="keen-slider">
       <div className="keen-slider__slide number-slide1 flex flex-wrap md:gap-5"><img src="https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png" className="w-[40px] rounded-lg" alt="" />
       <p className="text-xs md:text-lg">REACT.JS</p>

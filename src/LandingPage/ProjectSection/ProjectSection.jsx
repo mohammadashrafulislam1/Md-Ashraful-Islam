@@ -42,28 +42,30 @@ const ProjectSection = () => {
   };
 
   return (
-    <Box id="projects" sx={{ py: 8 }}>
+    <Box id="projects">
       <Container maxWidth="lg">
-        <Typography variant="h1" sx={{ mb: 4 }}>
+        <Typography variant="h1" sx={{ mb: 4 }} className="mb-5">
           projects that i built_
         </Typography>
-        <Grid container spacing={4}>
+       <div className='Project-sec'>
+       <Grid container spacing={4}>
           {filteredProjects && filteredProjects.map((project, index) => (
             <Grid item xs={12} sm={12} md={6} key={index} className="flipping">
               <Box sx={{ boxShadow: 3, borderRadius: 2, p: 2 }}>
-                <Typography variant="h2" className="gradient-text" sx={{ mb: 2 }}>
+              <div>
+              <Typography variant="h2" className="gradient-text font-[500!important] font-poppins" sx={{ mb: 2 }}>
                   {project.title.split('<br>').map((line, index) => (
                     <React.Fragment key={index}>{line}<br /></React.Fragment>
                   ))}
                 </Typography>
+                {project.technologies.map(technology => console.log(technology))}
+              </div>
                 <Box className="flip-container">
                   <img
                     className="flip-image"
                     alt={project.title}
                     src={project.projectImage}
-                    width="238"
-                    height="139"
-                    style={{ color: 'transparent', objectFit: 'cover', height: '140px' }}
+                    style={{ color: 'transparent', objectFit: 'cover'}}
                   />
                   <FaArrowRight className="arrow-icon" />
                 </Box>
@@ -71,13 +73,14 @@ const ProjectSection = () => {
             </Grid>
           ))}
         </Grid>
-        <Box sx={{ mt: 4 }}>
+        <Box sx={{ mt: 4 }} className="flex justify-center">
           <Link to="/home/project">
             <Button variant="contained" color="primary">
               All projects
             </Button>
           </Link>
         </Box>
+       </div>
       </Container>
     </Box>
   );

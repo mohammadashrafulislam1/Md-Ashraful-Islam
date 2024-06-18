@@ -1,10 +1,13 @@
 import { FaEnvelope, FaMapMarkedAlt, FaPhone } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { Typography } from '@mui/material';
 
 const Contact = () => {
   return (
     <div className="mb-28 contact-section">
-    <h3 className="text-2xl mb-4 text-white">Contact US--</h3>
+   <Typography variant="h1" sx={{ mb: 4 }} className="mb-5">
+          contact us_
+        </Typography>
     <div className="text-white flex flex-wrap justify-center md:gap-5 gap-1 mb-10">
     <motion.div
       initial={{ opacity: 0, x: -20 }}

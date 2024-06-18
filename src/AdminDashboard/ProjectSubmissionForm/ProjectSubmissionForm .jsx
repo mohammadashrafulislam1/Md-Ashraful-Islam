@@ -10,6 +10,7 @@ const imgHostingUrl = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`;
 
 const ProjectSubmissionForm = () => {
   const apiUrl = `${endPoint}/projects`; // Backend API endpoint
+  const testimonialUrl = `${endPoint}/testimonial`;
 
   // State variables for form fields
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,6 +30,9 @@ const ProjectSubmissionForm = () => {
   const [isFeatured, setIsFeatured] = useState(false);
   const [mobileImage, setMobileImage] = useState(null); 
   const [tabletImage, setTabletImage] = useState(null);
+  const [testimonial, setTestimonial] = useState(null);
+  const [des, setDes] = useState(null);
+  const [rating, setRating] = useState(null);
 
   // State variables for client info
   const [clientInfo, setClientInfo] = useState({
@@ -66,6 +70,10 @@ const ProjectSubmissionForm = () => {
         formData.append('galleryImages', image);
       });
       formData.append('clientInfo', JSON.stringify(clientInfo)); // Serialize clientInfo object
+      formData.append('testimonial', testimonial);
+      formData.append('des', des);
+      formData.append('rating', rating);
+      
       
       setIsSubmitting(true)
       
@@ -75,6 +83,32 @@ const ProjectSubmissionForm = () => {
         method: 'POST',
         body: formData,
       });
+      // If project submission succeeds, submit testimonial
+      const testimonialData = {
+        image:clientInfo.clientPhoto,
+        name: clientInfo.clientName,
+        email: clientInfo.clientEmail,
+        testimonial: testimonial, // Use project description or testimonial specific field
+        rating: 5, // Example rating (you can set dynamically)
+        des: 'Description', // Example description (you can set dynamically)
+        socialMedia: clientInfo.clientSocialMedia,
+        isActive: true // Example isActive (you can set dynamically)
+      };
+
+      const testimonialResponse = await fetch(testimonialUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(testimonialData),
+      });
+
+      if (!testimonialResponse.ok) {
+        throw new Error('Failed to submit testimonial');
+      }
+
+      const testimonialResult = await testimonialResponse.json();
+      console.log('Testimonial submitted successfully:', testimonialResult);
 
       if (response.ok) {
         const data = await response.json();
@@ -437,7 +471,7 @@ const ProjectSubmissionForm = () => {
           />
         </div>
         <hr />
-        <h1 className='text-white text-center font-bold mt-6 text-3xl'>CLIENT INFO</h1>
+        <h1 className='text-white text-center font-bold mt-6 text-3xl'>CLIENT INFO WITH TESTIMONIAL</h1>
         <div className="my-4">
           <label htmlFor="clientName" className="block text-gray-200 text-sm font-bold mb-2">
             Client Name:
@@ -447,6 +481,19 @@ const ProjectSubmissionForm = () => {
             id="clientName"
             value={clientInfo.clientName} // Update clientInfo state directly
             onChange={(e) => setClientInfo(prevState => ({ ...prevState, clientName: e.target.value }))} // Update nested property
+            required
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="des" className="block text-gray-200 text-sm font-bold mb-2">
+          Des:
+          </label>
+          <input
+            type="social"
+            id="clientSocialMedia"
+            value={des} 
+            onChange={(e) => setDes(e.target.value)}
             required
             className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
@@ -462,7 +509,7 @@ const ProjectSubmissionForm = () => {
     onChange={handleClientPhotoChange}
     className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
   />
-</div>
+      </div>
         <div className="my-4">
           <label htmlFor="clientEmail" className="block text-gray-200 text-sm font-bold mb-2">
             Client Email:
@@ -485,6 +532,32 @@ const ProjectSubmissionForm = () => {
             id="clientSocialMedia"
             value={clientInfo.clientSocialMedia} // Update clientInfo state directly
             onChange={(e) => setClientInfo(prevState => ({ ...prevState, clientSocialMedia: e.target.value }))} // Update nested property
+            required
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="testimonial" className="block text-gray-200 text-sm font-bold mb-2">
+          Testimonial:
+          </label>
+          <input
+            type="social"
+            id="clientSocialMedia"
+            value={testimonial} 
+            onChange={(e) => setTestimonial(e.target.value)}
+            required
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="rating" className="block text-gray-200 text-sm font-bold mb-2">
+          Rating:
+          </label>
+          <input
+            type="social"
+            id="clientSocialMedia"
+            value={rating} 
+            onChange={(e) => setRating(e.target.value)}
             required
             className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />

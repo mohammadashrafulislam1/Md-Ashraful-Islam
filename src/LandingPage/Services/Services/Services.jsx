@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Development from '../Development/Development';
 import SEO from '../SEO/SEO';
 import Design from '../Design/Design';
+import { Typography } from '@mui/material';
 
 const Services = () => {
   const [showDevelopment, setShowDevelopment] = useState(true);
@@ -28,7 +29,9 @@ const Services = () => {
 
   return (
     <div className='my-16'>
-    <h6 className="text-white text-2xl mb-5">Services --</h6>
+    <Typography variant="h1" sx={{ mb: 4 }} className="mb-5">
+          service_
+        </Typography>
     <div className="md:grid grid-cols-2 md:gap-20 items-center z-20">
       <div>
         <div
