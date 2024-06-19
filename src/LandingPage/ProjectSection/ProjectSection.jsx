@@ -4,14 +4,6 @@ import { Link } from 'react-router-dom';
 import { Container, Grid, Box, Typography, Button } from '@mui/material';
 import { FaArrowRight } from 'react-icons/fa';
 
-const truncateDescription = (description, limit) => {
-  const words = description.split(' ');
-  if (words.length > limit) {
-    return words.slice(0, limit).join(' ') + '...';
-  } else {
-    return description;
-  }
-};
 
 const ProjectSection = () => {
   const [projects, setProjects] = useState(null);
@@ -32,24 +24,15 @@ const ProjectSection = () => {
     fetchData();
   }, []);
 
-  const handleCategory = (category) => {
-    if (category === "All") {
-      setFilteredProjects(projects);
-    } else {
-      const filterProject = projects.filter(project => project.category === category);
-      setFilteredProjects(filterProject);
-    }
-  };
 
   return (
     <Box id="projects">
-      <Container maxWidth="lg">
         <Typography variant="h1" sx={{ mb: 4 }} className="mb-5">
           projects that i built_
         </Typography>
        <div className='Project-sec'>
        <Grid container spacing={4}>
-          {filteredProjects && filteredProjects.map((project, index) => (
+          {filteredProjects && filteredProjects.slice(0, 8).map((project, index) => (
             <Grid item xs={12} sm={12} md={6} key={index} className="flipping">
               <Box sx={{ boxShadow: 3, borderRadius: 2, p: 2 }}>
               <div>
@@ -81,7 +64,7 @@ const ProjectSection = () => {
           </Link>
         </Box>
        </div>
-      </Container>
+      
     </Box>
   );
 };
