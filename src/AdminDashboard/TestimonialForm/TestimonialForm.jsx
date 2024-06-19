@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import { endPoint } from '../../forAll/forAll';
 
 const imgHostingToken = import.meta.env.VITE_img_upload_token;
-      const imgHostingUrl = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`;
+const imgHostingUrl = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`;
 
 const TestimonialForm = () => {
   const [formData, setFormData] = useState({
@@ -14,12 +14,13 @@ const TestimonialForm = () => {
     rating: '',
     des: '',
     socialMedia: '',
-    isActive: true // Assuming default value for isActive
+    isActive: true
   });
+  console.log(formData)
 
   const [imageUpload, setImageUpload] = useState({
-    imageUrl: '', // State to store the uploaded image URL
-    loading: false // Loading state for image upload
+    imageUrl: '',
+    loading: false
   });
 
   const handleChange = (e) => {
@@ -34,7 +35,6 @@ const TestimonialForm = () => {
 
     try {
       setImageUpload({ ...imageUpload, loading: true });
-      // Replace 'YOUR_API_KEY' with your actual ImageBB API key
       const response = await fetch(imgHostingUrl, {
         method: 'POST',
         body: formData
@@ -45,11 +45,10 @@ const TestimonialForm = () => {
       }
 
       const data = await response.json();
-      console.log(response, data.url, data.data.url)
 
       if (data && data.data && data.data.url) {
         setImageUpload({ imageUrl: data.data.url, loading: false });
-        setFormData({ ...formData, image: data.data.url });
+        setFormData(prevData => ({ ...prevData, image: data.data.url }));
         Swal.fire({
           title: 'Image Uploaded!',
           text: 'Image uploaded successfully.',
@@ -62,8 +61,8 @@ const TestimonialForm = () => {
       console.error('Error uploading image:', error);
       setImageUpload({ ...imageUpload, loading: false });
       Swal.fire({
-        title: 'Error!',
-        text: 'Failed to upload image.',
+        title: 'Error',
+        text: 'Failed to upload image. Please try again later.',
         icon: 'error'
       });
     }
@@ -71,6 +70,16 @@ const TestimonialForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Ensure the image upload is complete before submitting
+    if (imageUpload.loading) {
+      Swal.fire({
+        title: 'Please wait',
+        text: 'Image is still uploading. Please wait for it to finish.',
+        icon: 'warning'
+      });
+      return;
+    }
 
     try {
       const response = await fetch(`${endPoint}/testimonial`, {
@@ -82,14 +91,11 @@ const TestimonialForm = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        console.log('Testimonial added:', data);
         Swal.fire({
-          title: 'Success!',
-          text: 'Testimonial added successfully.',
+          title: 'Success',
+          text: 'Testimonial submitted successfully!',
           icon: 'success'
         });
-        // Clear form fields after successful submission
         setFormData({
           image: '',
           name: '',
@@ -100,108 +106,121 @@ const TestimonialForm = () => {
           socialMedia: '',
           isActive: true
         });
+        setImageUpload({ imageUrl: '', loading: false });
       } else {
-        throw new Error('Failed to add testimonial');
+        throw new Error('Failed to submit testimonial');
       }
     } catch (error) {
-      console.error('Error adding testimonial:', error);
+      console.error('Error submitting testimonial:', error);
       Swal.fire({
-        title: 'Error!',
-        text: 'Failed to add testimonial.',
+        title: 'Error',
+        text: 'Failed to submit testimonial. Please try again later.',
         icon: 'error'
       });
     }
   };
 
   return (
-    <div className="testimonial-form-container bg-gray-800 text-white p-8 rounded-lg shadow-lg my-10">
-      <h2 className="text-3xl text-center mb-5">Add Testimonial</h2>
+    <div className="w-full md:w-3/4 mx-auto p-10">
+      <h2 className="md:text-3xl font-bold my-6 text-center text-white text-2xl">Testimonial Form</h2>
       <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-400">Name</label>
+        <div className="my-4">
+          <label htmlFor="image" className="block text-gray-200 text-sm font-bold mb-2">
+            Client Image:
+          </label>
+          <input
+            type="file"
+            id="image"
+            accept="image/*"
+            onChange={handleImageUpload}
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="name" className="block text-gray-200 text-sm font-bold mb-2">
+            Name:
+          </label>
           <input
             type="text"
-            className="form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-700 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
             required
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-400">Email</label>
+        <div className="my-4">
+          <label htmlFor="email" className="block text-gray-200 text-sm font-bold mb-2">
+            Email:
+          </label>
           <input
             type="email"
-            className="form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-700 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
             required
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
-        <div className="mb-4">
-          <label htmlFor="testimonial" className="block text-sm font-medium text-gray-400">Testimonial</label>
+        <div className="my-4">
+          <label htmlFor="testimonial" className="block text-gray-200 text-sm font-bold mb-2">
+            Testimonial:
+          </label>
           <textarea
-            className="form-textarea mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-700 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             id="testimonial"
             name="testimonial"
             value={formData.testimonial}
             onChange={handleChange}
-            rows="3"
             required
-          ></textarea>
+            rows="6"
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
+          />
         </div>
-        <div className="mb-4">
-          <label htmlFor="rating" className="block text-sm font-medium text-gray-400">Rating</label>
+        <div className="my-4">
+          <label htmlFor="rating" className="block text-gray-200 text-sm font-bold mb-2">
+            Rating:
+          </label>
           <input
             type="number"
-            className="form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-700 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             id="rating"
             name="rating"
             value={formData.rating}
             onChange={handleChange}
             required
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
-        <div className="mb-4">
-          <label htmlFor="des" className="block text-sm font-medium text-gray-400">Description</label>
-          <textarea
-            className="form-textarea mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-700 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        <div className="my-4">
+          <label htmlFor="des" className="block text-gray-200 text-sm font-bold mb-2">
+            Description:
+          </label>
+          <input
+            type="text"
             id="des"
             name="des"
             value={formData.des}
             onChange={handleChange}
-            rows="3"
             required
-          ></textarea>
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
+          />
         </div>
-        <div className="mb-4">
-          <label htmlFor="socialMedia" className="block text-sm font-medium text-gray-400">Social Media Link</label>
+        <div className="my-4">
+          <label htmlFor="socialMedia" className="block text-gray-200 text-sm font-bold mb-2">
+            Social Media:
+          </label>
           <input
             type="text"
-            className="form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-700 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             id="socialMedia"
             name="socialMedia"
             value={formData.socialMedia}
             onChange={handleChange}
             required
+            className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
-        <div className="mb-4">
-          <label htmlFor="imageUpload" className="block text-sm font-medium text-gray-400">Upload Image</label>
-          <input
-            type="file"
-            className="form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-700 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            id="imageUpload"
-            name="imageUpload"
-            accept="image/*"
-            onChange={handleImageUpload}
-            required
-          />
-        </div>
-        <button type="submit" className="bg-indigo-500 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+        <button type="submit" className="number-slide1 text-white py-3 px-4 hover:bg-blue-600 w-full my-4">
           Submit
         </button>
       </form>

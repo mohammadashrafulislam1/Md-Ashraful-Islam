@@ -7,7 +7,7 @@ const TestimonialList = () => {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  console.log(testimonials)
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
@@ -36,7 +36,7 @@ const TestimonialList = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await fetch(`/${endPoint}/testimonial/${id}`, {
+          const response = await fetch(`${endPoint}/testimonial/${id}`, {
             method: 'DELETE'
           });
           if (response.ok) {
@@ -64,16 +64,16 @@ const TestimonialList = () => {
   const handleUpdateTestimonial = async (id) => {
     try {
       const testimonialToUpdate = testimonials.find(testimonial => testimonial._id === id);
-      const updatedTestimonial = { ...testimonialToUpdate, isActive: !testimonialToUpdate.isActive };
-
-      const response = await fetch(`/${endPoint}/testimonial/${id}`, {
-        method: 'PATCH',
+      const updatedTestimonial = { isActive: !testimonialToUpdate.isActive };
+     console.log(updatedTestimonial)
+      const response = await fetch(`${endPoint}/testimonial/${id}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(updatedTestimonial)
       });
-
+  
       if (response.ok) {
         setTestimonials(testimonials.map(testimonial =>
           testimonial._id === id ? { ...testimonial, isActive: updatedTestimonial.isActive } : testimonial
@@ -95,6 +95,8 @@ const TestimonialList = () => {
       });
     }
   };
+  
+  
 
   return (
     <div className="testimonial-list-container text-white">
