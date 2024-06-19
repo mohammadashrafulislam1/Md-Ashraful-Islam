@@ -8,12 +8,13 @@ const Dashboard = () => {
   <li className="mt-2 text-xl"><Link to="/dashboard/projectlist">Project List</Link></li>
   <li className="mt-2 text-xl"><Link to="/dashboard/clientslist">Clients List</Link></li>
   <li className="mt-2 text-xl"><Link to="/dashboard/testimonial">Testimonial List</Link></li>
+  <li className="mt-2 text-xl"><Link to="/dashboard/testimonialsubmit">Testimonial Submit</Link></li>
   </>
   const downNavLink =<>
   <li className="text-xl"><Link to="/">Home</Link></li>
   </>
     return (
-    <div className="md:flex gap-10">
+    <div className="md:flex gap-5">
     
          <div className="lg:drawer-open w-full md:w-1/4">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -41,7 +42,7 @@ const Dashboard = () => {
         
         </div>
       </div>
-      <div className="md:w-3/4 w-full mx-auto"><Outlet></Outlet>
+      <div className="md:w-3/4 w-full mx-auto mr-3"><Outlet></Outlet>
       </div>
     </div>
     );

@@ -14,6 +14,7 @@ import Root from './AdminDashboard/Root/Root';
 import ClientsList from './AdminDashboard/ClientsList/ClientsList';
 import ProjectsList from './AdminDashboard/ProjectsList/ProjectsList';
 import TestimonialList from './AdminDashboard/TestimonialList/TestimonialList.jsx';
+import TestimonialForm from './AdminDashboard/TestimonialForm/TestimonialForm.jsx';
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path:'testimonial',
         element:<TestimonialList></TestimonialList>
+      },
+      {
+        path:"testimonialsubmit",
+        element:<TestimonialForm></TestimonialForm>
       }
     ]
   }
