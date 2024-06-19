@@ -1,4 +1,4 @@
-import ProjectSubmissionForm from "../AdminDashboard/ProjectSubmissionForm/ProjectSubmissionForm ";
+import ProjectSubmissionForm from "../AdminDashboard/ProjectSubmissionForm/ProjectSubmissionForm.jsx";
 import Contact from "./Contact/Contact";
 import LandingHero from "./LandingHero/LandingHero";
 import Languages from "./Languages/Languages";

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
 import { TagsInput } from 'react-tag-input-component';
@@ -30,9 +30,9 @@ const ProjectSubmissionForm = () => {
   const [isFeatured, setIsFeatured] = useState(false);
   const [mobileImage, setMobileImage] = useState(null); 
   const [tabletImage, setTabletImage] = useState(null);
-  const [testimonial, setTestimonial] = useState(null);
-  const [des, setDes] = useState(null);
-  const [rating, setRating] = useState(null);
+  const [testimonial, setTestimonial] = useState('');
+  const [des, setDes] = useState('');
+  const [rating, setRating] = useState('');
 
   // State variables for client info
   const [clientInfo, setClientInfo] = useState({
@@ -41,12 +41,36 @@ const ProjectSubmissionForm = () => {
     clientEmail: '',
     clientSocialMedia: ''
   });
+  const [testimonialData, setTestimonialData] = useState({
+    image: '',
+    name: '',
+    email: '',
+    testimonial: '',
+    rating: '',
+    des: '',
+    socialMedia: '',
+    isActive: true 
+  });
 
+  // Update testimonialData whenever its dependent state variables change
+  useEffect(() => {
+    setTestimonialData({
+      name: clientInfo.clientName,
+      email: clientInfo.clientEmail,
+      testimonial: testimonial,
+      rating: rating,
+      des: des,
+      socialMedia: clientInfo.clientSocialMedia,
+      isActive: true
+    });
+  }, [clientInfo, testimonial, rating, des]);
+
+  console.log(testimonialData, clientInfo)
+ 
   // Function to handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     
-    // First, submit client info
     try {
       // Continue with project submission
       // Create FormData object to send form data
@@ -70,45 +94,18 @@ const ProjectSubmissionForm = () => {
         formData.append('galleryImages', image);
       });
       formData.append('clientInfo', JSON.stringify(clientInfo)); // Serialize clientInfo object
-      formData.append('testimonial', testimonial);
-      formData.append('des', des);
-      formData.append('rating', rating);
+      formData.append('testimonial', JSON.stringify(testimonialData)); // Add testimonial ObjectId
       
       
       setIsSubmitting(true)
       
-        console.log(formData)
+        console.log(formData, JSON.stringify(testimonialData), JSON.stringify(clientInfo))
       // Send POST request to backend API
-      const response = await fetch(apiUrl, {
+    const response = await fetch(apiUrl, {
         method: 'POST',
         body: formData,
       });
-      // If project submission succeeds, submit testimonial
-      const testimonialData = {
-        image:clientInfo..,
-        name: clientInfo.clientName,
-        email: clientInfo.clientEmail,
-        testimonial: testimonial, // Use project description or testimonial specific field
-        rating: 5, // Example rating (you can set dynamically)
-        des: 'Description', // Example description (you can set dynamically)
-        socialMedia: clientInfo.clientSocialMedia,
-        isActive: true // Example isActive (you can set dynamically)
-      };
-
-      const testimonialResponse = await fetch(testimonialUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(testimonialData),
-      });
-
-      if (!testimonialResponse.ok) {
-        throw new Error('Failed to submit testimonial');
-      }
-
-      const testimonialResult = await testimonialResponse.json();
-      console.log('Testimonial submitted successfully:', testimonialResult);
+    
 
       if (response.ok) {
         const data = await response.json();
@@ -142,6 +139,11 @@ const ProjectSubmissionForm = () => {
           clientEmail: '',
           clientSocialMedia: ''
         });
+        setTestimonialData({
+          des:'',
+          rating:'',
+          testimonial:''
+        })
       } else {
         // Handle error response from the backend
         console.error('Failed to submit project:', response.statusText);
@@ -540,12 +542,13 @@ const ProjectSubmissionForm = () => {
           <label htmlFor="testimonial" className="block text-gray-200 text-sm font-bold mb-2">
           Testimonial:
           </label>
-          <input
-            type="social"
-            id="clientSocialMedia"
+          <textarea 
+            type='text'
+            id="testimonial"
             value={testimonial} 
             onChange={(e) => setTestimonial(e.target.value)}
             required
+            rows="6"
             className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
@@ -554,8 +557,8 @@ const ProjectSubmissionForm = () => {
           Rating:
           </label>
           <input
-            type="social"
-            id="clientSocialMedia"
+            type="number"
+            id="rating"
             value={rating} 
             onChange={(e) => setRating(e.target.value)}
             required

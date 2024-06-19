@@ -8,11 +8,12 @@ import {
 import Home from './Home/Home/Home.jsx';
 import Main from './Main/Main';
 import LandingPage from './LandingPage/LandingPage';
-import ProjectSubmissionForm from './AdminDashboard/ProjectSubmissionForm/ProjectSubmissionForm ';
+import ProjectSubmissionForm from './AdminDashboard/ProjectSubmissionForm/ProjectSubmissionForm.jsx';
 import Dashboard from './AdminDashboard/Dashboard/Dashboard';
 import Root from './AdminDashboard/Root/Root';
 import ClientsList from './AdminDashboard/ClientsList/ClientsList';
 import ProjectsList from './AdminDashboard/ProjectsList/ProjectsList';
+import TestimonialList from './AdminDashboard/TestimonialList/TestimonialList.jsx';
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path:'projectlist',
         element:<ProjectsList></ProjectsList>
+      },
+      {
+        path:'testimonial',
+        element:<TestimonialList></TestimonialList>
       }
     ]
   }

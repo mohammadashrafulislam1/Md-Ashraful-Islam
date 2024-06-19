@@ -7,6 +7,7 @@ const Dashboard = () => {
   <li className="mt-2 text-xl"><Link to="/dashboard/projectsubmit">Project Submit</Link></li>
   <li className="mt-2 text-xl"><Link to="/dashboard/projectlist">Project List</Link></li>
   <li className="mt-2 text-xl"><Link to="/dashboard/clientslist">Clients List</Link></li>
+  <li className="mt-2 text-xl"><Link to="/dashboard/testimonial">Testimonial List</Link></li>
   </>
   const downNavLink =<>
   <li className="text-xl"><Link to="/">Home</Link></li>
