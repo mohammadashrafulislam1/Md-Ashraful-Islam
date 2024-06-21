@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { endPoint } from "../../forAll/forAll";
-import { Container, Box, Typography, Card, CardContent, Avatar, Button } from '@mui/material';
+import { Box, Typography, Card, CardContent, Avatar, Button, Rating } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
-import { FaAngleLeft, FaAngleRight, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './TestimonialSection.css'; 
 
@@ -10,13 +10,26 @@ const truncateText = (text, length) => {
   if (text.length <= length) return text;
   return text.substring(0, length) + '...';
 };
+const backgrounds = [
+  'https://res.cloudinary.com/dajqmaltl/image/upload/v1718897997/ashrafulislampersonalwebsite/m9vfm64pvdagunstxhsc.png',
+  'https://res.cloudinary.com/dajqmaltl/image/upload/v1718927495/ashrafulislampersonalwebsite/bipqvsn9hj0revn3pbm6.png',
+  'https://res.cloudinary.com/dajqmaltl/image/upload/v1718943182/ashrafulislampersonalwebsite/pink.png',
+  'https://res.cloudinary.com/dajqmaltl/image/upload/v1718943658/ashrafulislampersonalwebsite/green.png'
+];
 
+const hoverBackgrounds = [
+  'https://res.cloudinary.com/dajqmaltl/image/upload/v1718927056/ashrafulislampersonalwebsite/jlowho01qdlxrjswa2kt.png',
+  'https://res.cloudinary.com/dajqmaltl/image/upload/v1718927494/ashrafulislampersonalwebsite/golden-hover.png',
+  'https://res.cloudinary.com/dajqmaltl/image/upload/v1718943181/ashrafulislampersonalwebsite/pink-hover.png',
+  'https://res.cloudinary.com/dajqmaltl/image/upload/v1718943658/ashrafulislampersonalwebsite/green-hover.png',
+];
 const TestimonialSection = () => {
   const [testimonials, setTestimonials] = useState([]);
+  console.log(testimonials)
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
-
+  const [hoveredIndex, setHoveredIndex] = useState(null);
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
@@ -48,6 +61,13 @@ const TestimonialSection = () => {
   const handleClose = () => {
     setSelectedTestimonial(null);
   };
+  const handleCardMouseEnter = (index) => {
+    setHoveredIndex(index);
+  };
+
+  const handleCardMouseLeave = () => {
+    setHoveredIndex(null);
+  };
 
   return (
     <div className="bg-[#0e0c15] containerTest">
@@ -57,7 +77,6 @@ const TestimonialSection = () => {
       <Carousel
         showThumbs={false}
         showStatus={false}
-        infiniteLoop
         useKeyboardArrows
         centerMode
         centerSlidePercentage={28}
@@ -79,7 +98,18 @@ const TestimonialSection = () => {
         {testimonials.map((testimonial, index) => (
           <Box key={index}
            sx={{ display: 'flex', justifyContent: 'center', p: 2, borderRadius:'20px' }} className="text-white">
-            <Card className={`testimonial-card card-${index}`} sx={{ maxWidth: 326, maxHeight:300, textAlign: 'left', p: 2, borderRadius:'20px' }}>
+            <div style={{ maxWidth: 326, maxHeight:300, textAlign: 'left', p: 2, borderRadius:'20px',
+                backgroundImage: `url(${hoveredIndex === index ? hoverBackgrounds[index % hoverBackgrounds.length] : backgrounds[index % backgrounds.length]})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                width:'326px',
+                height:'300px',
+                display:'flex',
+                flexDirection:'column',
+                justifyContent:'space-between',
+                backgroundRepeat:'no-repeat' }}
+                onMouseEnter={() => handleCardMouseEnter(index)}
+              onMouseLeave={handleCardMouseLeave}>
               <CardContent className="text-white">
               <Typography variant="h6" component="Card" sx={{ mb: 2 }}>
                   {testimonial.name}
@@ -100,7 +130,7 @@ const TestimonialSection = () => {
               />
               <button onClick={() => handleSeeMore(testimonial)} className='flex text-white gap-1 items-center'>See More <FaAngleRight></FaAngleRight></button>
               </div>
-            </Card>
+            </div>
           </Box>
         ))}
       </Carousel>
@@ -119,6 +149,8 @@ const TestimonialSection = () => {
             <Typography variant="body1" component="div" sx={{ mb: 2 }}>
               {selectedTestimonial.des}
             </Typography>
+            <Typography component="legend">Ratings</Typography>
+            <Rating name="half-rating" defaultValue={selectedTestimonial.rating} precision={selectedTestimonial.rating} />
             <Typography variant="body2" color="text.secondary">
               {selectedTestimonial.testimonial}
             </Typography>
