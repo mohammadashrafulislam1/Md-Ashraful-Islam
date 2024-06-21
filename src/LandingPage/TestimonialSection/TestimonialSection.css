@@ -26,60 +26,6 @@
     left: 10px; /* Adjust the left position */
     top: 50%;
   }
-  /* Card background styles */
-
-.testimonial-card.card-0 {
-  background: url("https://res.cloudinary.com/dajqmaltl/image/upload/v1718897997/ashrafulislampersonalwebsite/m9vfm64pvdagunstxhsc.png") no-repeat center center;
-  background-size: cover;
-}
-
-.testimonial-card.card-0:hover {
-  background: url("https://res.cloudinary.com/dajqmaltl/image/upload/v1718927056/ashrafulislampersonalwebsite/jlowho01qdlxrjswa2kt.png") no-repeat center center;
-  background-size: cover;
-  transition: background 1s;
-}
-
-.testimonial-card.card-1 {
-  background: url("https://res.cloudinary.com/dajqmaltl/image/upload/v1718927495/ashrafulislampersonalwebsite/bipqvsn9hj0revn3pbm6.png") no-repeat center center;
-  background-size: cover;
-}
-
-.testimonial-card.card-1:hover {
-  background: url("https://res.cloudinary.com/dajqmaltl/image/upload/v1718927494/ashrafulislampersonalwebsite/golden-hover.png") no-repeat center center;
-  background-size: cover;
-  transition: background 1s;
-}
-
-.testimonial-card.card-2 {
-  background: url("https://res.cloudinary.com/dajqmaltl/image/upload/v1718943182/ashrafulislampersonalwebsite/pink.png") no-repeat center center;
-  background-size: cover;
-}
-
-.testimonial-card.card-2:hover {
-  background: url("https://res.cloudinary.com/dajqmaltl/image/upload/v1718943181/ashrafulislampersonalwebsite/pink-hover.png") no-repeat center center;
-  background-size: cover;
-  transition: background 1s;
-}
-.testimonial-card.card-3 {
-  background: url("https://res.cloudinary.com/dajqmaltl/image/upload/v1718943658/ashrafulislampersonalwebsite/green.png") no-repeat center center;
-  background-size: cover;
-}
-
-.testimonial-card.card-3:hover {
-  background: url("https://res.cloudinary.com/dajqmaltl/image/upload/v1718943658/ashrafulislampersonalwebsite/green-hover.png") no-repeat center center;
-  background-size: cover;
-  transition: background 1s;
-}
-.testimonial-card.card-4 {
-  background: url("https://res.cloudinary.com/dajqmaltl/image/upload/v1718897997/ashrafulislampersonalwebsite/m9vfm64pvdagunstxhsc.png") no-repeat center center;
-  background-size: cover;
-}
-
-.testimonial-card.card-4:hover {
-  background: url("https://res.cloudinary.com/dajqmaltl/image/upload/v1718927056/ashrafulislampersonalwebsite/jlowho01qdlxrjswa2kt.png") no-repeat center center;
-  background-size: cover;
-  transition: background 1s;
-}
   .text-white{
     color:white !important;
     font-family: poppins !important;
@@ -88,6 +34,7 @@
     line-height: 20px !important;
     letter-spacing: 1px !important;
     font-size: 15px !important;
+    font-family: poppins !important;
   }
   .margin-0{
     margin:0px !important;
@@ -163,10 +110,11 @@
   }
   
   .modal-content {
-    background: white;
-    padding: 20px;
+    background: rgb(5, 0, 29);
+    padding: 30px;
     border-radius: 8px;
     max-width: 500px;
+    color: white !important;
     width: 100%;
     text-align: center;
     position: relative;

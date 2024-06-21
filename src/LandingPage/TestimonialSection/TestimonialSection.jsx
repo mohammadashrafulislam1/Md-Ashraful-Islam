@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { endPoint } from "../../forAll/forAll";
-import { Box, Typography, Card, CardContent, Avatar, Button, Rating } from '@mui/material';
+import { Box, Typography, Card, CardContent, Avatar, Button } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { FaAngleLeft, FaAngleRight, FaFontAwesome, FaRegStar, FaStar, FaStarHalf } from 'react-icons/fa';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './TestimonialSection.css'; 
+import Rating from 'react-rating';
 
 const truncateText = (text, length) => {
   if (text.length <= length) return text;
@@ -138,20 +139,31 @@ const TestimonialSection = () => {
       {selectedTestimonial && (
         <div className="modal-overlay" onClick={handleClose}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <Typography variant="h6" component="div" sx={{ mb: 2 }}>
-              {selectedTestimonial.name}
-            </Typography>
-            <Avatar
+          <div className='flex justify-center gap-5'>
+          <Avatar
               alt={selectedTestimonial.name}
               src={selectedTestimonial.image}
-              sx={{ width: 56, height: 56, mx: 'auto', mb: 2 }}
+              sx={{ width: 70, height: 70, mb: 2 }}
             />
-            <Typography variant="body1" component="div" sx={{ mb: 2 }}>
+           <div className='flex flex-col gap-0 '> <h6 style={{ mb: 2, fontWeight:'700'  }} className='mb-0 text-xl'>
+              {selectedTestimonial.name}
+            </h6>
+            <p style={{ mb: 2, fontWeight:'300' }}>
               {selectedTestimonial.des}
-            </Typography>
-            <Typography component="legend">Ratings</Typography>
-            <Rating name="half-rating" defaultValue={selectedTestimonial.rating} precision={selectedTestimonial.rating} />
-            <Typography variant="body2" color="text.secondary">
+            </p></div>
+          </div>
+            <div className='flex gap-2 my-4 justify-between items-center'>
+            <div className='flex gap-2 my-4 justify-center'><Typography component="legend">Ratings</Typography>
+          <Rating
+              initialRating={selectedTestimonial.rating} 
+              emptySymbol={<FaRegStar/>}
+              fullSymbol={<FaStar />}
+              readonly 
+              className='text-xl text-[#fe0]'
+            /></div>
+            <a target='_blank' href={selectedTestimonial.socialMedia}><button className='btn btn-sm'>Social</button></a>
+            </div>
+            <Typography variant="body2" className='testimonial-p mb-10'>
               {selectedTestimonial.testimonial}
             </Typography>
             <Button onClick={handleClose}>Close</Button>
