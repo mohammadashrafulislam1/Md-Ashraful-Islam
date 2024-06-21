@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { endPoint } from "../../forAll/forAll";
 import { Box, Typography, Card, CardContent, Avatar, Button } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
-import { FaAngleLeft, FaAngleRight, FaFontAwesome, FaPlus, FaRegStar, FaStar, FaStarHalf } from 'react-icons/fa';
+import { FaAngleLeft, FaAngleRight, FaPlus, FaRegStar, FaStar } from 'react-icons/fa';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './TestimonialSection.css'; 
 import Rating from 'react-rating';
+import { useMediaQuery } from 'react-responsive';
 
 const truncateText = (text, length) => {
   if (text.length <= length) return text;
   return text.substring(0, length) + '...';
 };
+
 const backgrounds = [
   'https://res.cloudinary.com/dajqmaltl/image/upload/v1718897997/ashrafulislampersonalwebsite/m9vfm64pvdagunstxhsc.png',
   'https://res.cloudinary.com/dajqmaltl/image/upload/v1718927495/ashrafulislampersonalwebsite/bipqvsn9hj0revn3pbm6.png',
@@ -24,13 +26,25 @@ const hoverBackgrounds = [
   'https://res.cloudinary.com/dajqmaltl/image/upload/v1718943181/ashrafulislampersonalwebsite/pink-hover.png',
   'https://res.cloudinary.com/dajqmaltl/image/upload/v1718943658/ashrafulislampersonalwebsite/green-hover.png',
 ];
+
 const TestimonialSection = () => {
   const [testimonials, setTestimonials] = useState([]);
-  console.log(testimonials)
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  // Media queries
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1024px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 600px)' });
+
+  let centerSlidePercentage = 28;
+  if (isMobile) {
+    centerSlidePercentage = 100;
+  } else if (isTabletOrMobile) {
+    centerSlidePercentage = 50;
+  }
+
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
@@ -62,6 +76,7 @@ const TestimonialSection = () => {
   const handleClose = () => {
     setSelectedTestimonial(null);
   };
+
   const handleCardMouseEnter = (index) => {
     setHoveredIndex(index);
   };
@@ -69,7 +84,6 @@ const TestimonialSection = () => {
   const handleCardMouseLeave = () => {
     setHoveredIndex(null);
   };
-
   return (
     <div className="bg-[#0e0c15] containerTest">
       <Typography variant="h1" sx={{ mb: 4 }} className="mb-5">
@@ -80,7 +94,7 @@ const TestimonialSection = () => {
         showStatus={false}
         useKeyboardArrows
         centerMode
-        centerSlidePercentage={28}
+        centerSlidePercentage={centerSlidePercentage}
         renderArrowPrev={(onClickHandler, hasPrev, label) =>
           hasPrev && (
             <button type="button" onClick={onClickHandler} title={label} className="custom-arrow custom-prev">
