@@ -110,13 +110,12 @@
   }
   
   .modal-content {
-    background: rgb(5, 0, 29);
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 48));
     padding: 30px;
-    border-radius: 8px;
+    border-radius: 20px;
     max-width: 500px;
     color: white !important;
     width: 100%;
     text-align: center;
     position: relative;
   }
-  

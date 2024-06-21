@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { endPoint } from "../../forAll/forAll";
 import { Box, Typography, Card, CardContent, Avatar, Button } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
-import { FaAngleLeft, FaAngleRight, FaFontAwesome, FaRegStar, FaStar, FaStarHalf } from 'react-icons/fa';
+import { FaAngleLeft, FaAngleRight, FaFontAwesome, FaPlus, FaRegStar, FaStar, FaStarHalf } from 'react-icons/fa';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './TestimonialSection.css'; 
 import Rating from 'react-rating';
@@ -139,7 +139,8 @@ const TestimonialSection = () => {
       {selectedTestimonial && (
         <div className="modal-overlay" onClick={handleClose}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <div className='flex justify-center gap-5'>
+         <div className='bg-over'>
+         <div className='flex justify-center gap-5'>
           <Avatar
               alt={selectedTestimonial.name}
               src={selectedTestimonial.image}
@@ -166,7 +167,8 @@ const TestimonialSection = () => {
             <Typography variant="body2" className='testimonial-p mb-10'>
               {selectedTestimonial.testimonial}
             </Typography>
-            <Button onClick={handleClose}>Close</Button>
+            <button onClick={handleClose} className='absolute top-5 right-5'>x</button>
+         </div>
           </div>
         </div>
       )}
