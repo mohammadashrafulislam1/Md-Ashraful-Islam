@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { endPoint } from "../../forAll/forAll";
 import { Container, Box, Typography, Card, CardContent, Avatar, Button } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaAngleLeft, FaAngleRight, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './TestimonialSection.css'; 
 
@@ -50,7 +50,7 @@ const TestimonialSection = () => {
   };
 
   return (
-    <Container>
+    <div className="bg-[#0e0c15] containerTest">
       <Typography variant="h1" sx={{ mb: 4 }} className="mb-5">
         testimonial section_
       </Typography>
@@ -59,44 +59,47 @@ const TestimonialSection = () => {
         showStatus={false}
         infiniteLoop
         useKeyboardArrows
-        autoPlay
         centerMode
-        centerSlidePercentage={33.33}
+        centerSlidePercentage={28}
         renderArrowPrev={(onClickHandler, hasPrev, label) =>
           hasPrev && (
             <button type="button" onClick={onClickHandler} title={label} className="custom-arrow custom-prev">
-              <FaArrowLeft />
+              <FaAngleLeft />
             </button>
           )
         }
         renderArrowNext={(onClickHandler, hasNext, label) =>
           hasNext && (
             <button type="button" onClick={onClickHandler} title={label} className="custom-arrow custom-next">
-              <FaArrowRight />
+              <FaAngleRight />
             </button>
           )
         }
       >
         {testimonials.map((testimonial, index) => (
-          <Box key={index} sx={{ display: 'flex', justifyContent: 'center', p: 2, borderRadius:'20px' }}>
-            <Card sx={{ maxWidth: 360, textAlign: 'center', p: 2, boxShadow: 3, borderRadius:'20px' }}>
+          <Box key={index}
+           sx={{ display: 'flex', justifyContent: 'center', p: 2, borderRadius:'20px' }} className="text-white">
+            <Card className={`testimonial-card card-${index}`} sx={{ maxWidth: 326, maxHeight:300, textAlign: 'left', p: 2, borderRadius:'20px' }}>
+              <CardContent className="text-white">
+              <Typography variant="h6" component="Card" sx={{ mb: 2 }}>
+                  {testimonial.name}
+                </Typography>
+                <Typography variant="p" className='font-light text-[14px]' component="div" sx={{ mb: 2 }}>
+                  {testimonial.des}
+                </Typography>
+                <p className="text-white font-thin testimonial-p">
+                  {truncateText(testimonial.testimonial, 100)}
+                </p>
+              </CardContent>
+              <div className='flex justify-between pb-4 px-4'>
               <Avatar
                 alt={testimonial.name}
                 src={testimonial.image}
-                sx={{ width: 56, height: 56, mx: 'auto', mb: 2 }}
+                sx={{ width: 46, height: 46, mx: 'auto', mb: 2 }}
+                className="margin-0"
               />
-              <CardContent>
-                <Typography variant="h6" component="div" sx={{ mb: 2 }}>
-                  {testimonial.name}
-                </Typography>
-                <Typography variant="body1" component="div" sx={{ mb: 2 }}>
-                  {testimonial.des}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {truncateText(testimonial.testimonial, 100)}
-                </Typography>
-                <Button onClick={() => handleSeeMore(testimonial)}>See More</Button>
-              </CardContent>
+              <button onClick={() => handleSeeMore(testimonial)} className='flex text-white gap-1 items-center'>See More <FaAngleRight></FaAngleRight></button>
+              </div>
             </Card>
           </Box>
         ))}
@@ -123,7 +126,7 @@ const TestimonialSection = () => {
           </div>
         </div>
       )}
-    </Container>
+    </div>
   );
 };
 
