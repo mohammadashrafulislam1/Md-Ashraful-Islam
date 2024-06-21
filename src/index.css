@@ -117,58 +117,6 @@
 .previous-btn{
   position: absolute;
 }
-@media only screen and (max-width: 600px) {
-  .project-section{
-    padding: 10px;
-  }
-  .project-area{
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding-top:0 ;
-  }
-  .body-area{
-    margin: 0;
-    padding: 30px;
-    width: 95%;
-    margin-top: -50px;
-    margin-bottom: 15px;
-  }
-  .tag-area{
-    width:max-content;
-  }
-  .categories-container {
-  display: flex;
-  gap: 2px; /* Adjust as needed */
-  padding-bottom: 10px; /* Add some bottom padding */
-  overflow: scroll;
-  width: 100%; /* Ensure the container takes full width */
-  flex-wrap: nowrap;
-}
-  .button-rounded{
-    display: block;
-  }
-}
-
-@media only screen and (min-width:600px) {
-  .project-area{
-
-  }
-  .body-area{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 30px;
-    padding-right: 15px;
-    width: 70%;
-    margin: 0;
-    margin-left: -40px;
-  }
-  .tag-area{
-    width:fit-content;
-    font-size: 15px;
-  }
-}
-
 /* Project Section */
 #projects{
   margin: 100px 0;
@@ -243,4 +191,57 @@
 .flipping:hover .arrow-icon {
   visibility: visible;
   opacity: 1;
+}
+/* Responsive */
+
+@media only screen and (max-width: 600px) {
+  .project-section{
+    padding: 10px;
+  }
+  .project-area{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding-top:0 ;
+  }
+  .body-area{
+    margin: 0;
+    padding: 30px;
+    width: 95%;
+    margin-top: -50px;
+    margin-bottom: 15px;
+  }
+  .tag-area{
+    width:max-content;
+  }
+  .categories-container {
+  display: flex;
+  gap: 2px; /* Adjust as needed */
+  padding-bottom: 10px; /* Add some bottom padding */
+  overflow: scroll;
+  width: 100%; /* Ensure the container takes full width */
+  flex-wrap: nowrap;
+}
+  .button-rounded{
+    display: block;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .project-area{
+
+  }
+  .body-area{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 15px;
+    width: 70%;
+    margin: 0;
+    margin-left: -40px;
+  }
+  .tag-area{
+    width:fit-content;
+    font-size: 15px;
+  }
 }
