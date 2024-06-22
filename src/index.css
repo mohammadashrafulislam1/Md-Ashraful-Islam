@@ -9,6 +9,10 @@
   height:fit-content;
   font-family: "Poppins", sans-serif;
 }
+.section-title{
+  font-size: 100px !important;
+}
+
 /* Modal Overlay */
 .modal-overlay {
   position: fixed;
@@ -209,6 +213,13 @@
     margin: 0;
     padding-top:0 ;
   }
+  
+  .Project-sec{
+    padding: 10px !important;
+  }
+  .section-title{
+    font-size: 30px;
+  }
   .body-area{
     margin: 0;
     padding: 30px;
@@ -230,11 +241,17 @@
   .button-rounded{
     display: block;
   }
+  .contact-section{
+    padding: 20px;
+  }
 }
-
+/* tablet */
 @media only screen and (min-width:600px) {
   .project-area{
 
+  }
+  .Project-sec{
+    padding: 20px;
   }
   .body-area{
     padding-top: 20px;
@@ -248,5 +265,11 @@
   .tag-area{
     width:fit-content;
     font-size: 15px;
+  }
+  .section-title{
+    font-size: 50px;
+  }
+  .contact-section{
+    padding: 50px !important;
   }
 }

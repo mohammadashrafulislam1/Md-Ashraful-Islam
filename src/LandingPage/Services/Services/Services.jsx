@@ -29,9 +29,9 @@ const Services = () => {
 
   return (
     <div className='my-16'>
-    <Typography variant="h1" sx={{ mb: 4 }} className="mb-5">
+    <h1 className="mb-5 section-title">
           service_
-        </Typography>
+        </h1>
     <div className="md:grid grid-cols-2 md:gap-20 items-center z-20">
       <div>
         <div

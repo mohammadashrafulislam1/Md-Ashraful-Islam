@@ -16,9 +16,9 @@ const Languages = () => {
   return (
     
     <div className="my-24">
-      <Typography variant="h1" className="mb-5" sx={{ mb: 4 }}>
+      <h1 className="mb-5 section-title">
           languages_
-        </Typography>
+        </h1>
       <div ref={sliderRef} className="keen-slider">
       <div className="keen-slider__slide number-slide1 flex flex-wrap md:gap-5"><img src="https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png" className="w-[40px] rounded-lg" alt="" />
       <p className="text-xs md:text-lg">REACT.JS</p>

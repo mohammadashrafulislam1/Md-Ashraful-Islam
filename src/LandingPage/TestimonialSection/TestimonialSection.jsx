@@ -86,9 +86,9 @@ const TestimonialSection = () => {
   };
   return (
     <div className="bg-[#0e0c15] containerTest">
-      <Typography variant="h1" sx={{ mb: 4 }} className="mb-5">
+      <h1 className="mb-5 section-title">
         testimonial section_
-      </Typography>
+      </h1>
       <Carousel
         showThumbs={false}
         showStatus={false}

@@ -5,9 +5,9 @@ import './Contact.css'
 const Contact = () => {
   return (
     <div className="mb-28 contact-section">
-   <Typography variant="h1" sx={{ mb: 4 }} className="mb-5">
+   <h1 className="mb-5 section-title">
           contact us_
-        </Typography>
+        </h1>
     <div className="text-white flex flex-wrap justify-center md:gap-5 gap-1 mb-10">
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -38,7 +38,7 @@ const Contact = () => {
     </motion.div>
   </div>
       <div className="md:flex flex flex-1 justify-center">
-        <div className="md:w-[50%] w-full  rounded-3xl md:p-8 p-6">
+        <div className="lg:w-[50%] w-full  rounded-3xl md:p-8 mx-[100px] lg:mx-0 sm:mx-0">
           <form action="https://formspree.io/f/mgejeqoy" method="POST">
             <div className="mb-4">
               <label className="block text-white text-sm font-medium mb-2" htmlFor="name">

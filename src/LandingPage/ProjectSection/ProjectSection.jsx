@@ -27,9 +27,9 @@ const ProjectSection = () => {
 
   return (
     <Box id="projects">
-        <Typography variant="h1" sx={{ mb: 4 }} className="mb-5">
+        <h1 className="mb-5 section-title">
           projects that i built_
-        </Typography>
+        </h1>
        <div className='Project-sec'>
        <Grid container spacing={4}>
           {filteredProjects && filteredProjects.slice(0, 8).map((project, index) => (
