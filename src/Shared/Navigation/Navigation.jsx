@@ -19,7 +19,7 @@ const Navigation = () => {
         {navbar}
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl text-white">Md Ashraf</a>
+    <a className="btn btn-ghost normal-case text-xl text-white"><span className="bg-[#0051ff] p-1">Md</span> Ashraf</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 text-[#777777] flex gap-10">

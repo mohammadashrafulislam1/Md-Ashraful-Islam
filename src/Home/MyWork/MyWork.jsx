@@ -1,4 +1,3 @@
-import '../ShareCss/ShareCss.css';
 
 const MyWork = () => {
   return (

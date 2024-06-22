@@ -1,5 +1,4 @@
 import { FaCircle } from "react-icons/fa";
-import '../../Home/ShareCss/ShareCss.css'
 import { TypeAnimation } from "react-type-animation";
 import { useEffect } from "react";
 

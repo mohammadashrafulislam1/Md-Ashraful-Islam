@@ -1,5 +1,6 @@
 import ProjectSubmissionForm from "../AdminDashboard/ProjectSubmissionForm/ProjectSubmissionForm.jsx";
 import Contact from "./Contact/Contact";
+import Footer from "./Footer/Footer.jsx";
 import LandingHero from "./LandingHero/LandingHero";
 import Languages from "./Languages/Languages";
 import ProjectSection from "./ProjectSection/ProjectSection";
@@ -21,6 +22,7 @@ const LandingPage = () => {
         <ProjectSection></ProjectSection>
         </div>
         <Contact></Contact>
+        <Footer></Footer>
         </div>
     );
 };

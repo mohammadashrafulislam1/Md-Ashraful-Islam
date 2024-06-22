@@ -1,5 +1,4 @@
 import { FaArrowRight } from 'react-icons/fa';
-import '../ShareCss/ShareCss.css';
 
 const MySkills = () => {
   return (
