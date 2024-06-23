@@ -7,6 +7,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './TestimonialSection.css'; 
 import Rating from 'react-rating';
 import { useMediaQuery } from 'react-responsive';
+import ScrambleText from '../../forAll/ScrambleText';
 
 const truncateText = (text, length) => {
   if (text.length <= length) return text;
@@ -84,10 +85,11 @@ const TestimonialSection = () => {
   const handleCardMouseLeave = () => {
     setHoveredIndex(null);
   };
+  const texts = ['testimonials_', 'reviews_', 'what my clients saying_'];
   return (
     <div className="bg-[#0e0c15] containerTest">
       <h1 className="mb-5 section-title">
-        testimonial section_
+      <ScrambleText texts={texts}/>
       </h1>
       <Carousel
         showThumbs={false}

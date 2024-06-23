@@ -23,7 +23,7 @@ const Languages = () => {
     
     <div className="my-24">
       <h1 className="mb-5 section-title">
-      <ScrambleText texts={texts} />  languages_
+      <ScrambleText texts={texts} />
         </h1>
       <div ref={sliderRef} className="keen-slider">
       <div className="keen-slider__slide number-slide1 flex flex-wrap md:gap-5"><img src="https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png" className="w-[40px] rounded-lg" alt="" />

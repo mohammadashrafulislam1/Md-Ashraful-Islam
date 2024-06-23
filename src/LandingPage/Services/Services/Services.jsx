@@ -3,6 +3,7 @@ import Development from '../Development/Development';
 import SEO from '../SEO/SEO';
 import Design from '../Design/Design';
 import { Typography } from '@mui/material';
+import ScrambleText from '../../../forAll/ScrambleText';
 
 const Services = () => {
   const [showDevelopment, setShowDevelopment] = useState(true);
@@ -26,11 +27,12 @@ const Services = () => {
     setShowSEO(false);
     setShowDesign(true);
   };
+  const texts = ['service_', 'offerings_', 'what we do_'];
 
   return (
     <div className='my-16'>
     <h1 className="mb-5 section-title">
-          service_
+        <ScrambleText texts={texts}/>
         </h1>
     <div className="md:grid grid-cols-2 md:gap-20 items-center z-20">
       <div>

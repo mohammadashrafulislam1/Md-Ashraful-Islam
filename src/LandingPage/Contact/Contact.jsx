@@ -2,11 +2,13 @@ import { FaEnvelope, FaMapMarkedAlt, FaPhone } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { Typography } from '@mui/material';
 import './Contact.css'
+import ScrambleText from '../../forAll/ScrambleText';
 const Contact = () => {
+  const texts = ['contact us_', 'what you want to say?_', 'what services you want?_'];
   return (
     <div className="contact-section"><div className="max-w-7xl md:mx-auto pb-10 mx-5">
    <h1 className="mb-5 section-title">
-          contact us_
+   <ScrambleText texts={texts}/>
         </h1>
     <div className="text-white flex flex-wrap justify-center md:gap-5 gap-1 mb-10">
     <motion.div
