@@ -9,6 +9,7 @@
   height:fit-content;
   font-family: "Poppins", sans-serif;
 }
+
 .section-title{
   font-size: 100px !important;
 }
@@ -218,7 +219,7 @@
     padding: 10px !important;
   }
   .section-title{
-    font-size: 30px;
+    font-size: 30px !important;
   }
   .body-area{
     margin: 0;
@@ -273,3 +274,4 @@
     padding: 50px !important;
   }
 }
+

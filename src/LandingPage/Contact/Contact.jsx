@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 import './Contact.css'
 const Contact = () => {
   return (
-    <div className="mb-28 contact-section">
+    <div className="contact-section"><div className="max-w-7xl md:mx-auto pb-10 mx-5">
    <h1 className="mb-5 section-title">
           contact us_
         </h1>
@@ -179,7 +179,7 @@ const Contact = () => {
               Submit
             </motion.button>
           </form>
-        </div></div>
+        </div></div></div>
     </div>
   );
 };

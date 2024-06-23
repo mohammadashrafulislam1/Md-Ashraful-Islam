@@ -2,6 +2,7 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import "./Languages.css"
 import { Typography } from "@mui/material";
+import ScrambleText from "../../forAll/ScrambleText";
 const Languages = () => {  
    
   const [sliderRef] = useKeenSlider({
@@ -13,11 +14,16 @@ const Languages = () => {
     
     },
   })
+  const texts = [
+    'languages_',
+    'skills_',
+    'technologies_'
+  ];
   return (
     
     <div className="my-24">
       <h1 className="mb-5 section-title">
-          languages_
+      <ScrambleText texts={texts} />  languages_
         </h1>
       <div ref={sliderRef} className="keen-slider">
       <div className="keen-slider__slide number-slide1 flex flex-wrap md:gap-5"><img src="https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png" className="w-[40px] rounded-lg" alt="" />

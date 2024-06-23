@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { endPoint } from "../../forAll/forAll";
-import { Box, Typography, Card, CardContent, Avatar, Button } from '@mui/material';
+import { Box, Typography, CardContent, Avatar } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
 import { FaAngleLeft, FaAngleRight, FaPlus, FaRegStar, FaStar } from 'react-icons/fa';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';

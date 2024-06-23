@@ -12,7 +12,7 @@ const Footer = () => {
     );
 
     return (
-    <div className="my-5">
+    <div className="py-10 bg-[#000] ">
         <a className="normal-case text-xl text-white text-center flex justify-center mb-4 flex justify-center items-center gap-1 font-semibold"><span className="bg-[#0051ff] p-1">Md</span> Ashraf</a>
         <div className="text-white">{navbar}</div>
         <div className="flex justify-center gap-6 mt-3">

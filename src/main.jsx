@@ -6,7 +6,6 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Home from './Home/Home/Home.jsx';
-import Main from './Main/Main';
 import LandingPage from './LandingPage/LandingPage';
 import ProjectSubmissionForm from './AdminDashboard/ProjectSubmissionForm/ProjectSubmissionForm.jsx';
 import Dashboard from './AdminDashboard/Dashboard/Dashboard';
@@ -15,11 +14,12 @@ import ClientsList from './AdminDashboard/ClientsList/ClientsList';
 import ProjectsList from './AdminDashboard/ProjectsList/ProjectsList';
 import TestimonialList from './AdminDashboard/TestimonialList/TestimonialList.jsx';
 import TestimonialForm from './AdminDashboard/TestimonialForm/TestimonialForm.jsx';
+import Main from './Main/Main.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main></Main>,
+    element: <Main/>,
     errorElement:<h2>Error</h2>,
     children:[
       {
