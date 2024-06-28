@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # Adjust version according to your setup
+          node-version: '18'  # Adjust version according to your setup
 
       - name: Sync Frontend Directory
         run: |
