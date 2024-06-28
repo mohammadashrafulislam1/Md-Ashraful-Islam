@@ -23,31 +23,13 @@ jobs:
         run: |
           rsync -av --delete /home/ubuntu/frontend/actions-runner/_work/Md-Ashraful-Islam/Md-Ashraful-Islam/ /home/ubuntu/frontend/Md-Ashraful-Islam/
 
-      - name: Install npm dependencies
+      - name: Build and Deploy Frontend
         run: |
           cd /home/ubuntu/frontend/Md-Ashraful-Islam
-          npm install 2>&1 | tee npm-install.log
-
-      - name: Build Frontend
-        timeout-minutes: 15  # Adjust timeout for the build step
-        run: |
-          cd /home/ubuntu/frontend/Md-Ashraful-Islam
-          NODE_ENV=production npm run build | sed "s/\x1B\[[0-9;]*[JKmsu]//g" > npm-build.log  # Remove ANSI escape codes
-          # Check if build completed successfully by inspecting log
-          if grep -q '1669 modules transformed' npm-build.log; then
-            sudo cp -r ./dist/* /var/www/html
-          else
-            echo "Build process did not complete successfully."
-            exit 1
-          fi
+          npm install
+          npm run build
+          sudo cp -r ./dist/* /var/www/html
 
       - name: Restart Nginx
         run: |
-          sudo systemctl restart nginx;
-
-      - name: Cleanup
-        run: |
-          # Perform any cleanup tasks if needed
-          rm -rf /home/ubuntu/frontend/Md-Ashraful-Islam/npm-install.log
-          rm -rf /home/ubuntu/frontend/Md-Ashraful-Islam/npm-build.log
-          # Add more cleanup commands as necessary
+          sudo systemctl restart nginx
