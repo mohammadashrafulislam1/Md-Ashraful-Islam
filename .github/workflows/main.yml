@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: '14'  # Adjust version according to your setup
 
       - name: Sync Frontend Directory
         run: |
@@ -25,12 +25,12 @@ jobs:
       - name: Install npm dependencies
         run: |
           cd /home/ubuntu/frontend/Md-Ashraful-Islam
-          npm install
+          npm ci --legacy-peer-deps  # Use npm ci for clean install
 
       - name: Build Frontend
         run: |
           cd /home/ubuntu/frontend/Md-Ashraful-Islam
-          npm run build
+          NODE_ENV=production npm run build  # Set NODE_ENV to production
           sudo cp -r ./dist/* /var/www/html
 
       - name: Restart Nginx
