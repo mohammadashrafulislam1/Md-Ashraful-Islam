@@ -29,9 +29,16 @@ jobs:
 
       - name: Build Frontend
         run: |
-          cd /home/ubuntu/frontend/Md-Ashraful-Islam
-          NODE_ENV=production npm run build 2>&1 | tee npm-build.log
-          sudo cp -r ./dist/* /var/www/html
+     cd /home/ubuntu/frontend/ Md-Ashraful-Islam
+     NODE_ENV=production npm run build 2>&1 | tee npm-build.log
+     # Example: Check for 'Build complete' message in npm-build.log
+     if grep -q 'Build complete' npm-build.log; then
+      sudo cp -r ./dist/* /var/www/html
+      else
+      echo "Build process did not complete successfully."
+      exit 1
+     fi
+
 
       - name: Restart Nginx
         run: |
