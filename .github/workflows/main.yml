@@ -8,6 +8,7 @@ on:
 jobs:
   deploy-frontend:
     runs-on: self-hosted
+    timeout-minutes: 20  # Adjust timeout as needed
 
     steps:
       - name: Checkout Code
@@ -28,13 +29,12 @@ jobs:
           npm install 2>&1 | tee npm-install.log
 
       - name: Build Frontend
+        timeout-minutes: 15  # Adjust timeout for the build step
         run: |
           cd /home/ubuntu/frontend/Md-Ashraful-Islam
-          NODE_ENV=production npm run build 2>&1 | tee npm-build.log
-          # Wait for a few seconds to ensure build completion
-          sleep 10s
+          NODE_ENV=production npm run build | sed "s/\x1B\[[0-9;]*[JKmsu]//g" > npm-build.log  # Remove ANSI escape codes
           # Check if build completed successfully by inspecting log
-          if grep -q 'Build complete' npm-build.log; then
+          if grep -q '1669 modules transformed' npm-build.log; then
             sudo cp -r ./dist/* /var/www/html
           else
             echo "Build process did not complete successfully."
@@ -51,5 +51,3 @@ jobs:
           rm -rf /home/ubuntu/frontend/Md-Ashraful-Islam/npm-install.log
           rm -rf /home/ubuntu/frontend/Md-Ashraful-Islam/npm-build.log
           # Add more cleanup commands as necessary
-
-      
