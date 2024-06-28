@@ -8,7 +8,7 @@ on:
 jobs:
   deploy-frontend:
     runs-on: self-hosted
-    timeout-minutes: 20  # Adjust timeout as needed
+    timeout-minutes: 40  # Adjust timeout as needed
 
     steps:
       - name: Checkout Code
@@ -18,19 +18,17 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18'
-          
+
+      - name: Sync Frontend Directory
+        run: |
+          rsync -av --delete /home/ubuntu/frontend/actions-runner/_work/Md-Ashraful-Islam/Md-Ashraful-Islam/ /home/ubuntu/frontend/Md-Ashraful-Islam/
+      
       - name: Build and Deploy Frontend
         run: |
           cd /home/ubuntu/frontend/Md-Ashraful-Islam
           npm install
           npm run build
-      - name: Sync Frontend Directory
-        run: |
-          rsync -av --delete /home/ubuntu/frontend/actions-runner/_work/Md-Ashraful-Islam/Md-Ashraful-Islam/ /home/ubuntu/frontend/Md-Ashraful-Islam/
-
-      - name: Deploy Built Files
-        run: |
-          sudo cp -r /home/ubuntu/frontend/Md-Ashraful-Islam/* /var/www/html
+          sudo cp -r ./dist/* /var/www/html
 
       - name: Restart Nginx
         run: |
