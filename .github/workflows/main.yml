@@ -25,12 +25,13 @@ jobs:
       - name: Install npm dependencies
         run: |
           cd /home/ubuntu/frontend/Md-Ashraful-Islam
-          npm ci --legacy-peer-deps  # Use npm ci for clean install
+          rm -rf node_modules
+          npm install
 
       - name: Build Frontend
         run: |
           cd /home/ubuntu/frontend/Md-Ashraful-Islam
-          NODE_ENV=production npm run build  # Set NODE_ENV to production
+          NODE_ENV=production npm run build
           sudo cp -r ./dist/* /var/www/html
 
       - name: Restart Nginx
