@@ -5,7 +5,6 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Home from './Home/Home/Home.jsx';
 import LandingPage from './LandingPage/LandingPage';
 import ProjectSubmissionForm from './AdminDashboard/ProjectSubmissionForm/ProjectSubmissionForm.jsx';
 import Dashboard from './AdminDashboard/Dashboard/Dashboard';
@@ -26,10 +25,6 @@ const router = createBrowserRouter([
         path:"/",
         element:<LandingPage></LandingPage>
       },
-      {
-        path:'home',
-        element:<Home></Home>
-      }
     ]
   },
   {

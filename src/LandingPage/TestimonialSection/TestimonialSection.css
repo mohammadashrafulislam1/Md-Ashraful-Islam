@@ -44,8 +44,8 @@
     /* https://thecleverspace.com/wp-content/uploads/2021/01/blur-ora-1.png */
     background-repeat: no-repeat;
     background-size:350px;
-    background-position-x:80px ;
-    background-position-y: 150px;
+    background-position-x:100px ;
+    background-position-y: 100px;
     background-blend-mode:overlay;
   }
   /* model & arrow */
@@ -119,3 +119,24 @@
     text-align: center;
     position: relative;
   }
+/* TestimonialSection.css */
+.testimonial-card {
+  max-width: 326px;
+  width: 326px;
+  text-align: left;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.testimonial-card.desktop {
+  height: 296px;
+}
+
+.testimonial-card.mobile {
+  height: 300px;
+}

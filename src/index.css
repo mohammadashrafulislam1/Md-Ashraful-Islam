@@ -12,8 +12,8 @@
   font-family: "Poppins", sans-serif;
 }
 
-.section-title{
-  font-size: 100px !important;
+.section-title .text{
+  font-size: 60px !important;
 }
 
 /* Modal Overlay */
@@ -220,8 +220,8 @@
   .Project-sec{
     padding: 10px !important;
   }
-  .section-title{
-    font-size: 30px !important;
+  .section-title .text{
+    font-size: 25px !important;
   }
   .body-area{
     margin: 0;
@@ -269,8 +269,8 @@
     width:fit-content;
     font-size: 15px;
   }
-  .section-title{
-    font-size: 50px;
+  .section-title .text{
+    font-size: 50px !important;
   }
   .contact-section{
     padding: 50px !important;

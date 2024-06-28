@@ -11,13 +11,13 @@ const LandingPage = () => {
     return (
         <div>
         <LandingHero></LandingHero> 
-        <div className="max-w-7xl md:mx-auto pb-10 mx-5">
+        <div className="max-w-7xl md:mx-auto pb-10 md:mx-5 ">
         <Languages></Languages>
         </div>
-        <div className="max-w-7xl md:mx-auto pb-10 mx-5 relative">
+        <div className="max-w-7xl md:mx-auto pb-10 md:mx-5 relative mx-3">
         <Services></Services> 
         </div>
-        <div className="max-w-7xl md:mx-auto pb-10 mx-5">
+        <div className="max-w-7xl md:mx-auto pb-10 md:mx-5">
         <TestimonialSection></TestimonialSection>
         <ProjectSection></ProjectSection>
         </div>
