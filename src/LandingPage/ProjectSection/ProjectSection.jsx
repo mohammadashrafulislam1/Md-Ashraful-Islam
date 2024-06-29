@@ -45,7 +45,7 @@ const ProjectSection = () => {
                       <React.Fragment key={index}>{line}<br /></React.Fragment>
                     ))}
                   </Typography>
-                  {project.technologies.map(technology => console.log(technology))}
+                 
                 </div>
                 <Box className="flip-container">
                   <img
