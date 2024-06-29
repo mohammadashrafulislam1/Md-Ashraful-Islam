@@ -1,1 +1,1 @@
-export const endPoint = 'http://ec2-54-151-95-223.us-west-1.compute.amazonaws.com:4000'
+export const endPoint = 'https://md-ashraful-islam-s-git-2e19ec-mohammadashrafulislam1s-projects.vercel.app'
