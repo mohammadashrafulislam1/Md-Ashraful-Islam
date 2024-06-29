@@ -15,14 +15,14 @@ const truncateText = (text, length) => {
 };
 
 const backgrounds = [
-  'https://res.cloudinary.com/dajqmaltl/image/upload/v1718897997/ashrafulislampersonalwebsite/m9vfm64pvdagunstxhsc.png',
-  'https://res.cloudinary.com/dajqmaltl/image/upload/v1718927495/ashrafulislampersonalwebsite/bipqvsn9hj0revn3pbm6.png',
+  'https://res.cloudinary.com/dajqmaltl/image/upload/v1718897997/ashrafulislampersonalwebsite/blue.png',
+  'https://res.cloudinary.com/dajqmaltl/image/upload/v1718927495/ashrafulislampersonalwebsite/golden.png',
   'https://res.cloudinary.com/dajqmaltl/image/upload/v1718943182/ashrafulislampersonalwebsite/pink.png',
   'https://res.cloudinary.com/dajqmaltl/image/upload/v1718943658/ashrafulislampersonalwebsite/green.png'
 ];
 
 const hoverBackgrounds = [
-  'https://res.cloudinary.com/dajqmaltl/image/upload/v1718927056/ashrafulislampersonalwebsite/jlowho01qdlxrjswa2kt.png',
+  'https://res.cloudinary.com/dajqmaltl/image/upload/v1718927056/ashrafulislampersonalwebsite/blue-hover.png',
   'https://res.cloudinary.com/dajqmaltl/image/upload/v1718927494/ashrafulislampersonalwebsite/golden-hover.png',
   'https://res.cloudinary.com/dajqmaltl/image/upload/v1718943181/ashrafulislampersonalwebsite/pink-hover.png',
   'https://res.cloudinary.com/dajqmaltl/image/upload/v1718943658/ashrafulislampersonalwebsite/green-hover.png',
