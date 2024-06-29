@@ -21,7 +21,9 @@ const LandingPage = () => {
         <TestimonialSection></TestimonialSection>
         <ProjectSection></ProjectSection>
         </div>
+        <div >
         <Contact></Contact>
+        </div>
         <Footer></Footer>
         </div>
     );

@@ -245,7 +245,7 @@
     display: block;
   }
   .contact-section{
-    padding: 20px;
+    padding: 20px !important;
   }
 }
 /* tablet */
@@ -274,6 +274,7 @@
   }
   .contact-section{
     padding: 50px !important;
+    margin: 0 !important;
   }
 }
 

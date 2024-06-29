@@ -6,7 +6,7 @@ import ScrambleText from '../../forAll/ScrambleText';
 const Contact = () => {
   const texts = ['contact us_', 'what you want to say?_', 'what services you want?_'];
   return (
-    <div className="contact-section"><div className="lg:max-w-7xl md:mx-auto pb-10 mx-5">
+    <div className="contact-section"><div className="lg:max-w-7xl md:mx-auto pb-10 md:mx-5 w-full">
    <h1 className="mb-5 section-title">
    <ScrambleText texts={texts}/>
         </h1>
@@ -40,7 +40,7 @@ const Contact = () => {
     </motion.div>
   </div>
       <div className="md:flex flex flex-1 justify-center">
-        <div className="lg:w-[50%] w-full  rounded-3xl md:p-8 mx-[100px] lg:mx-0 sm:mx-0">
+        <div className="md:w-3/4 lg:w-1/2 w-full  rounded-3xl md:p-8 lg:mx-[100px] mx-5 sm:mx-0">
           <form action="https://formspree.io/f/mgejeqoy" method="POST">
             <div className="mb-4">
               <label className="block text-white text-sm font-medium mb-2" htmlFor="name">
