@@ -1,0 +1,29 @@
+/* LoadingSpinner.css */
+  .spinner-img {
+    width: 150px; /* Adjust size as needed */
+    height: 150px; /* Adjust size as needed */
+    transition: opacity 0.3s ease; /* Smooth transition for opacity change */
+  }
+  .glowing {
+    height:680px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .glowing .spinner-img {
+    animation: glow 1.5s ease-in-out infinite alternate; /* Example animation */
+    height: 450px;
+    width:400px
+  }
+  
+  @keyframes glow {
+    from {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+  

@@ -6,7 +6,6 @@ import Languages from "./Languages/Languages";
 import ProjectSection from "./ProjectSection/ProjectSection";
 import Services from "./Services/Services/Services";
 import TestimonialSection from "./TestimonialSection/TestimonialSection.jsx";
-import TimeLine from "./TimeLine/TimeLine";
 const LandingPage = () => {
     return (
         <div>

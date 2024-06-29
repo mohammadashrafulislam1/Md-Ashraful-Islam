@@ -33,7 +33,7 @@ const LandingHero = () => {
         <div className="text-center">
           <img
             src="https://i.ibb.co/XLZZBJh/20220902-193547.png"
-            alt=""
+            alt="MD Ashraful Islam - professional full stack web developer, mern stack developer, seo exper"
             className=""
           />
         <h1 className="text-white text-5xl font-semibold mt-0">MD Ashraful Islam</h1>
