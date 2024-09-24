@@ -12,6 +12,8 @@ import TestimonialList from './AdminDashboard/TestimonialList/TestimonialList.js
 import TestimonialForm from './AdminDashboard/TestimonialForm/TestimonialForm.jsx';
 import Main from './Main/Main.jsx';
 import LoadingSpinner from './forAll/LoadingSpinner/LoadingSpinner.jsx';
+import { endPoint } from './forAll/forAll.js';
+import DetailedProject from './DetailedProject/DetailedProject.jsx';
 
 const App = () => {
   const [loading, setLoading] = useState(true); // Initial loading state
@@ -65,6 +67,11 @@ const App = () => {
           element: <TestimonialForm />,
         },
       ],
+    },
+    {
+      path: '/project/:id',
+      element: <DetailedProject />,
+      loader: ({ params }) => fetch(`${endPoint}/project/${params._id}`)
     },
   ]);
 

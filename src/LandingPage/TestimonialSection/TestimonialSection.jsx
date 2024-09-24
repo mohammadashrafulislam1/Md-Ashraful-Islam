@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { endPoint } from "../../forAll/forAll";
 import { Box, Typography, CardContent, Avatar } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
-import { FaAngleLeft, FaAngleRight, FaPlus, FaRegStar, FaStar } from 'react-icons/fa';
+import { FaAngleLeft, FaAngleRight, FaRegStar, FaStar } from 'react-icons/fa';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import 'aos/dist/aos.css'; // Import AOS styles
 import './TestimonialSection.css';
 import Rating from 'react-rating';
 import { useMediaQuery } from 'react-responsive';
 import ScrambleText from '../../forAll/ScrambleText';
+import AOS from 'aos'; // Import AOS
 
 const truncateText = (text, length) => {
   if (text.length <= length) return text;
@@ -63,6 +65,7 @@ const TestimonialSection = () => {
     };
 
     fetchTestimonials();
+    AOS.init({ duration: 1000 }); // Initialize AOS with desired duration
   }, []);
 
   if (loading) {
@@ -91,7 +94,7 @@ const TestimonialSection = () => {
 
   const texts = ['testimonials_', 'reviews_', 'what my clients saying_'];
   return (
-    <div className="bg-[#0e0c15] containerTest">
+    <div className="bg-[#0e0c15] containerTest" data-aos="fade-up">
       <h1 className="mb-5 section-title">
         <ScrambleText texts={texts} />
       </h1>
@@ -117,7 +120,12 @@ const TestimonialSection = () => {
         }
       >
         {testimonials.map((testimonial, index) => (
-          <Box key={index} sx={{ display: 'flex', justifyContent: 'center', p: 2, borderRadius: '20px' }} className="text-white">
+          <Box
+            key={index}
+            sx={{ display: 'flex', justifyContent: 'center', p: 2, borderRadius: '20px' }}
+            className="text-white"
+            data-aos="zoom-in"
+          >
             <div
               className={cardClass}
               style={{
@@ -152,7 +160,7 @@ const TestimonialSection = () => {
       </Carousel>
 
       {selectedTestimonial && (
-        <div className="modal-overlay" onClick={handleClose}>
+        <div className="modal-overlay" onClick={handleClose} data-aos="fade-in">
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="bg-over">
               <div className="flex justify-center gap-5">

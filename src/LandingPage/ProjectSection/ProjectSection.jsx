@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Container, Grid, Box, Typography, Button } from '@mui/material';
 import { FaArrowRight } from 'react-icons/fa';
 import ScrambleText from '../../forAll/ScrambleText'; // Adjust the path as needed
+import 'aos/dist/aos.css'; // Import AOS styles
+import AOS from 'aos'; // Import AOS
 
 const ProjectSection = () => {
   const [projects, setProjects] = useState(null);
@@ -21,6 +23,7 @@ const ProjectSection = () => {
       }
     };
     fetchData();
+    AOS.init({ duration: 1000 }); // Initialize AOS with desired duration
   }, []);
 
   const texts = [
@@ -30,14 +33,14 @@ const ProjectSection = () => {
   ];
 
   return (
-    <Box id="projects">
+    <Box id="projects" data-aos="fade-up">
       <h1 className="mb-5 section-title">
         <ScrambleText texts={texts} />
       </h1>
       <div className='Project-sec'>
         <Grid container spacing={4}>
           {filteredProjects && filteredProjects.slice(0, 8).map((project, index) => (
-            <Grid item xs={12} sm={12} md={6} key={index} className="flipping">
+            <Grid item xs={12} sm={12} md={6} key={index} className="flipping" data-aos="fade-right" data-aos-delay={index * 100}>
               <Box sx={{ boxShadow: 3, borderRadius: 2, p: 2 }}>
                 <div>
                   <Typography variant="h2" className="gradient-text font-[500!important] font-poppins" sx={{ mb: 2 }}>
@@ -45,7 +48,6 @@ const ProjectSection = () => {
                       <React.Fragment key={index}>{line}<br /></React.Fragment>
                     ))}
                   </Typography>
-                 
                 </div>
                 <Box className="flip-container">
                   <img
@@ -54,13 +56,13 @@ const ProjectSection = () => {
                     src={project.projectImage}
                     style={{ color: 'transparent', objectFit: 'cover'}}
                   />
-                  <FaArrowRight className="arrow-icon" />
+                  <Link to={`project/${project._id}`}><FaArrowRight className="arrow-icon" /></Link>
                 </Box>
               </Box>
             </Grid>
           ))}
         </Grid>
-        <Box sx={{ mt: 4 }} className="flex justify-center">
+        <Box sx={{ mt: 4 }} className="flex justify-center" data-aos="fade-up">
           <Link to="/home/project">
             <Button variant="contained" color="primary">
               All projects

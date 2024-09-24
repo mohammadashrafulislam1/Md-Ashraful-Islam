@@ -12,8 +12,8 @@
   }
   .glowing .spinner-img {
     animation: glow 1.5s ease-in-out infinite alternate; /* Example animation */
-    height: 450px;
-    width:400px
+    height: 350px;
+    width:350px
   }
   
   @keyframes glow {
