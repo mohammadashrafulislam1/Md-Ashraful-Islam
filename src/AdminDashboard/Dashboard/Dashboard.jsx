@@ -29,21 +29,12 @@ const Dashboard = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-          <ul className="menu bg-[#fff] text-base-content min-h-full w-full md:p-4 gap-2 align-middle">
+          <ul className="menu p-4 w-80 h-full bg-[#cbdccb] min-h-full">
             {/* Sidebar content here */}
             {upNavLink}
           <div className="divider"></div>
           {downNavLink}
           </ul>
-          
-          <ul className="menu p-4 w-80 h-full bg-[#cbdccb] text-base-content">
-            {/* Sidebar content here */}
-            {upNavLink}
-          <div className="divider"></div>
-            {downNavLink}
-          </ul>
-
-        
         </div>
       </div>
       <div className="md:w-3/4 w-full mx-auto mr-3"><Outlet></Outlet>
