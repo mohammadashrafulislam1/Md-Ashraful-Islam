@@ -119,7 +119,7 @@ const ProjectsList = () => {
                       <div className="flex items-center gap-3">
                         <div className="avatar mx-0">
                           <div className="w-20 h-12 md:w-32 md:h-20">
-                            <img src={project?.projectImage} alt="Project" className="w-full rounded" />
+                            <img src={project?.projectImage} alt="Project" className="w-full rounded" style={{ color: 'transparent', objectFit: 'cover', objectPosition: 'top',}}/>
                           </div>
                         </div>
                         <div className='ml-10'>
