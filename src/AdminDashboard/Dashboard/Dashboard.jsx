@@ -30,6 +30,7 @@ const Dashboard = () => {
           className="drawer-overlay"
         ></label>
           <ul className="menu p-4 w-80 h-full bg-[#cbdccb] min-h-full fixed">
+            
             {/* Sidebar content here */}
             {upNavLink}
           <div className="divider"></div>

@@ -54,7 +54,7 @@ const ProjectSection = () => {
                     className="flip-image"
                     alt={project.title}
                     src={project.projectImage}
-                    style={{ color: 'transparent', objectFit: 'cover'}}
+                    style={{ color: 'transparent', objectFit: 'cover', objectPosition: 'top',}}
                   />
                   <Link to={`project/${project._id}`}><FaArrowRight className="arrow-icon" /></Link>
                 </Box>
