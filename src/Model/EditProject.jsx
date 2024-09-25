@@ -205,7 +205,7 @@ setLoading(false)
 };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 ">
+    <div className="flex items-center justify-center z-50 bg-black bg-opacity-50 ">
       <div className="bg-white rounded-xl p-8 shadow-lg relative max-w-md w-full text-black overflow-scroll">
       <button
         className="absolute top-9 right-6 text-gray-800 font-bold hover:text-black"
