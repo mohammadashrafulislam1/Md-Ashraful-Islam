@@ -153,8 +153,8 @@ setIsSubmitting(true)
 
 console.log(formData)
 // Send POST request to backend API
-const response = await fetch(apiUrl, {
-method: 'POST',
+const response = await fetch(`${endPoint}/projects/${projectId}`, {
+method: 'PUT',
 body: formData,
 });
 
