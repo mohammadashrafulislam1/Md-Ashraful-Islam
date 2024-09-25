@@ -125,7 +125,7 @@ setGalleryImages(Array.from(selectedImages));
 
 const handleFormUpdate = async (e) => {
 e.preventDefault();
-
+  console.log('clicking')
 // First, submit client info
 try {
 // Continue with project submission
