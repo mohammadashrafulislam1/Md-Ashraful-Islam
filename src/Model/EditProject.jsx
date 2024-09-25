@@ -205,8 +205,8 @@ setLoading(false)
 };
 
   return (
-    <div className="absolute md:top-0 md:left-1/2 md:right-1/2 flex items-center justify-center z-50 bg-black bg-opacity-50 ">
-      <div className="bg-white rounded-xl p-8 shadow-lg relative max-w-md w-full text-black overflow-scroll">
+    <div className="fixed inset-0 overflow flex items-center justify-center z-50 bg-black bg-opacity-50 ">
+      <div className="bg-white rounded-xl p-8 shadow-lg relative max-w-md w-full text-black overflow">
       <button
         className="absolute top-9 right-6 text-gray-800 font-bold hover:text-black"
         onClick={onClose} // Call the onClose function to hide the modal
