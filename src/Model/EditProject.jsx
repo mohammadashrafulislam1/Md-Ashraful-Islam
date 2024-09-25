@@ -205,17 +205,17 @@ setLoading(false)
 };
 
   return (
-    <div className="bg-white p-4 rounded-lg">
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
       <button
-        className="absolute top-2 right-2 text-black"
+        className="absolute top-9 right-6 text-gray-800 font-bold hover:text-black"
         onClick={onClose} // Call the onClose function to hide the modal
       >
-        &times; {/* This represents the cross (×) button */}
+        X
       </button>
       {loading ? (
         <>Loading... <span className="loading loading-ring loading-lg"></span></>
       ) :
-    <form onSubmit={handleFormUpdate} method="dialog" className="rounded-lg text-black">
+    <form onSubmit={handleFormUpdate} className="rounded-lg text-black">
 <hr />
 <div className="my-4">
 <label htmlFor="isFeatured" className="block text-black text-sm font-bold mb-2">
