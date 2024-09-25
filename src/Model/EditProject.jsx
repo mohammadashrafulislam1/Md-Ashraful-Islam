@@ -7,7 +7,7 @@ import { endPoint } from "../forAll/forAll";
 const imgHostingToken = import.meta.env.VITE_img_upload_token;
 const imgHostingUrl = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`;
 
-const EditProject = ({ projectId }) => {
+const EditProject = ({ projectId, onClose  }) => {
 console.log(projectId)
 // State variables for form fields
 const [project, setProject] = useState(null)
@@ -207,8 +207,15 @@ setIsSubmitting(false)
 
   return (
     <div className="modal-box rounded-lg">
-   {loading ? <>Loading... <span className="loading loading-ring loading-lg"></span>
-</> : <div method="dialog">
+      <button
+        className="absolute top-2 right-2 text-black"
+        onClick={onClose} // Call the onClose function to hide the modal
+      >
+        &times; {/* This represents the cross (×) button */}
+      </button>
+      {loading ? (
+        <>Loading... <span className="loading loading-ring loading-lg"></span></>
+      ) :
     <form onSubmit={handleFormUpdate} method="dialog" className="rounded-lg text-black">
 <hr />
 <div className="my-4">
@@ -431,10 +438,7 @@ className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:out
 </div>
 <button type="submit" className="btn btn-primary">Update Project</button>
 </form>
-
-      {/* if there is a button in form, it will close the modal */}
-      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-black">✕</button>
-      </div>
+      
 }
   </div>
   );

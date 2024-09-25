@@ -8,7 +8,7 @@ const ProjectsList = () => {
   const [clientDataMap, setClientDataMap] = useState({});
   const [loading, setLoading] = useState(true);
   const [projectId, setProjectId] = useState('');
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -74,13 +74,15 @@ const ProjectsList = () => {
     });
   };
 
-  const handleUpdateProject = (projectId) => {
-    // When the update button is clicked, show the modal with the EditProject component
-    const modal = document.getElementById('my_modal_4');
-    modal.showModal();
-    setProjectId(projectId);
+  const handleUpdateProject = (id) => {
+    setProjectId(id); // Set the project ID to be edited
+    setIsModalOpen(true); // Show the modal
   };
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false); // Close the modal
+    setProjectId(null); // Reset the project ID if necessary
+  }
   const parseTechnologies = (technologies) => {
     try {
       return JSON.parse(technologies);
@@ -141,10 +143,11 @@ const ProjectsList = () => {
                   </tr>
                 </tbody>
               ))}
-              {/* Dialog for displaying the EditProject component */}
-              <dialog id="my_modal_4" className="modal">
-                <EditProject projectId={projectId} />
-              </dialog>
+              {isModalOpen && (
+        <dialog id="my_modal_4" className="modal">
+          <EditProject projectId={projectId} onClose={handleCloseModal} />
+        </dialog>
+      )}
             </table>
           ) : (
             <div className="text-white text-center">No projects found.</div>
