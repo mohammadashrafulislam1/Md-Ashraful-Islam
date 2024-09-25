@@ -208,7 +208,7 @@ setIsSubmitting(false)
   return (
     <div className="modal-box rounded-lg">
    {loading ? <>Loading... <span className="loading loading-ring loading-lg"></span>
-</> : <form method="dialog">
+</> : <div method="dialog">
     <form onSubmit={handleFormUpdate} method="dialog" className="rounded-lg text-black">
 <hr />
 <div className="my-4">
@@ -434,7 +434,7 @@ className="w-full bg-white border border-gray-300 rounded-lg py-2 px-3 focus:out
 
       {/* if there is a button in form, it will close the modal */}
       <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-black">✕</button>
-    </form>
+      </div>
 }
   </div>
   );
