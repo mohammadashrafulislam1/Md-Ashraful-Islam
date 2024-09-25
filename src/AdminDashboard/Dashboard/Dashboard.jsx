@@ -24,8 +24,12 @@ const Dashboard = () => {
         
         </div> 
         <div className="drawer-side">
-          <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
-          <ul className="menu p-4 w-80 h-full bg-[#cbdccb] ">
+        <label
+          htmlFor="my-drawer"
+          aria-label="close sidebar"
+          className="drawer-overlay"
+        ></label>
+          <ul className="menu bg-[#fff] text-base-content min-h-full w-full md:p-4 gap-2 align-middle">
             {/* Sidebar content here */}
             {upNavLink}
           <div className="divider"></div>
