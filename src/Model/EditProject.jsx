@@ -8,10 +8,9 @@ const imgHostingToken = import.meta.env.VITE_img_upload_token;
 const imgHostingUrl = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`;
 
 const EditProject = ({ projectId, onClose  }) => {
-console.log(projectId)
+console.log(projectId, onClose)
 // State variables for form fields
 const [project, setProject] = useState(null)
-const [isSubmitting, setIsSubmitting] = useState(false);
 const [loading, setLoading] = useState(true);
 const [title, setTitle] = useState('');
 const [description, setDescription] = useState('');
@@ -149,7 +148,7 @@ galleryImages.forEach((image) => {
 formData.append('galleryImages', image);
 });
 
-setIsSubmitting(true)
+setLoading(true)
 
 console.log(formData)
 // Send POST request to backend API
@@ -201,12 +200,12 @@ title: 'Error',
 text: 'Failed to submit project. Please try again later.',
 });
 } finally{
-setIsSubmitting(false)
+setLoading(false)
 }
 };
 
   return (
-    <div className="modal-box rounded-lg">
+    <div className="bg-white p-4 rounded-lg">
       <button
         className="absolute top-2 right-2 text-black"
         onClick={onClose} // Call the onClose function to hide the modal

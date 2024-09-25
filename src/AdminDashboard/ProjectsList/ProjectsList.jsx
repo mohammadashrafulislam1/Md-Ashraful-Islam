@@ -144,9 +144,7 @@ const ProjectsList = () => {
                 </tbody>
               ))}
               {isModalOpen && (
-        <dialog id="my_modal_4" className="modal">
           <EditProject projectId={projectId} onClose={handleCloseModal} />
-        </dialog>
       )}
             </table>
           ) : (
