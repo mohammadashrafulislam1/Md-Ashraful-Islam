@@ -90,9 +90,10 @@ console.log(galleryImages)
       formData.append('projectImage', projectImage);
       formData.append('mobileImage', mobileImage);
       formData.append('tabletImage', tabletImage);
-      galleryImages.forEach((image) => {
-        formData.append('galleryImages', image);
-      });
+      // Append gallery images individually
+    galleryImages.forEach((image, index) => {
+      formData.append('galleryImages', image); // Send each image with the same key
+    });
       formData.append('clientInfo', JSON.stringify(clientInfo)); // Serialize clientInfo object
       formData.append('testimonial', JSON.stringify(testimonialData)); // Add testimonial ObjectId
       
