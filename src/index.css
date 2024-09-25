@@ -26,7 +26,9 @@
   background-color: rgba(0, 0, 0, 0.5); /* Transparent black */
   z-index: 999; /* Ensure it's above other content */
 }
-
+.carousel .control-dots {
+  bottom: -50px !important;
+}
 /* Modal Box */
 .modal-box {
   position: fixed;
