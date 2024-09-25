@@ -33,7 +33,7 @@ const ProjectSubmissionForm = () => {
   const [testimonial, setTestimonial] = useState('');
   const [des, setDes] = useState('');
   const [rating, setRating] = useState('');
-
+console.log(galleryImages)
   // State variables for client info
   const [clientInfo, setClientInfo] = useState({
     clientName: '',
