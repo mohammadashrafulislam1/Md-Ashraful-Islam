@@ -43,7 +43,7 @@ const ProjectSection = () => {
             <Grid item xs={12} sm={12} md={6} key={index} className="flipping" data-aos="fade-right" data-aos-delay={index * 100}>
               <Box sx={{ boxShadow: 3, borderRadius: 2, p: 2 }}>
                 <div>
-                  <Typography variant="h2" className="gradient-text font-[500!important] font-poppins" sx={{ mb: 2 }}>
+                  <Typography variant="h2" className="gradient-text font-[500!important] font-poppins !text-[30px]" sx={{ mb: 2 }}>
                     {project.title.split('<br>').map((line, index) => (
                       <React.Fragment key={index}>{line}<br /></React.Fragment>
                     ))}
@@ -52,7 +52,7 @@ const ProjectSection = () => {
                 <Box className="flip-container">
                   <img
                     className="flip-image"
-                    alt={project.title}
+                    alt={project.title + "Md Ashraful Islam - PortFolio - Best Web Developer - MERN Stack - Full stack web Developer"}
                     src={project.projectImage}
                     style={{ color: 'transparent', objectFit: 'cover', objectPosition: 'top',}}
                   />

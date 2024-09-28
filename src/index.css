@@ -11,7 +11,9 @@
   height:fit-content;
   font-family: "Poppins", sans-serif;
 }
-
+#root, .poppins{
+  font-family: "Poppins", sans-serif;
+}
 .section-title .text{
   font-size: 60px !important;
 }
@@ -142,7 +144,6 @@
 }
 .gradient-text {
   background: -webkit-linear-gradient(#eee, #333);
-  font-size: 30px !important;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -206,6 +207,141 @@
   color:white !important;
   font-family: poppins;
 }
+/* btns on detail project page */
+/* Base button styles with provided effects */
+.button {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #ffffff80;
+  text-shadow: none;
+  background: transparent;
+  cursor: pointer;
+  box-shadow: transparent;
+  border: 1px solid #ffffff80;
+  transition: 0.5s ease;
+  user-select: none;
+}
+
+.button:hover,
+.button:focus {
+  color: #ffffff;
+  background: #008cff;
+  border: 1px solid #008cff;
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+  box-shadow: 0 0 5px #008cff, 0 0 20px #008cff, 0 0 50px #008cff, 0 0 100px #008cff;
+}
+
+/* Container and icon specific styling for consistent layout */
+.bookmarkBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Added spacing between icon and text */
+}
+
+.IconContainer {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain; /* Keeps the aspect ratio consistent */
+}
+/* Container styles */
+.container {
+  padding: 80px 0;
+}
+
+/* Content positioning */
+.content {
+  position: relative;
+}
+
+/* Screen - Image container with animated border */
+.screen:hover,
+.screen:focus {
+  color: #ffffff;
+  background: #008cff;
+  text-shadow: 0 0 5px #ffffff, 0 0 7px #ffffff, 0 0 10px #ffffff;
+  box-shadow: 0 0 5px #008cffa4, 0 0 10px #008cff79, 0 0 20px #008cff9d, 0 0 30px #008cff7c;
+}
+.screen {
+  display: block;
+  width: 750px;
+  height: 480px; /* Set the height of the visible area */
+  overflow: hidden; /* Ensures the image stays within the container */
+  position: relative;
+  margin: 0 auto;
+  border-radius: 20px !important;
+
+  /* Animated border styles */
+  --border-angle: 0turn; /* For animation */
+  --main-bg: conic-gradient(
+    from var(--border-angle),
+    #213,
+    #112 5%,
+    #112 60%,
+    #213 95%
+  );
+  border: solid 2px transparent;
+  border-radius: 2em;
+  --gradient-border: conic-gradient(
+    from var(--border-angle),
+    transparent 25%,
+    rgb(0, 47, 255),
+    rgb(255, 0, 0),
+    rgb(255, 0, 162),
+    rgb(30, 255, 0),
+    transparent
+  );
+
+  background: 
+    var(--main-bg) padding-box,
+    var(--gradient-border) border-box,
+    var(--main-bg) border-box;
+  background-position: center center;
+
+  animation: bg-spin 3s linear infinite;
+}
+
+/* Image inside the screen container */
+.screen img {
+  position: absolute;
+  top: 0; /* Initial position */
+  width: 100%;
+  z-index: 0;
+  transition: top 11s; /* Smooth transition for scrolling */
+}
+
+/* Scrolling effect on hover */
+.screen:hover img {
+  top: -120px; /* Adjust this value based on image height to avoid gap */
+  transition: top 11s;
+}
+
+/* Keyframes for the animated border */
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+/* Registering the border angle property */
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+
 /* Responsive */
 
 @media only screen and (max-width: 600px) {

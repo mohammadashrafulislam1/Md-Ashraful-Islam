@@ -75,7 +75,7 @@ const LandingHero = () => {
                             1000,
                             'Experience in NODE.JS',
                             1000,
-                            'Experience in Expres.JS',
+                            'Experience in Express.JS',
                             1000,
                             'Experience in JAVASCRIPT',
                             1000,
@@ -83,12 +83,19 @@ const LandingHero = () => {
                             1000,
                             'Experience in CSS',
                             1000,
+                            'Experience in Redux',
+                            1000,
+                            'Experience in Next.JS',
+                            1000,
                             'Experience in WORDPRESS',
                             1000,
                             'Experience in TAILWIND',
                             1000,
                             'Experience in BOOTSTRAP',
                             1000,
+                            'Experience in PYTHON',
+                            1000,
+
                         ]}
                         speed={50}
                         style={{ fontSize: '16px', color: "wheat" }}

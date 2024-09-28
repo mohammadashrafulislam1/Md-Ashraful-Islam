@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { endPoint } from '../../forAll/forAll';
 import Swal from 'sweetalert2';
 import './Testimonial.css';
+import EditTestimonies from '../../Model/EditTestimonies';
 
 const TestimonialList = () => {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentTestimonial, setCurrentTestimonial] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   console.log(testimonials)
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -96,7 +99,15 @@ const TestimonialList = () => {
     }
   };
   
-  
+  const handleUpdateTestimonies = (id) => {
+    const testimonialToEdit = testimonials.find(testimonial => testimonial._id === id);
+    setCurrentTestimonial(testimonialToEdit); // Set the current testimonial to be edited
+    setIsModalOpen(true); // Show the modal
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false); // Close the modal
+    setCurrentTestimonial(null); // Reset the project ID if necessary
+  };
 
   return (
     <div className="testimonial-list-container text-white">
@@ -150,11 +161,16 @@ const TestimonialList = () => {
                         )}
                       </td>
                       <td>
-                        <button className="btn btn-success text-white btn-xs mb-2 mr-1" onClick={() => handleUpdateTestimonial(testimonial._id)}>Update</button>
+                        <button className="btn btn-success text-white btn-xs mb-2 mr-1" onClick={() => handleUpdateTestimonies(testimonial._id)}>Update</button>
                         <button className="btn btn-error text-white btn-xs" onClick={() => handleDeleteTestimonial(testimonial._id)}>Delete</button>
                       </td>
                     </tr>
                   ))}
+                  {isModalOpen && (
+                <EditTestimonies testimonyId={currentTestimonial._id}
+                currentData={currentTestimonial}
+                onClose={handleCloseModal} />
+              )}
                 </tbody>
               </table>
             ) : (

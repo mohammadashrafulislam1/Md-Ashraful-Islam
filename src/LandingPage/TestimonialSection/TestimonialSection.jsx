@@ -11,10 +11,12 @@ import { useMediaQuery } from 'react-responsive';
 import ScrambleText from '../../forAll/ScrambleText';
 import AOS from 'aos'; // Import AOS
 
-const truncateText = (text, length) => {
-  if (text.length <= length) return text;
-  return text.substring(0, length) + '...';
+const truncateText = (text, wordLimit) => {
+  const words = text.split(' ');
+  if (words.length <= wordLimit) return text;
+  return words.slice(0, wordLimit).join(' ') + '...';
 };
+
 
 const backgrounds = [
   'https://res.cloudinary.com/dajqmaltl/image/upload/v1718897997/ashrafulislampersonalwebsite/blue.png',
@@ -142,8 +144,8 @@ const TestimonialSection = () => {
                   {testimonial.des}
                 </Typography>
                 <p className="text-white font-thin testimonial-p">
-                  {truncateText(testimonial.testimonial, 100)}
-                </p>
+  {truncateText(testimonial.testimonial, 15)}
+</p>
               </CardContent>
               <div className="flex justify-between pb-4 px-4">
                 <Avatar
