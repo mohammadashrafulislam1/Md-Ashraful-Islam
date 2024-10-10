@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { endPoint } from "../forAll/forAll";
 import Footer from "../LandingPage/Footer/Footer";
 import Navigation from "../Shared/Navigation/Navigation";
 import { motion } from "framer-motion";
 import { FaGithub, FaLocationArrow, FaServer } from "react-icons/fa";
+import ScrambleText from "../forAll/ScrambleText";
 
 const DetailedProject = () => {
   const { id } = useParams();
@@ -16,7 +17,6 @@ const DetailedProject = () => {
     const fetchProperty = async () => {
       const response = await fetch(`${endPoint}/projects/${id}`);
       const projectData = await response.json();
-      console.log(projectData);
       setProperty(projectData);
     };
     fetchProperty();
@@ -42,35 +42,38 @@ const DetailedProject = () => {
     };
   }, [project]);
 
-  // Define different variants for scroll animations
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.3 } },
   };
 
-  // Convert to Date object
+  const imageVariants = {
+    hidden: { opacity: 0, y: 50 }, // Fade in with upward scroll effect
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  };
+
   const date = new Date(project?.created_at);
   const month = date.toLocaleString("default", { month: "long" });
   const day = date.getDate();
   const year = date.getFullYear();
   const formattedDate = `${month} ${day}, ${year}`;
+  const DesTexts = ["description_", "what we have done?_", "how we completed?_"];
 
   return (
     <div>
-      {/* Header */}
       <Navigation />
-      {/* Featured Section and Title */}
+
       <motion.div
-        className="md:flex items-center justify-center relative md:mt-0 mt-6 hero-section pb-20 flex py-14 hero-section px-10"
+        className="flex mx-auto flex-col lg:flex-row items-center justify-center relative md:mt-0 hero-section pb-20 py-14 px-5 md:px-10"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div>
+        <div className="lg:w-1/2 w-full md:text-left project-des">
           <p className="bg-[#ffffff85] text-black w-fit px-2 ml-1 mb-2">
             {formattedDate}
           </p>
-          <h2 className="gradient-text !font-[600] !text-5xl poppins">
+          <h2 className="gradient-text lg:!font-[600] lg:!text-5xl poppins">
             {project?.title}
           </h2>
           <p className="text-[#ffffff85] ml-1 mb-3">
@@ -113,7 +116,8 @@ const DetailedProject = () => {
             )}
           </div>
         </div>
-        <div className="container">
+
+        <div className="container w-full lg:w-1/2">
           <div className="content">
             <div className="screen">
               <img
@@ -135,7 +139,37 @@ const DetailedProject = () => {
           </div>
         </div>
       </motion.div>
-      {/* Footer */}
+
+      {/* Description */}
+      <div className="my-10 md:w-1/2 w-full mx-auto md:p-0 p-5">
+        <ScrambleText texts={DesTexts}></ScrambleText>
+        <p
+          className="text-[16px] md:text-[18px] text-black font-normal text-white font-[300]"
+          dangerouslySetInnerHTML={{ __html: project?.description }}
+        />
+      </div>
+
+      {/* Gallery Images with Scroll Animation */}
+      <div className="gallery my-10 w-full mx-auto px-5 md:w-3/4">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
+          {project?.galleryImages?.map((img, index) => (
+            <motion.img
+              key={index}
+              src={img}
+              alt=""
+              className="w-full h-auto object-cover rounded-lg shadow-lg"
+              variants={imageVariants}
+            />
+          ))}
+        </motion.div>
+      </div>
+
       <Footer />
     </div>
   );

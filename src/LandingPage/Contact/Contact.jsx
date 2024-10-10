@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Typography } from '@mui/material';
 import './Contact.css'
 import ScrambleText from '../../forAll/ScrambleText';
-const Contact = () => {
+const Contact = (width) => {
   const texts = ['contact us_', 'what you want to say?_', 'what services you want?_'];
   return (
     <div className="contact-section"><div className="lg:max-w-7xl md:mx-auto pb-10 md:mx-5 w-full">

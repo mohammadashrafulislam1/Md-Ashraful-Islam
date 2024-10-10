@@ -280,7 +280,7 @@
   overflow: hidden; /* Ensures the image stays within the container */
   position: relative;
   margin: 0 auto;
-  border-radius: 20px !important;
+  border-radius: 20px;
 
   /* Animated border styles */
   --border-angle: 0turn; /* For animation */
@@ -321,11 +321,7 @@
   transition: top 11s; /* Smooth transition for scrolling */
 }
 
-/* Scrolling effect on hover */
-.screen:hover img {
-  top: -120px; /* Adjust this value based on image height to avoid gap */
-  transition: top 11s;
-}
+
 
 /* Keyframes for the animated border */
 @keyframes bg-spin {
@@ -343,8 +339,62 @@
 
 
 /* Responsive */
-
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 100px){
+  .screen{
+    width: 250px !important;
+    height: 250px !important;
+  }
+  .container {
+    padding: 20px 0;
+  }
+  .project-section{
+    padding: 10px;
+  }
+  .project-des{
+    width: 250px ;
+  }
+  .section-title .text{
+    font-size: 18px !important;
+  }
+  .gradient-text{
+    font-size: 18px !important;
+  }
+}
+@media only screen and (min-width: 350px){
+  .screen{
+    width: 340px !important;
+    height: 340px !important;
+  }
+  .container {
+    padding: 20px 0;
+  }
+  .project-section{
+    padding: 10px;
+  }
+  .project-des{
+    width: 340px ;
+  }
+  .section-title .text{
+    font-size: 18px !important;
+  }
+  .gradient-text{
+    font-size: 18px !important;
+  }
+}
+@media only screen and (min-width: 500px) {
+  .screen{
+    width: 450px !important;
+    height: 450px !important;
+  }
+  .project-des{
+    width: 450px ;
+  }
+  .container {
+    padding: 20px 0;
+  }
+  .hero-section{
+    flex-direction: column;
+  }
   .project-section{
     padding: 10px;
   }
@@ -390,8 +440,32 @@
     font-size: 25px !important;
   }
 }
+
+@media only screen and (min-width: 700px) {
+  .screen{
+    width: 680px !important;
+    height: 680px !important;
+  }
+  .hero-section{
+    flex-direction: column;
+  }
+  .project-des{
+    width: 680px ;
+  }
+  
+}
+@media only screen and (max-width: 1200px) {
+  .screen{
+    width: 700px;
+    height: 700px;
+  }
+  .hero-section{
+    flex-direction: column;
+  }
+  
+}
 /* tablet */
-@media only screen and (min-width:600px) {
+/* @media only screen and (min-width:600px) {
   .project-area{
 
   }
@@ -418,5 +492,5 @@
     padding: 50px !important;
     margin: 0 !important;
   }
-}
+} */
 
