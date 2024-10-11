@@ -7,6 +7,12 @@ import { motion } from "framer-motion";
 import { FaGithub, FaLocationArrow, FaServer } from "react-icons/fa";
 import ScrambleText from "../forAll/ScrambleText";
 
+// Import Swiper React components and styles
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-cards";
+import { EffectCards } from "swiper/modules";
+
 const DetailedProject = () => {
   const { id } = useParams();
   const [project, setProperty] = useState();
@@ -149,20 +155,41 @@ const DetailedProject = () => {
         />
       </div>
 
-      {/* Gallery Images with Scroll Animation */}
+      {/* Gallery Images with Swiper on Mobile/Tablet */}
       <div className="gallery my-10 w-full mx-auto px-5 md:w-3/4">
+        {/* Swiper for Mobile and Tablet */}
+        <div className="block md:hidden">
+          <Swiper
+            effect={"cards"}
+            grabCursor={true}
+            modules={[EffectCards]}
+            className="mySwiper"
+          >
+            {project?.galleryImages?.map((img, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={img}
+                  alt={`Gallery Image ${index}`}
+                  className="w-full h-auto object-cover rounded-lg shadow-lg"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* Grid Layout for Desktop */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           {project?.galleryImages?.map((img, index) => (
             <motion.img
               key={index}
               src={img}
-              alt=""
+              alt="Gallery Image"
               className="w-full h-auto object-cover rounded-lg shadow-lg"
               variants={imageVariants}
             />
