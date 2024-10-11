@@ -503,3 +503,42 @@
   }
 } */
 
+/* Techonogies CSS */
+
+.group:hover,
+.group:focus {
+  color: #ffffff;
+  background: #008cff;
+  text-shadow: 0 0 5px #ffffff, 0 0 7px #ffffff, 0 0 10px #ffffff;
+  box-shadow: 0 0 5px #008cffa4, 0 0 10px #008cff79, 0 0 20px #008cff9d, 0 0 30px #008cff7c;
+}
+.group {
+  margin: 0 auto;
+
+  /* Animated border styles */
+  --border-angle: 0turn; /* For animation */
+  --main-bg: conic-gradient(
+    from var(--border-angle),
+    #213,
+    #112 5%,
+    #112 60%,
+    #213 95%
+  );
+  border: solid 2px transparent;
+  border-radius:10px;
+  --gradient-border: conic-gradient(
+    from var(--border-angle),
+    transparent 25%,
+    rgb(0, 47, 255),
+    rgb(255, 0, 0),
+    transparent
+  );
+
+  background: 
+    var(--main-bg) padding-box,
+    var(--gradient-border) border-box,
+    var(--main-bg) border-box;
+  background-position: center center;
+
+  animation: bg-spin 5s linear infinite;
+}

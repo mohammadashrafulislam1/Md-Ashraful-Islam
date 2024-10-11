@@ -6,7 +6,7 @@ import Navigation from "../Shared/Navigation/Navigation";
 import { motion } from "framer-motion";
 import { FaGithub, FaLocationArrow, FaServer } from "react-icons/fa";
 import ScrambleText from "../forAll/ScrambleText";
-
+import { MdContacts } from "react-icons/md";
 // Import Swiper React components and styles
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -18,7 +18,7 @@ const DetailedProject = () => {
   const [project, setProperty] = useState();
   const imgRef = useRef(null);
   const [scrollAmount, setScrollAmount] = useState(0);
-
+  console.log(project)
   useEffect(() => {
     const fetchProperty = async () => {
       const response = await fetch(`${endPoint}/projects/${id}`);
@@ -64,6 +64,17 @@ const DetailedProject = () => {
   const year = date.getFullYear();
   const formattedDate = `${month} ${day}, ${year}`;
   const DesTexts = ["description_", "what we have done?_", "how we completed?_"];
+  const TechTexts = ["technologies_", "what technologies i used?_", "tools_"];
+  const DetailTexts = ["details_", "about the author_", "who developed the website?_"];
+  const ChallangesTexts = ["challanges", "trouble that i faced_", "what obstacles faced?_"];
+  const parseTechnologies = (technologies) => {
+    try {
+      return JSON.parse(technologies);
+    } catch (error) {
+      console.error("Error parsing technologies JSON:", error);
+      return [];
+    }
+  };
 
   return (
     <div>
@@ -196,6 +207,110 @@ const DetailedProject = () => {
           ))}
         </motion.div>
       </div>
+
+      {/* Technologies */}
+      <div className="my-10 w-full md:w-[90%] mx-auto">
+        <ScrambleText texts={TechTexts}></ScrambleText>
+        <div className="flex flex-wrap justify-center items-center gap-4 mt-5">
+          {parseTechnologies(project?.technologies)?.map((tech, index) => (
+            <motion.div
+              key={index}
+              className="group"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="p-4 text-center">
+                <span className="text-white font-medium text-[17px]">{tech}</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Details about author */}
+      <motion.div
+      className="my-10 w-full md:w-[90%] mx-auto p-5 bg-gradient-to-r from-[#1e1e2e] to-[#2e2e42] rounded-lg shadow-md"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
+      whileHover={{ scale: 1.05 }}
+    >
+      <ScrambleText texts={DetailTexts}></ScrambleText>
+
+      <div className="mt-5 space-y-4">
+        {/* User Name */}
+        <motion.div
+          className="flex items-center text-white font-semibold text-lg"
+          whileHover={{ x: 10 }}
+          transition={{ duration: 0.3 }}
+        >
+          <span className="text-[#00BFFF] mr-3">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-3-3.87M9 20a4 4 0 0 0-3-3.87v-2A4 4 0 0 1 13 5a4 4 0 0 1 7 4v2a4 4 0 0 0 1 7.87V21" />
+            </svg>
+          </span>
+          <span className="text-[#ffffff85] mr-2">Name: </span>
+          {project?.userName}
+        </motion.div>
+
+        {/* User Email */}
+        <motion.div
+          className="flex items-center text-white font-semibold text-lg"
+          whileHover={{ x: 10 }}
+          transition={{ duration: 0.3 }}
+        >
+          <span className="text-[#00BFFF] mr-3">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M16 4H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" />
+              <polyline points="22 6 12 13 2 6" />
+            </svg>
+          </span>
+          <span className="text-[#ffffff85] mr-2">Email: </span>
+          {project?.userEmail}
+        </motion.div>
+
+        {/* Project Duration */}
+        <motion.div
+          className="flex items-center text-white font-semibold text-lg"
+          whileHover={{ x: 10 }}
+          transition={{ duration: 0.3 }}
+        >
+          <span className="text-[#00BFFF] mr-3">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </span>
+          <span className="text-[#ffffff85] mr-2">Project Duration: </span>
+          {project?.duration} hours
+        </motion.div>
+
+        {/* Action Button */}
+        <motion.div
+          className="mt-8 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <motion.button
+            className="flex gap-2 justify-center items-center px-6 py-2 rounded-lg group text-white font-semibold"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+          ><MdContacts/>
+            Want My Service?
+          </motion.button>
+        </motion.div>
+      </div>
+    </motion.div>
+
+    {/* challanges */}
+    <div>
+    <ScrambleText texts={ChallangesTexts}></ScrambleText>
+    </div>
+
 
       <Footer />
     </div>
