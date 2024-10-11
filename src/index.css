@@ -347,7 +347,7 @@
   .container {
     padding: 20px 0;
   }
-  .project-section{
+  .project-sec{
     padding: 10px;
   }
   .project-des{
@@ -368,7 +368,7 @@
   .container {
     padding: 20px 0;
   }
-  .project-section{
+  .project-sec{
     padding: 10px;
   }
   .project-des{
@@ -395,7 +395,7 @@
   .hero-section{
     flex-direction: column;
   }
-  .project-section{
+  .project-sec{
     padding: 10px;
   }
   .project-area{
