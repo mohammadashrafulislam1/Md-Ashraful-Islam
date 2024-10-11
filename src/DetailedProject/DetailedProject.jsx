@@ -281,7 +281,7 @@ const DetailedProject = () => {
 
       {/* Details about author */}
       <motion.div
-      className="my-10 w-full md:w-[90%] mx-auto p-5 bg-gradient-to-r from-[#1e1e2e] to-[#2e2e42] rounded-lg shadow-md"
+      className="my-10 w-full md:w-[90%] mx-auto md:p-5 p-2 bg-gradient-to-r from-[#1e1e2e] to-[#2e2e42] rounded-lg shadow-md"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -292,11 +292,11 @@ const DetailedProject = () => {
       <div className="mt-5 space-y-4">
         {/* User Name */}
         <motion.div
-          className="flex items-center text-white font-semibold text-lg"
+          className="md:flex items-center text-white font-semibold md:text-lg text-[12px]"
           whileHover={{ x: 10 }}
           transition={{ duration: 0.3 }}
         >
-          <span className="text-[#00BFFF] mr-3">
+          <span className="text-[#00BFFF] md:mr-3">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M20 21v-2a4 4 0 0 0-3-3.87M9 20a4 4 0 0 0-3-3.87v-2A4 4 0 0 1 13 5a4 4 0 0 1 7 4v2a4 4 0 0 0 1 7.87V21" />
             </svg>
@@ -307,11 +307,11 @@ const DetailedProject = () => {
 
         {/* User Email */}
         <motion.div
-          className="flex items-center text-white font-semibold text-lg"
+          className="md:flex items-center text-white font-semibold  md:text-lg text-[12px]"
           whileHover={{ x: 10 }}
           transition={{ duration: 0.3 }}
         >
-          <span className="text-[#00BFFF] mr-3">
+          <span className="text-[#00BFFF] md:mr-3">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M16 4H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" />
               <polyline points="22 6 12 13 2 6" />
@@ -323,11 +323,11 @@ const DetailedProject = () => {
 
         {/* Project Duration */}
         <motion.div
-          className="flex items-center text-white font-semibold text-lg"
+          className="md:flex items-center text-white font-semibold  md:text-lg text-[12px]"
           whileHover={{ x: 10 }}
           transition={{ duration: 0.3 }}
         >
-          <span className="text-[#00BFFF] mr-3">
+          <span className="text-[#00BFFF] md:mr-3">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10" />
               <polyline points="12 6 12 12 16 14" />
@@ -359,7 +359,7 @@ const DetailedProject = () => {
     {/* challanges */}
     <div>
     <ScrambleText texts={ChallangesTexts}></ScrambleText>
-    <p className="md:w-[70%] lg:w-1/2 w-full text-white font-normal mx-auto">{project?.challenges}</p>
+    <p className="md:w-[70%] lg:w-1/2 w-full text-white font-normal mx-auto md:p-0 p-3">{project?.challenges}</p>
     </div>
 
 
@@ -429,20 +429,23 @@ const DetailedProject = () => {
     initial={{ opacity: 0, y: 50 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
-    className="mt-10 testimonial relative p-8 lg:max-w-[80%] max-w-[90%] mx-auto bg-gradient-to-r from-blue-500 to-blue-800 rounded-lg shadow-2xl overflow-hidden"
+    className="mt-10 testimonial relative md:p-8 p-4 lg:max-w-[80%] max-w-[90%] mx-auto bg-gradient-to-r from-blue-500 to-blue-800 rounded-lg shadow-2xl overflow-hidden"
   >
-    <span className="open quote absolute text-5xl text-white bg-navy rounded-full w-12 h-12 flex items-center justify-center -top-6 -left-6">“</span>
     
-    <div className="relative mb-6">
-      <div className="clip object-cover absolute right-0 top-0 w-24 h-24 border-4 border-gray-800 rounded-full bg-white transform rotate-12"></div>
+    <div className="relative mb-6 hidden  md:block">
+      <div className=" clip object-cover absolute right-0 top-0 w-24 h-24 border-4 border-gray-800 rounded-full bg-white transform rotate-12"></div>
       <img src={testimonial.image} alt={testimonial.name} className="object-cover absolute right-0 top-0 w-24 h-24 border-4 border-white rounded-full shadow-lg transform rotate-[-5deg] transition-transform duration-300 hover:scale-105"/>
     </div>
     
-    <p className="lg:text-lg text-[16px] italic text-gray-300 mb-4 mr-28 flex gap-1"><FaQuoteLeft  className="lg:!text-[50px] !text-[80px] mr-5 mt-0"/>{testimonial.testimonial}</p>
+    <p className="lg:text-lg md:text-[16px] text-[15px] italic text-gray-300 mb-4 md:mr-28 flex gap-1"><FaQuoteLeft  className="lg:!text-[50px] hidden md:block !text-[80px] mr-5 mt-0"/>{testimonial.testimonial}</p>
     
-    <div className="source flex flex-col items-end">
-      <span className="font-bold text-xl text-gray-400">{testimonial.name}</span>
-      <span className="text-sm text-gray-400">{testimonial.des}</span>
+    <div className="source flex justify-center items-center gap-3">
+    <div className=" mb-6 md:hidden block w-[70px] h-[70px]">
+      <img src={testimonial.image} alt={testimonial.name} className="object-cover w-[70px] h-[70px] border-2 border-white rounded-full shadow-lg transform rotate-[-5deg] transition-transform duration-300 hover:scale-105"/>
+    </div>
+      <div className="flex flex-col">
+      <span className="font-bold md:text-xl text-[18px] text-gray-200">{testimonial.name}</span>
+      <span className="text-sm text-gray-300">{testimonial.des}</span>
       <p className="text-sm">
         <a
           href={`http://${client?.clientSocialMedia}`}
@@ -452,7 +455,7 @@ const DetailedProject = () => {
         >
           {client?.clientSocialMedia}
         </a>
-      </p>
+      </p></div>
     </div>
 
     <div className="mt-4">
