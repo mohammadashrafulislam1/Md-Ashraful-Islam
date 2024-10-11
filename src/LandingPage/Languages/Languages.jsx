@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import AOS from 'aos';
@@ -11,6 +11,31 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 const Languages = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 });
+  }, []);
+
+  const [slidePercentage, setSlidePercentage] = useState(50);
+
+  useEffect(() => {
+    const updateSlidePercentage = () => {
+      if (window.innerWidth <= 480) {
+        setSlidePercentage(50); // Full width for mobile
+      } else if (window.innerWidth <= 768) {
+        setSlidePercentage(40); // Smaller percentage for tablets
+      } else if (window.innerWidth <= 1024) {
+        setSlidePercentage(40); // Larger percentage for desktops
+      } else {
+        setSlidePercentage(28); // Default for larger screens
+      }
+    };
+
+    window.addEventListener('resize', updateSlidePercentage);
+
+    // Initial check
+    updateSlidePercentage();
+
+    return () => {
+      window.removeEventListener('resize', updateSlidePercentage);
+    };
   }, []);
 
   const languageItems = [
@@ -35,7 +60,8 @@ const Languages = () => {
         showStatus={false}
         useKeyboardArrows
         centerMode
-        centerSlidePercentage={28} // Adjust as needed
+        
+        centerSlidePercentage={slidePercentage} // Adjust as needed
         
         renderArrowPrev={(onClickHandler, hasPrev, label) =>
           hasPrev && (
@@ -55,7 +81,7 @@ const Languages = () => {
         {languageItems.map((item, index) => (
           <div
             key={index}
-            className=" md:flex gap-4 mx-[30px!important]"
+            className="flex md:gap-4 md:mx-[30px!important] md:w-full w-[160px] mb-5"
             style={{
               backgroundImage: `linear-gradient(128deg, ${item.gradientStart} 0%, ${item.gradientEnd} 100%)`,
               alignItems: 'center',
@@ -66,7 +92,6 @@ const Languages = () => {
               borderRadius: '20px',
               padding: '15px',
               maxWidth:'350px',
-              width:'100%',
               backdropFilter: 'blur(10px)',
             }}
             data-aos="fade-up"
