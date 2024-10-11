@@ -32,7 +32,7 @@ const LandingHero = () => {
 
     return (
         <motion.div
-            className="md:flex items-center justify-center relative md:mt-0 mt-6 hero-section pb-20"
+            className="md:flex md:flex-row items-center justify-center relative md:mt-0 mt-6 hero-section pb-20"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
