@@ -4,7 +4,7 @@ import { endPoint } from "../forAll/forAll";
 import Footer from "../LandingPage/Footer/Footer";
 import Navigation from "../Shared/Navigation/Navigation";
 import { motion } from "framer-motion";
-import { FaGithub, FaLocationArrow, FaServer } from "react-icons/fa";
+import { FaGithub, FaLocationArrow, FaRegStar, FaServer, FaStar } from "react-icons/fa";
 import ScrambleText from "../forAll/ScrambleText";
 import { MdContacts } from "react-icons/md";
 // Import Swiper React components and styles
@@ -12,10 +12,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import { EffectCards } from "swiper/modules";
+import Rating from "react-rating";
+import { Typography } from "@mui/material";
+import { BiSolidQuoteSingleLeft,BiSolidQuoteSingleRight } from "react-icons/bi";
+
 
 const DetailedProject = () => {
   const { id } = useParams();
   const [project, setProperty] = useState();
+  const [client, setClient] = useState();
+  const [testimonial, setTestimonial] = useState();
   const imgRef = useRef(null);
   const [scrollAmount, setScrollAmount] = useState(0);
   console.log(project)
@@ -24,9 +30,37 @@ const DetailedProject = () => {
       const response = await fetch(`${endPoint}/projects/${id}`);
       const projectData = await response.json();
       setProperty(projectData);
+  
+      // Assuming projectData.testimonialId contains the single testimonial ID
+      const testimonialId = projectData.testimonial; // or projectData.testimonial if that's how it's structured
+  
+      // Fetch testimonials
+      const fetchTestimonials = async () => {
+        const response = await fetch(`${endPoint}/testimonial`);
+        const testimonialData = await response.json();
+  
+        // Filter the testimonial data based on the single testimonial ID
+        const filteredTestimonial = testimonialData.find(testimonial => 
+          testimonial._id === testimonialId
+        );
+  
+        console.log(filteredTestimonial);
+        // Set the filtered testimonial to state if needed
+        setTestimonial(filteredTestimonial);
+      };
+  
+      fetchTestimonials();
     };
+  
     fetchProperty();
-  }, [id]);
+    const fetchClient = async () => {
+      const response = await fetch(`${endPoint}/clients/${project?.clientInfo}`);
+      const clientData = await response.json();
+      setClient(clientData);
+    };
+    fetchClient();
+    
+  }, [id, project]);
 
   // Handle image load to set scroll amount dynamically
   useEffect(() => {
@@ -66,7 +100,8 @@ const DetailedProject = () => {
   const DesTexts = ["description_", "what we have done?_", "how we completed?_"];
   const TechTexts = ["technologies_", "what technologies i used?_", "tools_"];
   const DetailTexts = ["details_", "about the author_", "who developed the website?_"];
-  const ChallangesTexts = ["challanges", "trouble that i faced_", "what obstacles faced?_"];
+  const ChallangesTexts = ["challanges_", "trouble that i faced_", "what obstacles faced?_"];
+  const ClientTexts = ["client data_", "for whom this project was created_", "about client_"];
   const parseTechnologies = (technologies) => {
     try {
       return JSON.parse(technologies);
@@ -74,6 +109,11 @@ const DetailedProject = () => {
       console.error("Error parsing technologies JSON:", error);
       return [];
     }
+  };
+  // Define the animation variants
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1 },
   };
 
   return (
@@ -309,10 +349,123 @@ const DetailedProject = () => {
     {/* challanges */}
     <div>
     <ScrambleText texts={ChallangesTexts}></ScrambleText>
+    <p className="md:w-1/2 w-full text-white font-normal mx-auto">{project?.challenges}</p>
     </div>
 
 
-      <Footer />
+    {/* Tablet Image */}
+    {project?.tabletImage && project.tabletImage.trim() == '' && (
+        <div className="device-display tablet flex justify-center my-8">
+          <div className="w-96 h-[550px] border-8 border-gray-800 rounded-lg p-4 bg-gray-200">
+            <img 
+              src={project.tabletImage} 
+              alt={`${project.title} Tablet View`} 
+              className="w-full h-full object-cover" 
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Image */}
+      {project?.mobileImage && project.tabletImage.trim() == '' && (
+        <div className="device-display mobile flex justify-center my-8">
+          <div className="w-56 h-[500px] border-8 border-gray-800 rounded-2xl p-4 bg-gray-200">
+            <img 
+              src={project.mobileImage} 
+              alt={`${project.title} Mobile View`} 
+              className="w-full h-full object-cover" 
+            />
+          </div>
+        </div>
+      )}
+    {/* client info */}
+     <div>
+    <ScrambleText texts={ChallangesTexts}></ScrambleText>
+    <motion.div
+      className="max-w-xs mx-auto bg-white rounded-lg shadow-lg overflow-hidden"
+      initial="hidden"
+      animate="visible"
+      variants={cardVariants}
+      transition={{ duration: 0.3 }} // Adjust duration for speed of animation
+    >
+      <img
+        src={client?.clientPhoto}
+        alt={client?.clientName}
+        className="w-full h-48 object-cover"
+      />
+      <div className="p-4">
+        <h2 className="text-lg font-semibold text-gray-800">{client?.clientName}</h2>
+        <p className="text-gray-600">{client?.clientEmail}</p>
+        <p className="text-gray-600">
+          <a
+            href={`http://${client?.clientSocialMedia}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline"
+          >
+            {client?.clientSocialMedia}
+          </a>
+        </p>
+        <p className="text-gray-500 text-sm">
+          Joined on {new Date(client?.created_at).toLocaleDateString()}
+        </p>
+      </div>
+    </motion.div>
+     </div>
+
+{/* Testimonial Section */}
+{ testimonial && (
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    className="mt-10 testimonial relative p-8 max-w-[80%] mx-auto bg-gradient-to-r from-yellow-300 to-yellow-500 rounded-lg shadow-2xl overflow-hidden"
+  >
+    <span className="open quote absolute text-5xl text-white bg-navy rounded-full w-12 h-12 flex items-center justify-center -top-6 -left-6">“</span>
+    
+    <div className="relative mb-6">
+      <div className="clip object-cover absolute right-0 top-0 w-24 h-24 border-4 border-gray-800 rounded-full bg-white transform rotate-12"></div>
+      <img src={testimonial.image} alt={testimonial.name} className="object-cover absolute right-0 top-0 w-24 h-24 border-4 border-white rounded-full shadow-lg transform rotate-[-5deg] transition-transform duration-300 hover:scale-105"/>
+    </div>
+    
+    <p className="text-lg italic text-gray-800 mb-4 mr-28 flex gap-1"><BiSolidQuoteSingleLeft />{testimonial.testimonial}<BiSolidQuoteSingleRight /></p>
+    
+    <div className="source flex flex-col items-end">
+      <span className="font-bold text-xl text-gray-900">{testimonial.name}</span>
+      <span className="text-sm text-gray-700">{testimonial.des}</span>
+      <p className="text-sm">
+        <a
+          href={`http://${client?.clientSocialMedia}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:underline"
+        >
+          {client?.clientSocialMedia}
+        </a>
+      </p>
+    </div>
+    
+    <span className="close quote absolute text-5xl text-white bg-navy rounded-full w-12 h-12 flex items-center justify-center bottom-6 right-6">”</span>
+    
+    <div className="mt-4">
+      <Typography component="legend" className="text-sm font-semibold text-gray-700">Ratings</Typography>
+      <Rating
+        initialRating={testimonial.rating}
+        emptySymbol={<FaRegStar className="text-gray-400" />}
+        fullSymbol={<FaStar className="text-yellow-500" />}
+        readonly
+        className="text-xl"
+      />
+    </div>
+  </motion.div>
+)}
+
+
+
+
+      
+    <div  className="mt-24">
+      <Footer/></div>
     </div>
   );
 };
