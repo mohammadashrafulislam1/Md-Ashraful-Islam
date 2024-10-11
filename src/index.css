@@ -359,6 +359,9 @@
   .gradient-text{
     font-size: 18px !important;
   }
+  .MuiBox-root .css-17ywjgh{
+   gap: 0;
+  }
 }
 @media only screen and (min-width: 350px){
   .screen{
@@ -379,6 +382,9 @@
   }
   .gradient-text{
     font-size: 18px !important;
+  }
+  .MuiBox-root .css-17ywjgh{
+   gap: 0;
   }
 }
 @media only screen and (min-width: 500px) {
@@ -438,6 +444,9 @@
   
   .gradient-text{
     font-size: 25px !important;
+  }
+  .MuiBox-root .css-17ywjgh{
+   gap: 0;
   }
 }
 
