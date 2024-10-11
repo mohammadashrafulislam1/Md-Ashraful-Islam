@@ -77,7 +77,7 @@ const ScrambleText = ({ texts }) => {
         nextText();
     }, [texts]);
 
-    return <div className="text" ref={textRef}></div>;
+    return <div className="text md:font-[36px] font-[26px]" ref={textRef}></div>;
 };
 
 export default ScrambleText;
