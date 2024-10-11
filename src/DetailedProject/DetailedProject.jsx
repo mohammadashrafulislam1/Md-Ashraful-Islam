@@ -223,7 +223,7 @@ const DetailedProject = () => {
                 <img
                   src={img}
                   alt={`Gallery Image ${index}`}
-                  className="w-full h-auto object-cover rounded-lg shadow-lg"
+                  className="w-full h-auto object-cover rounded-2xl shadow-lg"
                 />
               </SwiperSlide>
             ))}
@@ -243,7 +243,7 @@ const DetailedProject = () => {
               key={index}
               src={img}
               alt="Gallery Image"
-              className="w-full h-auto object-cover rounded-lg shadow-lg galleryImages"
+              className="w-full h-auto object-cover rounded-2xl shadow-lg galleryImages"
               variants={imageVariants}
             />
           ))}
@@ -272,7 +272,7 @@ const DetailedProject = () => {
               whileHover={{ scale: 1.05 }}
             >
               <div className="p-4 text-center">
-                <span className="text-white font-medium text-[17px]">{tech}</span>
+                <span className="text-white md:font-medium font-normal lg:text-[17px] md:text-[15px] text-[13px]">{tech}</span>
               </div>
             </motion.div>
           ))}
@@ -439,11 +439,11 @@ const DetailedProject = () => {
     
     <p className="lg:text-lg md:text-[16px] text-[15px] italic text-gray-300 mb-4 md:mr-28 flex gap-1"><FaQuoteLeft  className="lg:!text-[50px] hidden md:block !text-[80px] mr-5 mt-0"/>{testimonial.testimonial}</p>
     
-    <div className="source flex justify-center items-center gap-3">
-    <div className=" mb-6 md:hidden block w-[70px] h-[70px]">
+    <div className="source flex md:justify-end justify-center items-center gap-3">
+    <div className=" md:hidden block w-[70px] h-[70px]">
       <img src={testimonial.image} alt={testimonial.name} className="object-cover w-[70px] h-[70px] border-2 border-white rounded-full shadow-lg transform rotate-[-5deg] transition-transform duration-300 hover:scale-105"/>
     </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col text-end">
       <span className="font-bold md:text-xl text-[18px] text-gray-200">{testimonial.name}</span>
       <span className="text-sm text-gray-300">{testimonial.des}</span>
       <p className="text-sm">
@@ -458,8 +458,8 @@ const DetailedProject = () => {
       </p></div>
     </div>
 
-    <div className="mt-4">
-      <Typography component="legend" className="text-sm font-semibold text-gray-400">Ratings</Typography>
+    <div className="md:mt-4 mt-0">
+      <Typography component="legend" className="text-sm font-semibold text-gray-700">Ratings</Typography>
       <Rating
         initialRating={testimonial.rating}
         emptySymbol={<FaRegStar className="text-gray-400" />}
