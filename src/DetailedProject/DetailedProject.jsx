@@ -14,7 +14,7 @@ import "swiper/css/effect-cards";
 import { EffectCards } from "swiper/modules";
 import Rating from "react-rating";
 import { Typography } from "@mui/material";
-import { BiSolidQuoteSingleLeft,BiSolidQuoteSingleRight } from "react-icons/bi";
+import { FaQuoteLeft } from "react-icons/fa";
 
 
 const DetailedProject = () => {
@@ -198,7 +198,7 @@ const DetailedProject = () => {
       </motion.div>
 
       {/* Description */}
-      <div className="my-10 md:w-1/2 w-full mx-auto md:p-0 p-5">
+      <div className="my-10 md:w-[70%] lg:w-1/2 w-full mx-auto md:p-0 p-5">
         <ScrambleText texts={DesTexts}></ScrambleText>
         <p
           className="text-[16px] md:text-[18px] text-black font-normal text-white font-[300]"
@@ -207,9 +207,11 @@ const DetailedProject = () => {
       </div>
 
       {/* Gallery Images with Swiper on Mobile/Tablet */}
-      <div className="gallery my-10 w-full mx-auto px-5 md:w-3/4">
+      <div className="gallery my-10 w-full mx-auto px-5 md:w-3/4 relative">
+  {/* Background blur shadow */}
+ 
         {/* Swiper for Mobile and Tablet */}
-        <div className="block md:hidden">
+        <div className="block md:hidden relative z-10">
           <Swiper
             effect={"cards"}
             grabCursor={true}
@@ -234,14 +236,14 @@ const DetailedProject = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10"
         >
           {project?.galleryImages?.map((img, index) => (
             <motion.img
               key={index}
               src={img}
               alt="Gallery Image"
-              className="w-full h-auto object-cover rounded-lg shadow-lg"
+              className="w-full h-auto object-cover rounded-lg shadow-lg galleryImages"
               variants={imageVariants}
             />
           ))}
@@ -255,7 +257,15 @@ const DetailedProject = () => {
           {parseTechnologies(project?.technologies)?.map((tech, index) => (
             <motion.div
               key={index}
-              className="group"
+              className=""
+              style={{
+                background: "rgba( 255, 255, 255, 0.01 )",
+                boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
+                backdropFilter: "blur( 6px )",
+                borderRadius: "10px",
+                WebkitBackdropFilter: "blur( 6px )",
+                border: "1px solid rgba( 255, 255, 255, 0.18 )",
+              }}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -349,7 +359,7 @@ const DetailedProject = () => {
     {/* challanges */}
     <div>
     <ScrambleText texts={ChallangesTexts}></ScrambleText>
-    <p className="md:w-1/2 w-full text-white font-normal mx-auto">{project?.challenges}</p>
+    <p className="md:w-[70%] lg:w-1/2 w-full text-white font-normal mx-auto">{project?.challenges}</p>
     </div>
 
 
@@ -419,7 +429,7 @@ const DetailedProject = () => {
     initial={{ opacity: 0, y: 50 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
-    className="mt-10 testimonial relative p-8 max-w-[80%] mx-auto bg-gradient-to-r from-yellow-300 to-yellow-500 rounded-lg shadow-2xl overflow-hidden"
+    className="mt-10 testimonial relative p-8 lg:max-w-[80%] max-w-[90%] mx-auto bg-gradient-to-r from-blue-500 to-blue-800 rounded-lg shadow-2xl overflow-hidden"
   >
     <span className="open quote absolute text-5xl text-white bg-navy rounded-full w-12 h-12 flex items-center justify-center -top-6 -left-6">“</span>
     
@@ -428,27 +438,25 @@ const DetailedProject = () => {
       <img src={testimonial.image} alt={testimonial.name} className="object-cover absolute right-0 top-0 w-24 h-24 border-4 border-white rounded-full shadow-lg transform rotate-[-5deg] transition-transform duration-300 hover:scale-105"/>
     </div>
     
-    <p className="text-lg italic text-gray-800 mb-4 mr-28 flex gap-1"><BiSolidQuoteSingleLeft />{testimonial.testimonial}<BiSolidQuoteSingleRight /></p>
+    <p className="lg:text-lg text-[16px] italic text-gray-300 mb-4 mr-28 flex gap-1"><FaQuoteLeft  className="lg:!text-[50px] !text-[80px] mr-5 mt-0"/>{testimonial.testimonial}</p>
     
     <div className="source flex flex-col items-end">
-      <span className="font-bold text-xl text-gray-900">{testimonial.name}</span>
-      <span className="text-sm text-gray-700">{testimonial.des}</span>
+      <span className="font-bold text-xl text-gray-400">{testimonial.name}</span>
+      <span className="text-sm text-gray-400">{testimonial.des}</span>
       <p className="text-sm">
         <a
           href={`http://${client?.clientSocialMedia}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-600 hover:underline"
+          className="text-yellow-400 hover:underline"
         >
           {client?.clientSocialMedia}
         </a>
       </p>
     </div>
-    
-    <span className="close quote absolute text-5xl text-white bg-navy rounded-full w-12 h-12 flex items-center justify-center bottom-6 right-6">”</span>
-    
+
     <div className="mt-4">
-      <Typography component="legend" className="text-sm font-semibold text-gray-700">Ratings</Typography>
+      <Typography component="legend" className="text-sm font-semibold text-gray-400">Ratings</Typography>
       <Rating
         initialRating={testimonial.rating}
         emptySymbol={<FaRegStar className="text-gray-400" />}
