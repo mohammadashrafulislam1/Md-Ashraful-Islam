@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
 
 
 const Navigation = () => {
     const navbar =<>
-      <a href="#"><li className="hover:text-white">Home</li></a>
-      <a href="#"><li className="hover:text-white">About</li>
-      </a>        
-      <a href="#"><li className="hover:text-white">Projects</li></a>
-      <a href="#"><li className="hover:text-white">Contact</li></a>
+      <Link to="/"><li className="hover:text-white">Home</li></Link>
+      <Link to="#"><li className="hover:text-white">About</li>
+      </Link>        
+      <Link to="#"><li className="hover:text-white">Projects</li></Link>
+      <Link to="#"><li className="hover:text-white">Contact</li></Link>
     </>
     return (
         <div className="navbar">
@@ -19,7 +20,7 @@ const Navigation = () => {
         {navbar}
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl text-white"><span className="bg-[#0051ff] p-1">Md</span> Ashraf</a>
+    <Link to="/" className="btn btn-ghost normal-case text-xl text-white"><span className="bg-[#0051ff] p-1">Md</span> Ashraf</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 text-[#777777] flex gap-10">
