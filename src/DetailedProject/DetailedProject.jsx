@@ -23,7 +23,6 @@ const DetailedProject = () => {
   const [testimonial, setTestimonial] = useState();
   const imgRef = useRef(null);
   const [scrollAmount, setScrollAmount] = useState(0);
-  console.log(project)
   useEffect(() => {
     const fetchProperty = async () => {
       const response = await fetch(`${endPoint}/projects/${id}`);

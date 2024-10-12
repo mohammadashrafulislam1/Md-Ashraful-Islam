@@ -6,8 +6,8 @@ const Navigation = () => {
       <Link to="/"><li className="hover:text-white">Home</li></Link>
       <Link to="#"><li className="hover:text-white">About</li>
       </Link>        
-      <Link to="#"><li className="hover:text-white">Projects</li></Link>
-      <Link to="#"><li className="hover:text-white">Contact</li></Link>
+      <Link to="/projects"><li className="hover:text-white">Projects</li></Link>
+      <Link to="/contact"><li className="hover:text-white">Contact</li></Link>
     </>
     return (
         <div className="navbar">

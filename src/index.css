@@ -170,7 +170,7 @@
   transform-style: preserve-3d;
   transform-origin: center right;
   border-radius: 20px;
-  width: 350px;
+  width: 350px !important;
   height: 180px;
 }
 

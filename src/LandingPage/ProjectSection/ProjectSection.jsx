@@ -63,7 +63,7 @@ const ProjectSection = () => {
           ))}
         </Grid>
         <Box sx={{ mt: 4 }} className="flex justify-center" data-aos="fade-up">
-          <Link to="/home/project">
+          <Link to="/projects">
             <Button variant="contained" color="primary">
               All projects
             </Button>

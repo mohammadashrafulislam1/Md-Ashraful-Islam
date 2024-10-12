@@ -14,6 +14,8 @@ import Main from './Main/Main.jsx';
 import LoadingSpinner from './forAll/LoadingSpinner/LoadingSpinner.jsx';
 import { endPoint } from './forAll/forAll.js';
 import DetailedProject from './DetailedProject/DetailedProject.jsx';
+import AllProjects from './AllProjects/AllProjects.jsx';
+import ContactUs from './Contact/ContactUs.jsx';
 
 const App = () => {
   const [loading, setLoading] = useState(true); // Initial loading state
@@ -36,6 +38,14 @@ const App = () => {
           path: '/',
           element: <LandingPage />,
         },
+      {
+        path:'/projects',
+        element:<AllProjects/>
+      },
+      {
+        path:'/contact',
+        element:<ContactUs/>
+      },
       ],
     },
     {
