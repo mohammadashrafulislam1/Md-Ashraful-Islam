@@ -5,7 +5,6 @@ import Footer from "../LandingPage/Footer/Footer";
 import Navigation from "../Shared/Navigation/Navigation";
 import { motion } from "framer-motion";
 import { FaGithub, FaLocationArrow, FaRegStar, FaServer, FaStar } from "react-icons/fa";
-import ScrambleText from "../forAll/ScrambleText";
 import { MdContacts } from "react-icons/md";
 // Import Swiper React components and styles
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -97,11 +96,6 @@ const DetailedProject = () => {
   const day = date.getDate();
   const year = date.getFullYear();
   const formattedDate = `${month} ${day}, ${year}`;
-  const DesTexts = ["description_", "what we have done?_", "how we completed?_"];
-  const TechTexts = ["technologies_", "what technologies i used?_", "tools_"];
-  const DetailTexts = ["details_", "about the author_", "who developed the website?_"];
-  const ChallangesTexts = ["challanges_", "trouble that i faced_", "what obstacles faced?_"];
-  const ClientTexts = ["client data_", "for whom this project was created_", "about client_"];
   const parseTechnologies = (technologies) => {
     try {
       return JSON.parse(technologies);
@@ -199,7 +193,7 @@ const DetailedProject = () => {
 
       {/* Description */}
       <div className="my-10 md:w-[70%] lg:w-1/2 w-full mx-auto md:p-0 p-5">
-        <ScrambleText texts={DesTexts}></ScrambleText>
+        <p className="md:text-[30px] text-[20px] font-[100] text-center text-white my-4 ">Description</p>
         <p
           className="text-[16px] md:text-[18px] text-black font-normal text-white font-[300]"
           dangerouslySetInnerHTML={{ __html: project?.description }}
@@ -252,7 +246,8 @@ const DetailedProject = () => {
 
       {/* Technologies */}
       <div className="my-10 w-full md:w-[90%] mx-auto">
-        <ScrambleText texts={TechTexts}></ScrambleText>
+        
+      <p className="md:text-[30px] text-[20px] font-[100] text-center text-white my-4 ">Technologies</p>
         <div className="flex flex-wrap justify-center items-center gap-4 mt-5">
           {parseTechnologies(project?.technologies)?.map((tech, index) => (
             <motion.div
@@ -287,7 +282,7 @@ const DetailedProject = () => {
       transition={{ duration: 0.8, ease: "easeInOut" }}
       whileHover={{ scale: 1.05 }}
     >
-      <ScrambleText texts={DetailTexts}></ScrambleText>
+        <p className="md:text-[30px] text-[20px] font-[100] text-center text-white my-4 ">Who Developed the website?</p>
 
       <div className="mt-5 space-y-4">
         {/* User Name */}
@@ -358,7 +353,8 @@ const DetailedProject = () => {
 
     {/* challanges */}
     <div>
-    <ScrambleText texts={ChallangesTexts}></ScrambleText>
+      
+    <p className="md:text-[30px] text-[20px] font-[100] text-center text-white my-4 ">Challanges</p>
     <p className="md:w-[70%] lg:w-1/2 w-full text-white font-normal mx-auto md:p-0 p-3">{project?.challenges}</p>
     </div>
 
@@ -390,7 +386,8 @@ const DetailedProject = () => {
       )}
     {/* client info */}
      <div>
-    <ScrambleText texts={ChallangesTexts}></ScrambleText>
+      
+     <p className="md:text-[30px] text-[20px] font-[100] text-center text-white my-4 ">Client Info</p>
     <motion.div
       className="max-w-xs mx-auto bg-white rounded-lg shadow-lg overflow-hidden"
       initial="hidden"
@@ -439,7 +436,7 @@ const DetailedProject = () => {
     
     <p className="lg:text-lg md:text-[16px] text-[15px] italic text-gray-300 mb-4 md:mr-28 flex gap-1"><FaQuoteLeft  className="lg:!text-[50px] hidden md:block !text-[80px] mr-5 mt-0"/>{testimonial.testimonial}</p>
     
-    <div className="source flex md:justify-end justify-center items-center gap-3">
+    <div className="source flex md:justify-end justify-between items-center gap-3">
     <div className=" md:hidden block w-[70px] h-[70px]">
       <img src={testimonial.image} alt={testimonial.name} className="object-cover w-[70px] h-[70px] border-2 border-white rounded-full shadow-lg transform rotate-[-5deg] transition-transform duration-300 hover:scale-105"/>
     </div>
@@ -458,8 +455,8 @@ const DetailedProject = () => {
       </p></div>
     </div>
 
-    <div className="md:mt-4 mt-0">
-      <Typography component="legend" className="text-sm font-semibold text-gray-700">Ratings</Typography>
+    <div className="md:mt-4 mt-2">
+      <Typography component="legend" className="text-sm font-semibold text-gray-300">Ratings</Typography>
       <Rating
         initialRating={testimonial.rating}
         emptySymbol={<FaRegStar className="text-gray-400" />}
