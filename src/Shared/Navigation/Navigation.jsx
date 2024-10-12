@@ -22,13 +22,10 @@ const Navigation = () => {
     </div>
     <Link to="/" className="btn btn-ghost normal-case text-xl text-white"><span className="bg-[#0051ff] p-1">Md</span> Ashraf</Link>
   </div>
-  <div className="navbar-center hidden lg:flex">
+  <div className="navbar-end hidden lg:flex">
     <ul className="menu menu-horizontal px-1 text-[#777777] flex gap-10">
       {navbar}
     </ul>
-  </div>
-  <div className="navbar-end">
-    <a className="btn background-blur-sm btn-[#000]">Download Resume</a>
   </div>
 </div>
     );

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const LandingHero = () => {
     const handleDownloadClick = () => {
-        const cvLink = 'https://drive.google.com/file/d/1Vg-rBg3YDWzXS9xHnMSqGQU67uBC1SHh/view?usp=sharing';
+        const cvLink = 'https://drive.google.com/file/d/1JWAGhu17aXFPqdah-DWzL4xEnNIAfMm2/view?usp=sharing';
         window.location.href = cvLink;
     };
 
@@ -120,7 +120,7 @@ const LandingHero = () => {
                     <p className="text-[#c4c4c4]">Completed Projects</p>
                 </motion.div>
                 <motion.div className="pb-4 md:text-end text-center" variants={itemVariants}>
-                    <h6 className="text-white text-xl">4+</h6>
+                    <h6 className="text-white text-xl">5+</h6>
                     <p className="text-[#c4c4c4]">Years Experience</p>
                 </motion.div>
             </div>
