@@ -79,9 +79,9 @@ const App = () => {
       ],
     },
     {
-      path: '/project/:id',
+      path: '/project/:title',
       element: <DetailedProject />,
-      loader: ({ params }) => fetch(`${endPoint}/project/${params._id}`)
+      loader: ({ params }) => fetch(`${endPoint}/project/${params.title}`)
     },
   ]);
 
