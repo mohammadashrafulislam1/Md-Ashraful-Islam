@@ -14,6 +14,7 @@ import { EffectCards } from "swiper/modules";
 import Rating from "react-rating";
 import { Typography } from "@mui/material";
 import { FaQuoteLeft } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 
 const DetailedProject = () => {
@@ -112,6 +113,16 @@ const DetailedProject = () => {
   return (
     <div>
       <Navigation />
+      <Helmet>
+  <meta name="keywords" content="Full-Stack Developer, HTML, CSS, JavaScript, React, Node.js, AWS, MongoDB, Web Development, Next.js, Tailwind CSS, Express.js, CI/CD, DevOps" />
+  <meta name="description" content={`${project?.title} "Md Ashraful Islam is a passionate Full-Stack Web Developer with expertise in React, Node.js, AWS, and creating innovative digital solutions."`} />
+  <meta name="author" content="Md Ashraful Islam - Full Stack Web Developer" />
+  <meta property="og:title" content={`${project?.title} "Md Ashraful Islam - Full-Stack Web Developer"`} />
+  <meta name="title" content={`${project?.title} "Md Ashraful Islam - Full-Stack Web Developer"`} />
+  <meta property="og:description" content={`${project?.title} "Explore the portfolio of Md Ashraful Islam, a Full-Stack Web Developer specializing in React, Node.js, and AWS. Check out his latest projects and web solutions."`} />
+  <meta property="og:image" content={project?.projectImage} />
+</Helmet>
+
 
       <motion.div
         className="flex mx-auto flex-col lg:flex-row items-center justify-center relative md:mt-0 hero-section pb-20 py-14 px-5 md:px-10"
