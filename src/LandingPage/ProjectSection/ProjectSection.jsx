@@ -56,7 +56,7 @@ const ProjectSection = () => {
                     src={project.projectImage}
                     style={{ color: 'transparent', objectFit: 'cover', objectPosition: 'top',}}
                   />
-                  <Link to={`project/${project._id}`}><FaArrowRight className="arrow-icon" /></Link>
+                  <Link to={`project/${project?.title.replace(/\s+/g, '_')}`}><FaArrowRight className="arrow-icon" /></Link>
                 </Box>
               </Box>
             </Grid>

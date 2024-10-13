@@ -18,15 +18,19 @@ import { Helmet } from "react-helmet";
 
 
 const DetailedProject = () => {
-  const { id } = useParams();
+  const { title } = useParams();
   const [project, setProperty] = useState();
   const [client, setClient] = useState();
   const [testimonial, setTestimonial] = useState();
   const imgRef = useRef(null);
   const [scrollAmount, setScrollAmount] = useState(0);
+  const cleanUrl = (url) => {
+    return url.replace(/_/g, ' '); // This removes all hyphens from the URL
+  };
   useEffect(() => {
     const fetchProperty = async () => {
-      const response = await fetch(`${endPoint}/projects/${id}`);
+      const cleanedName = cleanUrl(title);
+      const response = await fetch(`${endPoint}/projects/${cleanedName}`);
       const projectData = await response.json();
       setProperty(projectData);
   
@@ -59,7 +63,7 @@ const DetailedProject = () => {
     };
     fetchClient();
     
-  }, [id, project]);
+  }, [title, project]);
 
   // Handle image load to set scroll amount dynamically
   useEffect(() => {
