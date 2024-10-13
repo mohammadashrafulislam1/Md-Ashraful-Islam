@@ -125,6 +125,11 @@ const DetailedProject = () => {
   <meta name="title" content={`${project?.title} "Md Ashraful Islam - Full-Stack Web Developer"`} />
   <meta property="og:description" content={`${project?.title} "Explore the portfolio of Md Ashraful Islam, a Full-Stack Web Developer specializing in React, Node.js, and AWS. Check out his latest projects and web solutions."`} />
   <meta property="og:image" content={project?.projectImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${project?.title} "Md Ashraful Islam - Full-Stack Web Developer"`} />
+    <meta name="twitter:description" content={`${project?.title} "Explore the portfolio of Md Ashraful Islam, a Full-Stack Web Developer specializing in React, Node.js, and AWS. Check out his latest projects and web solutions."`} />
+    <meta name="twitter:image" content={project?.projectImage} />
+
 </Helmet>
 
 

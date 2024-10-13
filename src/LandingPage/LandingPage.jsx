@@ -18,6 +18,11 @@ const LandingPage = () => {
   <meta name="title" content="Md Ashraful Islam - Full-Stack Web Developer" />
   <meta property="og:description" content="Explore the portfolio of Md Ashraful Islam, a Full-Stack Web Developer specializing in React, Node.js, and AWS. Check out his latest projects and web solutions." />
   <meta property="og:image" content="https://media.licdn.com/dms/image/v2/D5603AQFcatqrqNAN-w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722368377220?e=1734566400&v=beta&t=GtTgg8hbCK71OAknGvgnV--kEJmJJu90REgKYv4-_Zw" />
+  {/* <!-- Twitter Card for Sharing --> */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Md Ashraful Islam - Full-Stack Web Developer" />
+    <meta name="twitter:description" content="Explore the portfolio of Md Ashraful Islam, a Full-Stack Developer specializing in React, Node.js, and AWS." />
+    <meta name="twitter:image" content="https://media.licdn.com/dms/image/v2/D5603AQFcatqrqNAN-w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722368377220?e=1734566400&v=beta&t=GtTgg8hbCK71OAknGvgnV--kEJmJJu90REgKYv4-_Zw" />
 </Helmet>
 
         <LandingHero></LandingHero> 
