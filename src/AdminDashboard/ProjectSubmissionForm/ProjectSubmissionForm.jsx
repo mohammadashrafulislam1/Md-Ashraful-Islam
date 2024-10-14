@@ -214,19 +214,31 @@ console.log(galleryImages)
     }
   };
   const handleGalleryImagesChange = (e) => {
-    const selectedImages = e.target.files;
-     const maxSize = 20 * 1024 * 1024; const invalidFiles = Array.from(selectedImages).filter(file => file.size > maxSize);
+  const selectedImages = e.target.files;
+  const maxSize = 10 * 1024 * 1024; // 10MB limit for each file
+  const validImages = [];
+  const invalidFiles = [];
 
-     if (invalidFiles.length > 0) {
-       // Display error message to the user
-       alert('One or more selected files exceed the maximum allowed size (10 MB). Please choose smaller files.');
-       // Clear the file input field
-       e.target.value = null;
-     } else {
-       // Process valid files
-       setGalleryImages(Array.from(selectedImages));
-     }
-  };
+  // Check file sizes
+  Array.from(selectedImages).forEach(file => {
+    if (file.size > maxSize) {
+      invalidFiles.push(file);
+    } else {
+      validImages.push(file);
+    }
+  });
+
+  if (invalidFiles.length > 0) {
+    // Display error message to the user
+    alert(`Some files exceed the maximum allowed size (10 MB). ${invalidFiles.length} files were not added.`);
+  }
+
+  // Set only the valid images
+  if (validImages.length > 0) {
+    setGalleryImages(validImages);
+  }
+};
+
   const handleClientPhotoChange = async (e) => {
     const selectedImage = e.target.files[0];
     const imageUrl = await handleImageUpload(selectedImage);
