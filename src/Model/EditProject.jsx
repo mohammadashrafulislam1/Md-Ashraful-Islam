@@ -8,10 +8,7 @@ const imgHostingToken = import.meta.env.VITE_img_upload_token;
 const imgHostingUrl = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`;
 
 const EditProject = ({ name, onClose }) => {
-  console.log(title, onClose);
-  const cleanUrl = (url) => {
-    return url.replace(/_/g, ' '); // This removes all hyphens from the URL
-  };
+  console.log(name, onClose);
   // State variables for form fields
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -35,10 +32,8 @@ const EditProject = ({ name, onClose }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        
-      const cleanedName = cleanUrl(name);
         const getProjectResponse = await fetch(
-          `${endPoint}/projects/${cleanedName}`
+          `${endPoint}/projects/${name}`
         );
         const getProjectsData = await getProjectResponse.json();
         setProject(getProjectsData);
