@@ -160,7 +160,7 @@ const EditProject = ({ name, onClose }) => {
 
       console.log(formData);
       // Send POST request to backend API
-      const response = await fetch(`${endPoint}/projects/${projectId}`, {
+      const response = await fetch(`${endPoint}/projects/${project?.id}`, {
         method: "PUT",
         body: formData,
       });
