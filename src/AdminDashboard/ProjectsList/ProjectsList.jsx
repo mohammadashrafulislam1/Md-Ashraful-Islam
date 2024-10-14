@@ -76,8 +76,8 @@ const ProjectsList = () => {
     });
   };
 
-  const handleUpdateProject = (id) => {
-    setProjectId(id); // Set the project ID to be edited
+  const handleUpdateProject = (titl) => {
+    setProjectId(title); // Set the project ID to be edited
     setIsModalOpen(true); // Show the modal
   };
 
@@ -174,7 +174,7 @@ const ProjectsList = () => {
                     <td className="w-[18%]">
                       <button
                         className="btn btn-success text-white btn-xs md:mr-1 mb-2"
-                        onClick={() => handleUpdateProject(project?._id)}
+                        onClick={() => handleUpdateProject(project?.title)}
                       >
                         Update
                       </button>
@@ -189,7 +189,7 @@ const ProjectsList = () => {
                 </tbody>
               ))}
               {isModalOpen && (
-                <EditProject projectId={projectId} onClose={handleCloseModal} />
+                <EditProject title={projectId} onClose={handleCloseModal} />
               )}
             </table>
           ) : (
