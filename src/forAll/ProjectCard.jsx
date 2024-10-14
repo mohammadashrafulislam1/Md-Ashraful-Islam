@@ -43,7 +43,7 @@ const ProjectCard = ({ project }) => {
                     className="md:text-[16px] text-[13px] lg:text-[18px] text-black font-normal text-white font-[300] line-clamp-2"
                     dangerouslySetInnerHTML={{ __html: project?.description }}
                 />
-                <Link to={`/${project?.title.replace(/\s+/g, '_')}`}>
+                <Link to={`/project/${project?.title.replace(/\s+/g, '_')}`}>
                     <button className="flex gap-2 !justify-end items-center px-6 py-2 !mt-3 rounded-lg group !mr-0 text-white font-semibold">
                         View <FaAngleRight />
                     </button>
