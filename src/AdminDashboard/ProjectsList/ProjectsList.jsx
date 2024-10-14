@@ -9,6 +9,7 @@ const ProjectsList = () => {
   const [loading, setLoading] = useState(true);
   const [projectId, setProjectId] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
