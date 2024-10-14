@@ -117,6 +117,10 @@ const ProjectsList = () => {
               </thead>
               {projects.map((project, index) => (
                 <tbody key={index}>
+                  
+              {isModalOpen && (
+                <EditProject name={projectId} projectId={project?._id} onClose={handleCloseModal} />
+              )}
                   <tr className="text-white">
                     <td className="pr-0 w-[2%] font-bold text-center">
                       {index + 1}
@@ -190,9 +194,6 @@ const ProjectsList = () => {
                   </tr>
                 </tbody>
               ))}
-              {isModalOpen && (
-                <EditProject name={projectId} projectId={project?._id} onClose={handleCloseModal} />
-              )}
             </table>
           ) : (
             <div className="text-white text-center">No projects found.</div>
