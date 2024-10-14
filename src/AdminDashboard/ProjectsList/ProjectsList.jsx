@@ -191,7 +191,7 @@ const ProjectsList = () => {
                 </tbody>
               ))}
               {isModalOpen && (
-                <EditProject name={projectId} onClose={handleCloseModal} />
+                <EditProject name={projectId} projectId={project?._id} onClose={handleCloseModal} />
               )}
             </table>
           ) : (
