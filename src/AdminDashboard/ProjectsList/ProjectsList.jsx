@@ -78,6 +78,7 @@ const ProjectsList = () => {
   };
 
   const handleUpdateProject = (title) => {
+    console.log(title)
     setProjectId(title); // Set the project ID to be edited
     setIsModalOpen(true); // Show the modal
   };
