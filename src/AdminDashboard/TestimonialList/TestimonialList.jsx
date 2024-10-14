@@ -10,7 +10,7 @@ const TestimonialList = () => {
   const [error, setError] = useState(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(testimonials)
+
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
@@ -68,7 +68,6 @@ const TestimonialList = () => {
     try {
       const testimonialToUpdate = testimonials.find(testimonial => testimonial._id === id);
       const updatedTestimonial = { isActive: !testimonialToUpdate.isActive };
-     console.log(updatedTestimonial)
       const response = await fetch(`${endPoint}/testimonial/${id}`, {
         method: 'PUT',
         headers: {
@@ -98,15 +97,33 @@ const TestimonialList = () => {
       });
     }
   };
-  
+
   const handleUpdateTestimonies = (id) => {
     const testimonialToEdit = testimonials.find(testimonial => testimonial._id === id);
     setCurrentTestimonial(testimonialToEdit); // Set the current testimonial to be edited
     setIsModalOpen(true); // Show the modal
   };
+
   const handleCloseModal = () => {
     setIsModalOpen(false); // Close the modal
     setCurrentTestimonial(null); // Reset the project ID if necessary
+  };
+
+  const [expanded, setExpanded] = useState({}); // State to track expanded testimonials
+
+  const toggleReadMore = (id) => {
+    setExpanded((prevExpanded) => ({
+      ...prevExpanded,
+      [id]: !prevExpanded[id] // Toggle expanded state for the specific testimonial
+    }));
+  };
+
+  const limitWords = (text, wordLimit) => {
+    const words = text.split(' ');
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(' ') + '...';
+    }
+    return text;
   };
 
   return (
@@ -145,7 +162,17 @@ const TestimonialList = () => {
                       <td><img src={testimonial.image} alt={testimonial.name} width="30" height="30" /></td>
                       <td>{testimonial.name}</td>
                       <td>{testimonial.email}</td>
-                      <td>{testimonial.testimonial}</td>
+                      <td>
+                        {expanded[testimonial._id]
+                          ? testimonial.testimonial
+                          : limitWords(testimonial.testimonial, 10)}
+                        <button
+                          className="ml-2 text-blue-500 hover:underline"
+                          onClick={() => toggleReadMore(testimonial._id)}
+                        >
+                          {expanded[testimonial._id] ? 'Show Less' : 'Read More'}
+                        </button>
+                      </td>
                       <td>{testimonial.rating}</td>
                       <td>{testimonial.des}</td>
                       <td><a href={testimonial.socialMedia} target='_blank' rel="noopener noreferrer">Social</a></td>
@@ -167,10 +194,10 @@ const TestimonialList = () => {
                     </tr>
                   ))}
                   {isModalOpen && (
-                <EditTestimonies testimonyId={currentTestimonial._id}
-                currentData={currentTestimonial}
-                onClose={handleCloseModal} />
-              )}
+                    <EditTestimonies testimonyId={currentTestimonial._id}
+                      currentData={currentTestimonial}
+                      onClose={handleCloseModal} />
+                  )}
                 </tbody>
               </table>
             ) : (
