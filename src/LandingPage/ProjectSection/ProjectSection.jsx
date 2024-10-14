@@ -15,9 +15,10 @@ const ProjectSection = () => {
     const fetchData = async () => {
       try {
         const projectsResponse = await fetch(`${endPoint}/projects`);
-        const projectsData = await projectsResponse.json();
-        setProjects(projectsData);
-        setFilteredProjects(projectsData);
+        const data = await projectsResponse.json();
+        const sortedProperties = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        setProjects(sortedProperties);
+        setFilteredProjects(sortedProperties);
       } catch (error) {
         console.error("Error fetching projects:", error);
       }
