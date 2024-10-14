@@ -7,7 +7,7 @@ import { endPoint } from "../forAll/forAll";
 const imgHostingToken = import.meta.env.VITE_img_upload_token;
 const imgHostingUrl = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`;
 
-const EditProject = ({ title, onClose }) => {
+const EditProject = ({ name, onClose }) => {
   console.log(title, onClose);
   const cleanUrl = (url) => {
     return url.replace(/_/g, ' '); // This removes all hyphens from the URL
@@ -36,7 +36,7 @@ const EditProject = ({ title, onClose }) => {
     const fetchData = async () => {
       try {
         
-      const cleanedName = cleanUrl(title);
+      const cleanedName = cleanUrl(name);
         const getProjectResponse = await fetch(
           `${endPoint}/projects/${cleanedName}`
         );
@@ -68,7 +68,7 @@ const EditProject = ({ title, onClose }) => {
       }
     };
     fetchData();
-  }, [title]);
+  }, [name]);
   // Function to handle file input changes and upload images to ImgBB
   const handleImageUpload = async (imageFile) => {
     try {
