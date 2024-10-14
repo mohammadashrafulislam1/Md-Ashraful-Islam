@@ -7,7 +7,7 @@ import { endPoint } from "../forAll/forAll";
 const imgHostingToken = import.meta.env.VITE_img_upload_token;
 const imgHostingUrl = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`;
 
-const EditProject = ({ name, onClose }) => {
+const EditProject = ({ name, onClose, projectId}) => {
   console.log(name, onClose);
   // State variables for form fields
   const [project, setProject] = useState(null);
@@ -160,7 +160,7 @@ const EditProject = ({ name, onClose }) => {
 
       console.log(formData);
       // Send POST request to backend API
-      const response = await fetch(`${endPoint}/projects/${project?.id}`, {
+      const response = await fetch(`${endPoint}/projects/${projectId}`, {
         method: "PUT",
         body: formData,
       });
