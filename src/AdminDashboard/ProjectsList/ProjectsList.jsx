@@ -76,7 +76,7 @@ const ProjectsList = () => {
     });
   };
 
-  const handleUpdateProject = (titl) => {
+  const handleUpdateProject = (title) => {
     setProjectId(title); // Set the project ID to be edited
     setIsModalOpen(true); // Show the modal
   };
@@ -189,7 +189,7 @@ const ProjectsList = () => {
                 </tbody>
               ))}
               {isModalOpen && (
-                <EditProject title={projectId} onClose={handleCloseModal} />
+                <EditProject name={projectId} onClose={handleCloseModal} />
               )}
             </table>
           ) : (
