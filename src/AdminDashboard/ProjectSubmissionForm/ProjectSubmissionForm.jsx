@@ -213,20 +213,27 @@ console.log(galleryImages)
       setTabletImage(imageUrl);
     }
   };
+  
 const handleGalleryImagesChange = (e) => {
-    const selectedImages = e.target.files;
-     const maxSize = 20 * 1024 * 1024; const invalidFiles = Array.from(selectedImages).filter(file => file.size > maxSize);
-
-     if (invalidFiles.length > 0) {
-       // Display error message to the user
-       alert('One or more selected files exceed the maximum allowed size (10 MB). Please choose smaller files.');
-       // Clear the file input field
-       e.target.value = null;
-     } else {
-       // Process valid files
-       setGalleryImages(Array.from(selectedImages));
-     }
+  const selectedImages = e.target.files;
+  const maxSize = 20 * 1024 * 1024; // 20 MB
+  const maxImages = 20; // Maximum number of images allowed
+  const invalidFiles = Array.from(selectedImages).filter(file => file.size > maxSize);
+  
+  // Check if the number of selected images exceeds the limit
+  if (selectedImages.length > maxImages) {
+    alert(`You can only upload a maximum of ${maxImages} images. Please select fewer files.`);
+    e.target.value = null; // Clear the file input field
+  } else if (invalidFiles.length > 0) {
+    // Display error message to the user
+    alert('One or more selected files exceed the maximum allowed size (20 MB). Please choose smaller files.');
+    e.target.value = null; // Clear the file input field
+  } else {
+    // Process valid files
+    setGalleryImages(Array.from(selectedImages));
   }
+};
+
 
   const handleClientPhotoChange = async (e) => {
     const selectedImage = e.target.files[0];
