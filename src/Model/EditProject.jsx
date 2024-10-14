@@ -7,8 +7,11 @@ import { endPoint } from "../forAll/forAll";
 const imgHostingToken = import.meta.env.VITE_img_upload_token;
 const imgHostingUrl = `https://api.imgbb.com/1/upload?key=${imgHostingToken}`;
 
-const EditProject = ({ projectId, onClose }) => {
-  console.log(projectId, onClose);
+const EditProject = ({ title, onClose }) => {
+  console.log(title, onClose);
+  const cleanUrl = (url) => {
+    return url.replace(/_/g, ' '); // This removes all hyphens from the URL
+  };
   // State variables for form fields
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -32,8 +35,10 @@ const EditProject = ({ projectId, onClose }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        
+      const cleanedName = cleanUrl(title);
         const getProjectResponse = await fetch(
-          `${endPoint}/projects/${projectId}`
+          `${endPoint}/projects/${cleanedName}`
         );
         const getProjectsData = await getProjectResponse.json();
         setProject(getProjectsData);
@@ -63,7 +68,7 @@ const EditProject = ({ projectId, onClose }) => {
       }
     };
     fetchData();
-  }, [projectId]);
+  }, [title]);
   // Function to handle file input changes and upload images to ImgBB
   const handleImageUpload = async (imageFile) => {
     try {
